@@ -1,0 +1,15 @@
+.empList_page .sc-dkzDqf.gZWIKX.rdt_TableHeadRow {
+    color: white;
+    font-size: 19px;
+    background-color: black;
+    font-family: unset;
+}
+.empList_page .employee_table{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
+}
+.addemployee_box_row{
+    display: flex;
+}
