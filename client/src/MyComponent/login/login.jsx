@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Axios from 'axios';
+import { RingLoader } from  'react-spinners'
 
 const Login = () => {
   let navigate = useNavigate();
@@ -25,16 +26,15 @@ const Login = () => {
 
       Axios.post('http://localhost:3001/login', {mail,pass,}).then((response) => {
         setauthenticated(response.data.message)
-        console.log("response.data.message -- > "+response.data.message)
-       
-        localStorage.setItem("authenticated",response.data.message);
+     
         toast(response.data.message,{
           position: "top-center",
           autoClose: 5000,
       });
          
           if (response.data.message === 'success') {
-            navigate('/emplist');
+            localStorage.setItem("authenticated",response.data.message);
+            navigate('/dashboard');
           }
           else {
           }
@@ -53,7 +53,8 @@ const Login = () => {
       <ToastContainer/>
         <div className='login_container'>
       <div className='login_section' >
-        <h3>Sign In</h3>
+      
+ <div className='signin_logo'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
         <div className="mb-3">
           <label>Email address</label>
           <input
@@ -87,13 +88,11 @@ const Login = () => {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={onSubmit} >
+          <button type="submit" className="btn btn-success submit_btn" onClick={onSubmit} >
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-        </p>
+       
       </div>
       </div>
       </>

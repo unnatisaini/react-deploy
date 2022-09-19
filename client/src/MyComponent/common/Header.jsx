@@ -1,7 +1,14 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
+  let navigate = useNavigate();
+  const signOut = () =>{
+    localStorage.setItem("authenticated",null);
+    navigate("/");
+  }
   return (
     <div>
       <Nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 mb-3">
@@ -11,9 +18,8 @@ const Header = () => {
         {/* <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> */}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
-            <a className="nav-link" href="#">
-              Sign out
-            </a>
+          <button className="btn btn-sm btn-outline-secondary" onClick={signOut} >
+          Sign out </button>
           </li>
         </ul>
       </Nav>

@@ -12,30 +12,37 @@ font-size: 25px;
 .summary_body.card-body .employee_number{
 font-size: 40px;
 }
+
+
+
+.dailyattendance_table .attendancesection_heading {
+    font-size: 31px;
+}
 .search_section_top {
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-bottom: 1px solid black;
-    padding: 30px 0;
+    padding: 9px 0;
 }
 .search_section_top .search_heading {
     font-size: 30px;
 }
-.attendance_pagesearch_section {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
-}
-.attendance_pagesearch_section .search_section_box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+
+.attendance_pagesearch_section .search_section_box .search_section_box_input{
+display: flex;
+float: right;
 }
 .attendance_pagesearch_section .search_section_box input.form-control.form-control-dark.w-50.search_input_type {
-    padding: 12px;
-    border: 1px solid black;
+    height: 32px;
+    width: 200px !important;
+    border-radius: 3px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid #e5e5e5;
+    padding: 0 32px 0 16px;
 }
 /* table */
 .dailyattendance_table {
@@ -48,8 +55,7 @@ font-size: 40px;
 .dailyattendance_table .dailyattendance_table_box {
     text-align: center;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column;  
 }
 
 .dailyattendance_table .dailyattendance_table_box  .monthname_sort {
@@ -60,6 +66,7 @@ font-size: 40px;
     flex-direction: row;
     width: auto;
     margin: auto;
+    margin-top: 10px;
 }
 .dailyattendance_table .dailyattendance_table_box .monthname_sort .monthname_text{
     font-size: 32px;
@@ -165,21 +172,128 @@ font-size: 40px;
 
 
 
-/* table */
-
- .widget-26-job-emp-img img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
 
 /* end */
+
+/* newtable */
+.dailyattendace_table tr:hover
+{
+    color: rgba(0,0,0,0.87);
+    background-color: #EEEEEE;
+    -webkit-transition-duration:
+}
+.dailyattendace_table th:last-child {
+    width: unset !important;
+}
+.dailyattendace_table .dailyattendace_tbody .leavestatusdropdown select {
+    width: 25px;
+    appearance: none;
+    padding: 0 6px;
+}
+.dailyattendace_table .dailyattendace_tbody .employeenametrow{
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
+
+.dailyattendace_table .dailyattendace_thead .employeenametrow {
+    width: 109px;
+    white-space: nowrap;
+}
+.dailyattendance_table .dailyattendance_table_box .tableandsearch{
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+.table.table-striped.dailyattendace_table .dailyattendace_thead .daydin {
+    margin: 0;
+}
+/* LEave section */
+
+.search_section_top{
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 20px;
+display: -webkit-inline-box;
+}
+.search_section_top .LeaveFullForm_section{
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+.search_section_top .LeaveFullForm_section .LEaveheading{
+    font-weight: 600;
+}
+.search_section_top .LeaveFullForm_section .LEaveFullName{
+    
+}
+.search_section_top .LeaveFullForm_section  .LEavedot_red{
+    font-size: 12px;
+}
+.dailyattendace_table .dailyattendace_tbody .sundaymonth{
+color: red;
+border: 1px solid red;
+pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /* detailpage css */
+
+.attendancesection_heading{
+    font-size: 31px;
+}
 .table-responsive  td{
-font-size: 20px;
+/* font-size: 20px; */
 }
 .profileimg_month{
   display: flex;

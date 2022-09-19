@@ -1,26 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
 import moment from "moment";
 import { BsFillCaretLeftFill,BsCalendar2Event } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaUserAlt,FaUserGraduate } from "react-icons/fa";
-
 import { Link } from "react-router-dom";
-import { FaDotCircle } from "react-icons/fa";
+import Axios from "axios";
+
 
 const AttendanceDetail = (props) => {
-  const EmployeeName = "amrit";
-  const Position = "web developer";
-  const Status = "Absent";
-const Totalworkingday = "100";
-const Present = "40";
-const Absent = "10";
-const LateComing = "1";
-const HalfDay = "1";
-const EmergencyLeave = "1";
-const Leave = "1";
-const CausalLeave = "1";
+  const [Employedata,setEmployedata] = useState()
+ let idd = localStorage.getItem("staffid");
+  
 
   const [attendmonth, setattendmonth] = useState(moment().format("MMMM-YYYY"));
   let decmonth;
@@ -36,6 +28,26 @@ const CausalLeave = "1";
       .format("MMMM-YYYY");
     setattendmonth(decmonth);
   };
+  const Empdetail = () => {
+    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
+      setEmployedata(response)
+      });
+         }
+        
+ useEffect(() => {
+    Empdetail();
+  }, []);
+
+     
+  const Position = "web developer";
+const Totalworkingday = "100";
+const Present = "40";
+const Absent = "10";
+const LateComing = "1";
+const HalfDay = "1";
+const EmergencyLeave = "1";
+const Leave = "1";
+const CausalLeave = "1";
 
   return (
     <div>
@@ -46,7 +58,7 @@ const CausalLeave = "1";
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
+              <h2 className="attendancesection_heading">Employee Attendance Detail</h2>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                 <Link to="/AttendanceHistory" className="nav-link">
@@ -55,9 +67,6 @@ const CausalLeave = "1";
                   </button>
                   </Link>
 
-                  <button className="btn btn-sm btn-outline-secondary">
-                  Salary History
-                  </button>
                 </div>
                 
               </div>
@@ -85,10 +94,7 @@ const CausalLeave = "1";
         <div class="col-md-4 profileimg_month">
         <img src="https://bootdey.com/img/Content/avatar/avatar5.png"
         alt="Company" className="profileimg"/>
-        <div className="statusbox">
-        <FaDotCircle className={Status==='Present' ?"greendoticon": Status==='Absent' ?"reddoticon" : null}/>
-        <h2>{Status}</h2>
-        </div>
+        
          {/* sort */}
          <div className="monthname_sort">
                   <BsFillCaretLeftFill onClick={PreviousmonthChange} />
@@ -102,6 +108,9 @@ const CausalLeave = "1";
             <div class="table-responsive">
             <table class="table table-user-information">
                 <tbody>
+                
+    
+
                     <tr>        
                         <td>
                             <strong>
@@ -110,7 +119,7 @@ const CausalLeave = "1";
                             </strong>
                         </td>
                         <td class="text-primary">
-                            {EmployeeName}     
+                            {'Employedata'}     
                         </td>
                     </tr>
                     <tr>    

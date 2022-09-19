@@ -1,17 +1,18 @@
 import React from 'react';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const Summarycard = () => {
+const Summarycard = (props) => {
     return (
         <div>
-             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
               <div class="col">
                 <div class="card radius-10 border-start border-0 border-3 border-info">
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <p class="mb-0 text-secondary"> Total Employee</p>
-                        <h4 class="my-1 text-info">4805</h4>
-                        <p class="mb-0 font-13">2.5% </p>
+                        <h4 class="mb-0 text-dark"> <b>Total Employee</b></h4>
+                        <h4 class="my-1 text-info">{props.employeenumb}</h4>
+                        {/* <p class="mb-0 font-13">2.5% </p> */}
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
                         <i class="fa fa-shopping-cart"></i>
@@ -25,10 +26,10 @@ const Summarycard = () => {
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <p class="mb-0 text-secondary">
-                          Employee Present Today
-                        </p>
-                        <h4 class="my-1 text-danger">$84,245</h4>
+                        <h4 class="mb-0 text-dark">
+                          <b>Employee Present Today</b>
+                        </h4>
+                        <h4 class="my-1 text-danger">{props.presentemployee}</h4>
                         <p class="mb-0 font-13">5.4% </p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto">
@@ -43,8 +44,8 @@ const Summarycard = () => {
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <p class="mb-0 text-secondary">Employee Absent Today</p>
-                        <h4 class="my-1 text-success">34.6%</h4>
+                        <h4 class="mb-0 text-dark"><b>Employee Absent Today</b></h4>
+                        <h4 class="my-1 text-success">{props.absentemployee}</h4>
                         <p class="mb-0 font-13">4.5%</p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
@@ -54,22 +55,7 @@ const Summarycard = () => {
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="card radius-10 border-start border-0 border-3 border-warning">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <p class="mb-0 text-secondary">Total Customers</p>
-                        <h4 class="my-1 text-warning">8.4K</h4>
-                        <p class="mb-0 font-13">+8.4% from last week</p>
-                      </div>
-                      <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto">
-                        <i class="fa fa-users"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
         </div>
     );

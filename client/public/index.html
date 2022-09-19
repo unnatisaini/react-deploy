@@ -5,6 +5,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Syncfusion React UI Components" />
+    <meta name="author" content="Syncfusion" />
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -29,69 +31,35 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <script
       src="https://kit.fontawesome.com/566db987ee.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--attentable-->
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- days -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<!--  -->
     <title>React App</title>
   </head>
   <body>
     <script>
-      $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        var actions = $("table td:last-child").html();
-        // Append table with add row form on add new button click
-          $(".add-new").click(function(){
-          $(this).attr("disabled", "disabled");
-          var index = $("table tbody tr:last-child").index();
-              var row = '<tr>' +
-                  '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                  '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                  '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
-            '<td>' + actions + '</td>' +
-              '</tr>';
-            $("table").append(row);		
-          $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-              $('[data-toggle="tooltip"]').tooltip();
-          });
-        // Add row on add button click
-        $(document).on("click", ".add", function(){
-          var empty = false;
-          var input = $(this).parents("tr").find('input[type="text"]');
-              input.each(function(){
-            if(!$(this).val()){
-              $(this).addClass("error");
-              empty = true;
-            } else{
-                      $(this).removeClass("error");
-                  }
-          });
-          $(this).parents("tr").find(".error").first().focus();
-          if(!empty){
-            input.each(function(){
-              $(this).parent("td").html($(this).val());
-            });			
-            $(this).parents("tr").find(".add, .edit").toggle();
-            $(".add-new").removeAttr("disabled");
-          }		
-          });
-        // Edit row on edit button click
-        $(document).on("click", ".edit", function(){		
-              $(this).parents("tr").find("td:not(:last-child)").each(function(){
-            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-          });		
-          $(this).parents("tr").find(".add, .edit").toggle();
-          $(".add-new").attr("disabled", "disabled");
-          });
-        // Delete row on delete button click
-        $(document).on("click", ".delete", function(){
-              $(this).parents("tr").remove();
-          $(".add-new").removeAttr("disabled");
-          });
-      });
-      </script>
+     $(document).ready(function(){
+    $('#myTable').dataTable();
+});
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

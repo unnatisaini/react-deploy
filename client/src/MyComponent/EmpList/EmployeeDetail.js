@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Axios from 'axios';
 import moment from 'moment';
 import { Button } from "react-bootstrap";
@@ -11,17 +11,36 @@ import { useNavigate } from "react-router-dom";
 const EmployeeDetail = () => {
 let navigate = useNavigate();  
 const [employeeDetail, setEmployeeDetail] = useState([]);
+const [apicall, setapicall] = useState(false);
+
+const [depart, setdepart] = useState([]);
+
 const idd = localStorage.getItem('staffid');
 
 const getEmployees = (id) => {
     Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
         setEmployeeDetail(response.data)
+        console.log("--------"+JSON.stringify(response.data))
+        setapicall(false)
     });
   };
   useEffect( () =>{
     getEmployees();
 
-  },[]);
+  },[apicall]);
+
+  const department = () => {
+    Axios.get(`http://localhost:3001/department`).then((response) => {
+        setdepart(response.data);
+        setapicall(true)
+        
+    });
+  };
+//   console.log("777777777"+depart[0].department_name)
+   department();
+  
+
+
   let EmployeeName;
   let Gender;
   let email;
@@ -34,20 +53,31 @@ const getEmployees = (id) => {
   let Dob;
   let Address;
   let BasicSalary;
+  let departmmm;
+
 
   (employeeDetail || []).map((sdata) =>{
  EmployeeName = sdata.staff_name;
  Gender =sdata.gender;
- Dob=sdata.dob;
+ Dob = sdata.dob;
  email = sdata.email;
  mobile = sdata.mobile;
- DoJo = sdata.added_on;
+ DoJo = sdata.doj;
  City = sdata.city;
  State = sdata.state;
  Country = sdata.country;
  pic=sdata.pic;
  Address=sdata.address;
  BasicSalary=sdata.salary;
+ departmmm=sdata.department_id;
+})
+let departm;
+
+(depart || []).map((depdata) =>{
+    if(departmmm===depdata.id){
+       
+        departm=depdata.department_name
+    }
 })
 
     return (
@@ -150,7 +180,8 @@ const getEmployees = (id) => {
                             </strong>
                         </td>
                         <td class="text-primary">
-                        {moment(Dob).format('DD-MMMM-YY')}   
+                        {moment(Dob).format('YYYY-MMMM-DD')}   
+
                         </td>
                     </tr>
                     <tr>        
@@ -206,6 +237,17 @@ const getEmployees = (id) => {
                         </td>
                         <td class="text-primary">
                            {moment(DoJo).format('DD-MMMM-YY')}   
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+                                Department                                              
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                           { departm }   
                         </td>
                     </tr>
                     <tr>        

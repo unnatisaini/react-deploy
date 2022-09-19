@@ -1,152 +1,102 @@
-import React, { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import moment from "moment";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-import SearchSection from "../common/SearchSection";
-import DataTable from 'react-data-table-component';
-import { useNavigate } from "react-router-dom";
-import Summarycard from "../common/Summarycard";
-import Axios from 'axios';
-
+import { Link, useNavigate } from "react-router-dom";
+import Axios from "axios";
+import Leavedropdown from "./Leavedropdown";
+import Searchsection from "./Searchsection";
+import LeaveName from "./LeaveName";
+import Tooltip from 'react-bootstrap/Tooltip';
 
 function DailyAttendance(props) {
-  const [employeedata, setEmployeedata] = useState([]);
-  const [statusdata,setstatusdata] = useState([]);
-  const [filterText, setFilterText] = React.useState("");
-    const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
-      false
-    );
+  let navigate = useNavigate();
 
+  const [attendmonth, setattendmonth] = useState(
+    moment().format(`YYYY-MM-DDT00:00:00+00:00`)
+  );
+
+  const [attendancedata, setattendancedata] = useState();
+  const [employeedata, setEmployeedata] = useState([]);
+  const [holiday, setholiday] = useState([]);
+  const [filterText, setFilterText] = React.useState("");
+  const [resetPaginationToggle, setResetPaginationToggle] =
+    React.useState(false);
+  const PreviousmonthChange = () => {
+    let decmonth = moment(attendmonth)
+      .subtract(1, "month")
+      .format(`YYYY-MM-DDT00:00:00+00:00`);
+    getEmployees();
+    setattendmonth(decmonth);
+    setResetPaginationToggle(false);
+    setFilterText("");
+  };
+
+  const NextmonthChange = () => {
+    let decmonth = moment(attendmonth)
+      .add(1, "month")
+      .format(`YYYY-MM-DDT00:00:00+00:00`);
+
+    getEmployees();
+    setattendmonth(decmonth);
+    setResetPaginationToggle(false);
+    setFilterText("");
+  };
+
+  let firstdate = moment(attendmonth, "YYYY-MM")
+    .startOf("month")
+    .format(`YYYY-MM-DDT00:00:00+00:00`);
+  let lastdate = moment(attendmonth, "YYYY-MM")
+    .endOf("month")
+    .format(`YYYY-MM-DDT00:00:00+00:00`);
+  let mdays = [];
+
+  let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
+  let ststmonth = moment(attendmonth, "YYYY-MM").format("MM-YYYY");
+  for (let i = 1; i <= momentmonth; i++) {
+    let datmon = i + "-" + ststmonth;
+    let changeformat = moment(datmon, "D-MM-YYYY").format(`YYYY-MM-DD`);
+    mdays.push(changeformat);
+  }
   const getEmployees = () => {
-    Axios.get("http://localhost:3001/employees").then((response) => {
+    Axios.get(`http://localhost:3001/employees`).then((response) => {
       setEmployeedata(response.data);
     });
-    
-
+    Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`).then((response) => {
+      setholiday(response.data);
+    });
   };
   useEffect(() => {
     getEmployees();
-  },[]);
+  }, [attendmonth]);
 
-  const onstatuschange = (e)=>{
-    setstatusdata(e.target.value)
-  }
-  const onHandleClick =(staff_name,e) =>{
-    console.log(e.target.value+`${staff_name}`)
-    Axios.post("http://localhost:3001/attendance/create", {
-      staff_id:e.target.value,
-      staff_name:`${staff_name}`,
-      Status:statusdata,
-     
-  }).then((response) => {
-    console.log(response.data);
-   
-  });
-      // navigator("/AttendanceDetail");
-  }
-  const columns = [
-    {
-        name: 'id',
-        selector: row => row.id,
-       
-    },
-    {
-        name: 'staff_name',
-        selector: row => row.staff_name,
-        sortable: true,
-        
-    },
-    {
-      name: 'Present',
-      cell: (row) =>( <input value={'Present'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-      sortable: true,
-  },
-  {
-    name: 'Absent',
-    cell: (row) =>( <input value={'Absent'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-    sortable: true,
-},
-{
-  name: 'HalfDay',
-  cell: (row) =>( <input value={'HalfDay'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-  sortable: true,
-},
-{
-  name: 'LC',
-  cell: (row) =>( <input value={'LateComing'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-  sortable: true,
-},
-{
-  name: 'EL',
-  cell: (row) =>( <input value={'EmergencyLeave'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-  sortable: true,
-},
-{
-  name: 'CL',
-  cell: (row) =>( <input value={'CausalLeave'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-  sortable: true,
-},
-{
-  name: 'Leave',
-  cell: (row) =>( <input value={'Leave'} onChange={onstatuschange} name={filterText} type={'radio'}/> ),
-  sortable: true,
-},
-{
-  name: "Actions",
-  cell: (row) =>( <button  onClick={onHandleClick.bind(this, row.staff_name)} value={row.id}>Action</button> ),
-  ignoreRowClick: true,
-  allowOverflow: true,
-  button: true,
-  
-},
-
-  ]
-// search function
-const filteredItems = employeedata.filter(
-  item =>
-    JSON.stringify(item)
-      .toLowerCase()
-      .indexOf(filterText.toLowerCase()) !== -1
-);
-
-const   handleClear = () => {
-  if (filterText) {
-    setResetPaginationToggle(!resetPaginationToggle);
-    setFilterText("");
-  }
-};
-// 
-const navigator = useNavigate();
-
-  const [attendmonth, setattendmonth] = useState(
-    moment().format("DD-MMMM-YYYY")
+  // search function
+  let filteredItems = employeedata.filter(
+    (item) =>
+      JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
+      -1
   );
 
-  let decmonth;
-  const PreviousmonthChange = () => {
-    decmonth = moment(attendmonth, "DD-MMMM-YYYY")
-      .subtract(1, "day")
-      .format("DD-MMMM-YYYY");
-    setattendmonth(decmonth);
-  };
-  const NextmonthChange = () => {
-    decmonth = moment(attendmonth, "DD-MMMM-YYYY")
-      .add(1, "day")
-      .format("DD-MMMM-YYYY");
-    setattendmonth(decmonth);
+  const handleClear = () => {
+    if (filterText) {
+      setResetPaginationToggle(!resetPaginationToggle);
+      setFilterText("");
+    }
   };
 
-  //     let sMonth = moment(attendmonth).format('YYYY-MM-DD');
+  //
+  const navigator = useNavigate();
+  const onEmployeeNameClick = (id) => {
+    localStorage.setItem("staffid", id);
+    navigate("/AttendanceDetail");
+  };
+// /holiday
 
-  //   let firstdate = moment(attendmonth, 'YYYYMMMM')
-  //     .startOf('month')
-  //     .format('DD-MM-YYYY');
-  //   let lastdate = moment(attendmonth, 'YYYYMMMM')
-  //     .endOf('month')
-  //     .format('DD-MM-YYYY');
+
+
+// 
   return (
     <>
       <Header />
@@ -155,78 +105,139 @@ const navigator = useNavigate();
           <Sidebar />
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
-              <div className="btn-toolbar mb-2 mb-md-0">
-                <div className="btn-group mr-2">
+            {/* <Summarycard /> */}
+
+            <div className="dailyattendance_table">
+              <div className="heading_ttendance_box d-flex justify-content-between align-items-center">
+                <h2 className="attendancesection_heading"><b>Daily Attendance</b></h2>
+                <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary">
+                    <button className="btn btn-sm btn-outline-secondary px-5 py-2">
                       Attendance History
                     </button>
                   </Link>
-                
                 </div>
               </div>
-            </div>
-
-
-           <Summarycard/>
-
-            <div className="dailyattendance_table">
-              <h2>Daily Attendance</h2>
-
               {/* table */}
               <div className="dailyattendance_table_box">
                 {/* searchsection */}
-                <div class="row">
-                  <div class="col-lg-12 card-margin">
-                    <div class="card search-form">
-                      <div class="card-body p-0">
-                        <form id="search-form">
-                          <div class="row">
-                            <div class="col-12">
-                              <div className="search_section_top">
-                                <h5 className="search_heading">Search</h5>
-                                <div className="attendance_pagesearch_section">
-                                  <SearchSection
-                                    labeltext={"StaffName"}
-                                    inputtype={"text"}
-                                    value={filterText}
-                                    onMonthChange={e => setFilterText(e.target.value)}
-                                  />
-                                  <SearchSection
-                                    labeltext={"Date"}
-                                    inputtype={"date"}
-                                  />
-                                </div>
-                              </div>
-                              <div class="row no-gutters">
-                                <div class="col-lg-8 col-md-6 col-sm-12 p-0"></div>
-                                <div class="col-lg-1 col-md-3 col-sm-12 p-0"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                <div className="search_section_top">
+                  <LeaveName
+                    heading={"HD - "}
+                    FullName={"HALFDAY"}
+                    className={"LEavedot_red text-primary"}
+                  />
+                  <LeaveName
+                    heading={"CL - "}
+                    FullName={"CASUAL LEAVE"}
+                    className={"LEavedot_red text-secondary"}
+                  />
+                  <LeaveName
+                    heading={"ML - "}
+                    FullName={"MEDICAL LEAVE"}
+                    className={"LEavedot_red text-warning"}
+                  />
+                  <LeaveName
+                    heading={"EL - "}
+                    FullName={"OTHER EMERGENCY LEAVE"}
+                    className={"LEavedot_red text-info"}
+                  />
+                  <LeaveName
+                    heading={"UA - "}
+                    FullName={"UNINFORMED ABSENT"}
+                    className={"LEavedot_red text-danger"}
+                  />
+                  <LeaveName
+                    heading={"IA - "}
+                    FullName={"INFORMED ABSENT"}
+                    className={"LEavedot_red text-gradient-warning"}
+                  />
+                  <LeaveName
+                    heading={"LC - "}
+                    FullName={"LATE COMING"}
+                    className={"LEavedot_red"}
+                  />
                 </div>
                 {/*  */}
                 <div className="monthname_sort">
                   <BsFillCaretLeftFill onClick={PreviousmonthChange} />
-                  <h4 className="monthname_text">{attendmonth}</h4>
+                  <h4 className="monthname_text">
+                    {moment(attendmonth).format("MMMM-YYYY")}
+                  </h4>
                   <BsFillCaretRightFill onClick={NextmonthChange} />
                 </div>
+                {/*  */}
+                <div className={"tableandsearch"}>
+                  <Searchsection
+                    onNameChange={(e) => setFilterText(e.target.value)}
+                    onClear={handleClear}
+                    nameval={filterText}
+                  />
+                  <div class="table-responsive">
+                    <table
+                      class="table dailyattendace_table"
+                      id="myTable"
+                      pagination
+                    >
+                      <thead className="dailyattendace_thead bg-dark text-white">
+                        <tr>
+                          <th>{"Id"}</th>
+                          <th className="employeenametrow text-justify-center">{"Name"}</th>
 
-                <DataTable
-                highlightOnHover
-		        pointerOnHover
-            pagination
-            columns={columns}
-            data={filteredItems}
-            subHeader
-        />
-
+                          {mdays.map((mday, i) => {
+                            return (
+                              <>
+                                <th>
+                                  <p className="daydin m-0">
+                                    {moment(mday).format(`DD`)}
+                                  </p>
+                                  <p className="daydin m-0">
+                                    {moment(mday).format(`ddd`)}
+                                  </p>
+                                  
+                                </th>
+                              </>
+                            );
+                          })}
+                        </tr>
+                      </thead>
+                      <tbody className="dailyattendace_tbody">
+                        {(filteredItems || []).map((dataa, i) => {
+                          return (
+                            <tr key={i}>
+                              <td scope="row">{dataa.id}</td>
+                              <td
+                                scope="row"
+                                className="employeenametrow"
+                                onClick={onEmployeeNameClick.bind(
+                                  this,
+                                  dataa.id
+                                )}
+                                value={dataa.id}
+                              >
+                                {dataa.staff_name}
+                              </td>
+                              {
+                                <Leavedropdown
+                                i={i}
+                                firstdate={firstdate}
+                                lastdate={lastdate}
+                                holiday={holiday}
+                                  employeedataaa={employeedata}
+                                  employeeid={dataa.id}
+                                  employeename={dataa.staff_name}
+                                  attendmonthh={attendmonth}
+                                  mdays={mdays}
+                                  attendancedata={attendancedata}
+                                />
+                              }
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </main>

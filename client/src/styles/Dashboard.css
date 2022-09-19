@@ -52,6 +52,10 @@ ul.nav-news-feed li{
   list-style: none;
   display: block;
   padding: 15px 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 ul.nav-news-feed li div{
@@ -72,7 +76,7 @@ ul.nav-news-feed li div::after{
 ul.nav-news-feed li a{color: #6d6e71;}
 
 ul.nav-news-feed li i{
-  font-size: 18px;
+  font-size: 20px;
   margin-right: 15px;
   float: left;
 }
@@ -167,4 +171,32 @@ ul.online-users {
 
 .text-white {
     color: #fff;
+}
+
+
+/* confirm */
+.confirm-box__content {
+  z-index: 300;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 4em !important;
+  border-radius: 5px;
+  width: 500px !important;
+  max-width: 714px !important;
+  height: 150px;
+}
+.confirm-box__content span {
+  font-size: 17px;
+}
+.confirm-box__content button {
+  width: 85px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: none;
+  min-width: 100px;
+  line-height: 13px;
+  background: #5bc0de;
+  border: none;
+  border-radius: 5px;
 }
