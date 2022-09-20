@@ -7,11 +7,14 @@ import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
 import { Button, Modal } from 'react-bootstrap';
+import { confirm } from "react-confirm-box";
+
 const Emplist = () => {
   // const [show, setShow] = useState(false);
 
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
+  const [apicall, setapicall] = useState(false);
   
   const [filterText, setFilterText] = React.useState("");
     const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
@@ -50,11 +53,12 @@ const Emplist = () => {
     const getEmployees = () => {
         Axios.get("http://localhost:3001/employees").then((response) => {
           setEmployeeList(response.data);
+          setapicall(false)
         });
       };
       useEffect(() => {
         getEmployees();
-      },[]);
+      },[apicall]);
 
       
 
@@ -63,41 +67,18 @@ const Emplist = () => {
     let arr = e.target.value.split(',')
 
   let staffidd = e.target.value;
-  // let staname=e.target.value;
-  // console.log("staname--------"+staname)
   localStorage.setItem('staffid',staffidd);
-  // localStorage.setItem('staff_name',staname);
   navigate('/UpdateEmployee')
   }
     
-  const onClickdelete =(e)=>{
+  const onClickdelete =async(e)=>{
     let id = e.target.value;
-    console.log("id----  "+id)
+    const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
+    if (result) {
     Axios.post(`http://localhost:3001/delete/${id}`).then((response) =>{
-      // setShow(true);
-    //   <Modal show={show} onHide={handleClose} animation={false}>
-    //   <Modal.Header closeButton>
-    //     <Modal.Title>Modal heading</Modal.Title>
-    //   </Modal.Header>
-    //   <Modal.Body>{"Do you really want to delete?"+id}</Modal.Body>
-    //   <Modal.Footer>
-    //     <Button variant="secondary" onClick={handleClose}>
-    //       Close
-    //     </Button>
-    //     <Button variant="primary" onClick={handleClose}>
-    //       Save Changes
-    //     </Button>
-    //   </Modal.Footer>
-    // </Modal>
-       alert("Do you really want to delete?"+id)
-        navigate('/Emplist')
-
-      window.location.reload();
-      console.log("res"+JSON.stringify(response.data))
-      
+        setapicall(true)
   })
-  
-  // alert("delete")
+};
   }
       const columns = [
         {

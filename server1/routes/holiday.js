@@ -6,7 +6,7 @@ var moment = require("moment");
 async function getholiday(req, res) {
   const  firstdate=req.params.firstdate;
   const  lastdate=req.params.lastdate;
-  db.query("SELECT * FROM events_tbl  WHERE holiday_date BETWEEN '"+firstdate+"' AND '"+lastdate+"' ORDER BY id DESC", (err, result) => {
+  db.query("SELECT * ,(SELECT COUNT(DISTINCT(holiday_date)) FROM events_tbl as ev1 WHERE holiday_date BETWEEN '"+firstdate+"' AND '"+lastdate+"') as count FROM events_tbl ORDER BY id DESC", (err, result) => {
     if (err) {
       console.log(err);
     } else {

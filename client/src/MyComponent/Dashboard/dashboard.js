@@ -40,7 +40,6 @@ let lastdate = moment(attendmonth, "YYYY-MM")
     `http://localhost:3001/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
-    // console.log(JSON.stringify(response.data))
 
   });
 };

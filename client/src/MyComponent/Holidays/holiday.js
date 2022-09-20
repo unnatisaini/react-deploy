@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { confirm } from "react-confirm-box";
@@ -53,6 +52,7 @@ const Holidays = () => {
       toDays:toDays,
       diffmnth:diffmnth
     }).then((response) => {
+      console.log("response"+JSON.stringify(response))
       if(response){
         alert("Data is saved successfully")
         setapicall(true)
@@ -129,7 +129,7 @@ const Holidays = () => {
     {
       holidaydata.map((depdata) => {
 
-        if(depdata.group_id == `${group_id}`) {
+        if(depdata.group_id === `${group_id}`) {
           return(
        setEvent(depdata.event),
        setFromDays(moment(depdata.from_holiday_date).format('YYYY-MM-DD')),
