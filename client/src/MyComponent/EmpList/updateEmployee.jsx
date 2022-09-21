@@ -84,15 +84,15 @@ const UpdateEmp = (props) => {
 const onbankdetailclick=()=>{
   // alert("----------bank")
   Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
-    setstaffidd(response.data[0].staff_id);
-    setaccname(response.data[0].acc_holder);
-    setaccno(response.data[0].account_no);
-    setbankname(response.data[0].bank_name);
-    setbranchname(response.data[0].branch_name);
-    setifsccode(response.data[0].ifsc_code);
-  // console.log("response"+response)
-
+      setstaffidd(idd);
+      setaccname(response.data[0].acc_holder);
+      setaccno(response.data[0].account_no);
+      setbankname(response.data[0].bank_name);
+      setbranchname(response.data[0].branch_name);
+      setifsccode(response.data[0].ifsc_code);
   })
+
+ 
 }
 const onincdetailclick=()=>{
   Axios.get(`http://localhost:3001/incrementdetail/${idd}`).then((response) => {
@@ -127,7 +127,6 @@ const onincdetailclick=()=>{
   }, [stateId]);
 
 
-console.log("city_data===============> "+citydata)
 
   const updEmployee = () => {
     if (!name) {
@@ -239,27 +238,23 @@ console.log("city_data===============> "+citydata)
       old_salary: oldsalary,
       new_salary: newsalary,
     }).then((response) => {
-      // console.log("++++++++++--------"+response.staff_name)
- 
     });
     
   }
   const add_bank_detail= ()=>{
-  Axios.post(`http://localhost:3001/bankdetailupdate`, {
-    staff_id: staffidd,
-    staff_name: name,
-    acc_holder: accname,
-    account_no: accno,
-    bank_name: bankname,
-    branch_name: branchname,
-    ifsc_code: ifsccode,
-
-  }).then((response) => {
-    // console.log("++++++++++"+response.accname)
-
-  });
+      Axios.post(`http://localhost:3001/bankkcreate`,{
+        staff_id:idd,
+        staff_name:name,
+        acc_holder:accname,
+        account_no:accno,
+        bank_name:bankname,
+        branch_name:branchname,
+        ifsc_code:ifsccode,
+      }).then(async(response) => {
+        
+    })
   alert("Data is updated successfully")
-  }
+}
 
 
   const nameOnchange = (e) => {
@@ -318,7 +313,6 @@ console.log("city_data===============> "+citydata)
 
     }
   };
-  console.log('checked or not - '+ status);
 
   const accnameOnchange = (e) => {
     setaccname(e.target.value)
@@ -348,7 +342,6 @@ console.log("city_data===============> "+citydata)
     setappliedon(e.target.value)
   }
 
-console.log(statedata)
   return (
     <>
     

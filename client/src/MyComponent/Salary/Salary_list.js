@@ -7,9 +7,20 @@ import Sidebar from '../common/Sidebar';
 import Header from '../common/Header';
 import {  useState } from 'react';
 import Axios from 'axios';
+import moment from "moment";
 
 
-
+const ExpandedComponent = ({ data }) => <div className="dropdown_detail">
+<div className="dropdown_personaldet">
+<h6 className="datastaffname">{data.staff_name}</h6>
+<h6 className="mx-3">{data.gender}</h6>
+<h6>{data.city}</h6>
+</div>
+<div className="dropdown_personaldetail">
+<h6 className="datastaffname">{data.address}</h6>
+<h6>{moment(data.dob).format('DD-MMMM-YYYY')}</h6>
+</div>
+</div>;
 function Salary_list(props) {
   const [employeeList, setEmployeeList] = useState([]);
 
@@ -19,7 +30,12 @@ function Salary_list(props) {
     });
   };
   getEmployees();
-
+  const salarygenereate =(e)=>{
+    // let arr = e.target.value.split(',')
+  let staffidd = e.target.value;
+  localStorage.setItem('staffid',staffidd);
+  navigator('/GenerateSalary')
+  }
  
 
   const columns = [
@@ -28,19 +44,10 @@ function Salary_list(props) {
       selector: row => row.id,
       sortable: true,
   },
-  {
-    name: 'profile',
-    selector: row => row.profile,
-    sortable: true,
-},
+ 
     {
         name: 'Staff Name',
         selector: row => row.staff_name,
-        sortable: true,
-    },
-    {
-        name: 'Position',
-        selector: row => row.director,
         sortable: true,
     },
     {
@@ -48,9 +55,14 @@ function Salary_list(props) {
         selector: row => row.salary,
         sortable: true,
     },
+  //   {
+  //     name: 'Current Salary',
+  //     selector: row => row.salary,
+  //     sortable: true,
+  // },
     {
       name: 'Action',
-      selector: row => <button className="btn btn-sm btn-outline-secondary" onClick={()=>{navigator('/Generatesalary')}}>Generate salary</button>,
+      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={salarygenereate}>Generate salary</button>,
       sortable: false,
 
   },
@@ -133,7 +145,8 @@ const navigator=useNavigate();
             columns={columns}
             data={employeeList}
             pagination
-            
+            expandableRows
+            expandableRowsComponent={ExpandedComponent}
           
         />
           </main>

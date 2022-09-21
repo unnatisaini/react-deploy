@@ -10,8 +10,8 @@ const {Department,Departmentcreate,Departmentdelete,Departmentupdate} = require(
 const session = require('express-session');
 const {login,checklogin} = require('./routes/login/login')
 const {salary,salarydetail,salarycreate} = require("./routes/salary")
-const {dailyattendance,attendancehistory} = require("./routes/attendance")
-const {BankDetail,Bankdetailcreate,Bankdetailupdate,bankdetails} = require("./routes/bankdetail")
+const {dailyattendance,attendancehistory,attendancehistoryy} = require("./routes/attendance")
+const {BankDetail,Bankdetailcreate,Bankdetailupdate,bankdetails,bankkcreate} = require("./routes/bankdetail")
 const {incrementlog,incrementlogcreate,incrementdetail,incrementlogupdate} = require("./routes/incrementlog")
 const {getLeavesData,updleaveApproveOrNot,getPendingLeaves} = require("./routes/leaves")
 const {getholidayData,holidayCreate,holidayDelete,getholiday} = require("./routes/holiday");
@@ -69,10 +69,10 @@ app.get('/salarydetail/:id',salarydetail);
 app.post('/salarycreate',salarycreate);
 app.get('/dailyattendance/:firstdate/:lastdate/:employeeid',dailyattendance);
 app.get('/attendancehistory/:firstdate/:lastdate',attendancehistory);
+app.get('/attendancehistoryy/:firstdate/:lastdate/:idd',attendancehistoryy);
 app.get('/BankDetail',BankDetail);
 app.get('/bankdetails/:idd',bankdetails);
-app.post('/Bankdetailcreate',Bankdetailcreate);
-app.post('/bankdetailupdate',Bankdetailupdate);
+app.post('/bankkcreate',bankkcreate);
 app.post('/incrementlog',incrementlog);
 app.get('/incrementdetail/:idd',incrementdetail);
 app.post('/incrementlogcreate',incrementlogcreate);

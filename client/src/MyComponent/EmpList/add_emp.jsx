@@ -50,97 +50,80 @@ const AddEditEmp = (props) => {
     setFileName(e.target.files[0].name);
   };
 
-  // const uploadFile = async (e) => {
-  //   const formData = new FormData();
-  //   formData.append("image", file);
-  //   formData.append("fileName", fileName);
-  //   console.log("formdata - ----> "+JSON.stringify(formData))
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:3001/upload",
-  //       formData
-  //     );
-  //     console.log(res);
-  //   } catch (ex) {
-  //     console.log(ex);
-  //   }
-  // };
-
-    
-// const [lastworkdate, setlastworkdate] = useState("");
+  
   const addEmployee = async () => {
    
-    // if (!name) {
-    //   toast("Please Enter the name", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   })
-    //   return false;
-    // }
-    // if (!Dob) {
-    //   toast("Please Enter the Date of Birth", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   })
-    //   return false;
-    // }
-    // if (gender.length === 0) {
-    //   toast("Please Enter the Gender", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (address.length === 0) {
-    //   toast("Please Enter the address", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (email.length === 0) {
-    //   toast("Please Enter the email", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (mobile.length === 0) {
-    //   toast("Please Enter the mobile Number", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (doj.length === 0) {
-    //   toast("Please Enter the Date of Joining", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
+    if (!name) {
+      toast("Please Enter the name", {
+        position: "top-center",
+        autoClose: 5000,
+      })
+      return false;
+    }
+    if (!Dob) {
+      toast("Please Enter the Date of Birth", {
+        position: "top-center",
+        autoClose: 5000,
+      })
+      return false;
+    }
+    if (gender.length === 0) {
+      toast("Please Enter the Gender", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (address.length === 0) {
+      toast("Please Enter the address", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (email.length === 0) {
+      toast("Please Enter the email", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (mobile.length === 0) {
+      toast("Please Enter the mobile Number", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (doj.length === 0) {
+      toast("Please Enter the Date of Joining", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
     
-    // if (city.length === 0) {
-    //   toast("Please Enter the city", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (state.length === 0) {
-    //   toast("Please Enter the state", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
-    // if (country.length === 0) {
-    //   toast("Please Enter the country", {
-    //     position: "top-center",
-    //     autoClose: 5000,
-    //   });
-    //   return false;
-    // }
+    if (city.length === 0) {
+      toast("Please Enter the city", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (state.length === 0) {
+      toast("Please Enter the state", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
+    if (country.length === 0) {
+      toast("Please Enter the country", {
+        position: "top-center",
+        autoClose: 5000,
+      });
+      return false;
+    }
     localStorage.setItem("newstaff_name",name)
     localStorage.setItem("oldsalary",salary)
 
@@ -148,7 +131,6 @@ const AddEditEmp = (props) => {
 
    
        
-    // console.log("city.....db....."+citydata)
 
   
       

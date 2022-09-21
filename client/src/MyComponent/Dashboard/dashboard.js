@@ -40,7 +40,7 @@ let lastdate = moment(attendmonth, "YYYY-MM")
     `http://localhost:3001/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
-
+    // console.log(JSON.stringify(response.data))
   });
 };
 useEffect(() => {
@@ -54,7 +54,14 @@ let hcount =[];
       : null
  )
 })
-let employeelength =attendancedata?.length
+// total count employee
+let employeelength =attendancedata?.length;
+let presentcount=[];
+((attendancedata || []).map((adata)=>{
+    if(moment(adata.atd_date).format('YYYY-MM-DD')==moment(attendmonth).format('YYYY-MM-DD')){
+      presentcount.push(adata.staff_name)
+    }
+}))
 
 // sunday notification
   let startDate1 = moment().startOf('week').add(1, 'days').format('YYYY-MM-DD');
@@ -104,7 +111,7 @@ let employeelength =attendancedata?.length
                 </div>
               </div>
             </div>
-            <Summarycard employeenumb={employeelength} presentemployee={''} absentemployee={''}/>
+            <Summarycard employeenumb={employeelength} presentemployee={employeelength-(presentcount?.length)} presentpercent={(employeelength/(employeelength-(presentcount?.length))*100).toFixed(2)} absentemployee={presentcount?.length} absentpercent={(((presentcount?.length)/employeelength)*100).toFixed(2)}/>
             {/* notificatn */}
             <div className="row dashboard eventsection_box ">
             <div class="col-md-4 dashboard eventsection_body">
