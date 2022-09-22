@@ -50,10 +50,12 @@ const IncrementLog = () => {
       new_salary: newsalary,
       applied_on:appliedon,
        }).then((response) => {
-      
-      console.log("------" +JSON.stringify( response))
-      // navigate("/IncrementLog");
-      
+    });
+    Axios.post(`http://localhost:3001/updatee`, {
+      id: idd,
+      salary:newsalary
+    }).then((response) => {
+      console.log("++++++++++--------++++++"+JSON.stringify(response))
     });
   }
   // };

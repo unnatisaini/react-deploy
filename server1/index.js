@@ -4,7 +4,7 @@ const cors = require("cors");
 const multer = require('multer');
 const path = require('path');
 var db=require('../server1/database');
-const {employees,employeecreate,country,state_list,all_cities,employeesdetail,updEmpDetail,empdelete} = require("./routes/employees")
+const {updsalary,employees,employeecreate,country,state_list,all_cities,employeesdetail,updEmpDetail,empdelete} = require("./routes/employees")
 const {attendance,attendancecreate} = require("./routes/attendance")
 const {Department,Departmentcreate,Departmentdelete,Departmentupdate} = require("./routes/department")
 const session = require('express-session');
@@ -52,6 +52,7 @@ var upload = multer({
 
 app.get('/employees',employees);
 app.post('/update',updEmpDetail);
+app.post('/updatee',updsalary);
 app.post('/create',employeecreate);
 app.post('/delete/:id',empdelete);
 app.get('/employeedetail/:id',employeesdetail);
@@ -76,7 +77,6 @@ app.post('/bankkcreate',bankkcreate);
 app.post('/incrementlog',incrementlog);
 app.get('/incrementdetail/:idd',incrementdetail);
 app.post('/incrementlogcreate',incrementlogcreate);
-app.post('/incrementlogupdate',incrementlogupdate);
 app.get('/leaves',getLeavesData);
 app.post('/updateleave',updleaveApproveOrNot);
 app.get('/pendingleave',getPendingLeaves);

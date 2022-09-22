@@ -2,37 +2,43 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/salary/Generatesalary.css";
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Axios from "axios";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 function Generatesalary(props) {
+  let navigate = useNavigate(); 
+
   const idd = localStorage.getItem("staffid");
   const [employeeList, setEmployeeList] = useState([]);
   const [name, setName] = useState("");
   const [stid, setstid] = useState("");
   const [accno, setaccno] = useState("");
   const [banknam, setbanknam] = useState("");
-  const [lc, setlc] = useState('');
-  const [hd, sethd] = useState('');
-  const [cl, setcl] = useState("");
-  const [el, setel] = useState("");
-  const [ia, setia] = useState("");
-  const [ua, setua] = useState("");
-  const [ml, setml] = useState("");
-  const [workday, setworkday] = useState('');
-  const [salary, setsalary] = useState("");
-  const [deduction, setdeduction] = useState("");
-  const [netsal, setnetsal] = useState("");
+  const [lc, setlc] = useState();
+  const [hd, sethd] = useState();
+  const [cl, setcl] = useState();
+  const [el, setel] = useState();
+  const [ia, setia] = useState();
+  const [ua, setua] = useState();
+  const [ml, setml] = useState();
+  const [workday, setworkday] = useState();
+  const [salary, setsalary] = useState();
+  const [deduction, setdeduction] = useState();
+  const [netsal, setnetsal] = useState();
   const [bankdetail, setbankdetail] = useState([]);
   const [attendancedata, setattendancedata] = useState();
   const [holidaycount, setholidaycount] = useState([]);
+  const [allowval, setallowval] = useState();
+
 
   const [attendmonth, setattendmonth] = useState(
     moment().format(`YYYY-MM-DDT00:00:00+00:00`)
   );
 
   // date
+  let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
 
   let firstdate = moment(attendmonth, "YYYY-MM")
     .startOf("month")
@@ -43,38 +49,54 @@ function Generatesalary(props) {
   //
   const getEmployees = () => {
     Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
-      // console.log(JSON.stringify(response.data[0]))
       setbankdetail(response.data[0]);
-      setName(bankdetail.staff_name);
-      setstid(bankdetail.staff_id);
-      setaccno(bankdetail.account_no);
-      setbanknam(bankdetail.bank_name);
+      setaccno(response.data[0].account_no);
+      setbanknam(response.data[0].bank_name);
     });
-    Axios.get(
-      `http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
+   
+    Axios.get(`http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
     ).then((response) => {
       setattendancedata(response.data[0]);
-      sethd(attendancedata.HD);
-      setcl(attendancedata.CL);
-      setml(attendancedata.ML);
-      setlc(attendancedata.LC);
-      setel(attendancedata.EL);
-      setia(attendancedata.IA);
-      setua(attendancedata.UA)
+      sethd(response.data[0].HD);
+      setcl(response.data[0].CL);
+      setml(response.data[0].ML);
+      setlc(response.data[0].LC);
+      setel(response.data[0].EL);
+      setia(response.data[0].IA);
+      setua(response.data[0].UA)
+
     });
-    Axios.get(
-      `http://localhost:3001/getholiday/${firstdate}/${lastdate}`
+    Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`
     ).then((response) => {
       setholidaycount(response.data[0]);
+     let wdays = momentmonth -  response.data[0].count;
+      setworkday(wdays);
+    });
+    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
+      setEmployeeList(response.data);
+      setsalary(response.data[0].salary)
+      setName(response.data[0].staff_name);
+      setstid(response.data[0].id);
+      // deductiononclick();
+
     });
   };
   useEffect(() => {
     getEmployees();
-  }, []);
-  let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
- 
- let wdays = momentmonth -  holidaycount.count;
-//  setworkday(wdays)
+  }, [firstdate,idd,lastdate]);
+ const ongeneratesalary =()=>{
+  Axios.post("http://localhost:3001/salarycreate",{
+    staff_id:idd,
+    basic_salary:salary,
+    total:netsal,
+    updated_on:attendmonth
+    // allowance:allowval,
+  }).then(async (response) => {
+  });
+  navigate('/Salary_slip')
+
+}
+
   const nameOnchange = (e) => {
     setName(e.target.value);
   };
@@ -120,8 +142,50 @@ function Generatesalary(props) {
   const netsalaryOnchange = (e) => {
     setnetsal(e.target.value);
   };
+    // const onallowancechange = (e) => {
+    //   setallowval(e.target.value);
+    //  let salaryy =parseInt(e.target.value)
+    //  setsalary(salaryy)
+    // };
+  
+// create salary
 
-  return (
+
+ const deductiononclick = () =>{
+
+  let onedaysal = parseInt(salary / workday)
+ let absent =parseInt( onedaysal * 3 * (ua))
+ let leave = parseInt(onedaysal * 1 * (ia))
+ let medicalleave = parseInt(onedaysal * 1 * (ml))
+ let emergencyleave = parseInt(onedaysal * 1 * (el))
+let halfday = parseInt((onedaysal/2) * 1 * (hd))
+let latecom;
+if(lc>2){
+  let diff = lc - 2 
+  if(diff == 1){
+    latecom = 0
+    }
+    if(( diff % 3 == 0  && diff % 2 == 0) || diff % 3 == 0){
+        latecom = (diff/3) * onedaysal
+    }
+    {
+      if(diff % 2 == 0 && diff % 3 !== 0){
+        latecom = (diff/4) * onedaysal
+        }  
+    }
+}
+  let  deductionn =parseInt(absent) + parseInt(leave)+ parseInt(medicalleave)+ parseInt(emergencyleave)+parseInt(halfday)+parseInt(latecom);
+  setdeduction(deductionn)
+ 
+    let deduct =   localStorage.setItem('deduction',deductionn)
+
+  
+  let netsalary = salary -  deductionn;
+  setnetsal(netsalary)
+}
+
+// 
+return (
     <>
       <Nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
@@ -175,7 +239,7 @@ function Generatesalary(props) {
             <div class="container">
               <div class=" text-center mt-2">
                 <h1>Generate Salary</h1>
-                <h3>August</h3>
+                <h3>{moment(attendmonth).format('MMMM')}</h3>
               </div>
 
               <div class="row ">
@@ -183,7 +247,8 @@ function Generatesalary(props) {
                   <div class="card mt-2 mx-auto p-4 bg-light">
                     <div class="card-body bg-light">
                       <div class="container">
-                        <form id="contact-form" role="form">
+                      <div>
+                        {/* <form id="contact-form" role="form"> */}
                           <div class="controls">
                             <div class="row">
                               <div class="col-md-6">
@@ -395,7 +460,7 @@ function Generatesalary(props) {
                             <h6 class="mt-2">
                               <b>Salary Details-</b>
                             </h6>
-
+{/* salary */}
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
@@ -413,7 +478,7 @@ function Generatesalary(props) {
                                   />
                                 </div>
                               </div>
-                              <div class="col-md-6">
+                              {/* <div class="col-md-6">
                                 <div class="form-group">
                                   <label for="form_lastname">
                                     Current Salary *
@@ -428,8 +493,9 @@ function Generatesalary(props) {
                                     data-error="Lastname is required."
                                   />
                                 </div>
-                              </div>
+                              </div> */}
                             </div>
+                            {/* allowance */}
                             <h6 class="mt-2">
                               <b>Allowance-</b>
                             </h6>
@@ -442,12 +508,14 @@ function Generatesalary(props) {
                                   </label>
                                   <input
                                     id="form_email"
-                                    type="email"
+                                    type="number"
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
+                                    onChange={'onallowancechange'}
+                                    value={allowval}
                                   />
                                 </div>
                               </div>
@@ -458,11 +526,11 @@ function Generatesalary(props) {
                                   </label>
                                   <input
                                     id="form_email"
-                                    type="email"
+                                    type="number"
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -474,11 +542,11 @@ function Generatesalary(props) {
                                   </label>
                                   <input
                                     id="form_email"
-                                    type="email"
+                                    type="number"
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -500,7 +568,7 @@ function Generatesalary(props) {
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -514,7 +582,7 @@ function Generatesalary(props) {
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -528,7 +596,7 @@ function Generatesalary(props) {
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -542,7 +610,7 @@ function Generatesalary(props) {
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -558,7 +626,7 @@ function Generatesalary(props) {
                                     name="email"
                                     class="form-control"
                                     placeholder=""
-                                    required="required"
+                                    // required="required"
                                     data-error="Valid email is required."
                                   />
                                 </div>
@@ -587,6 +655,7 @@ function Generatesalary(props) {
                                     <label for="form_lastname">
                                       <b>TOTAL DEDUCTION *</b>
                                     </label>
+                                    <button onClick={deductiononclick} >click</button>
                                     <input
                                       id="form_lastname"
                                       type="text"
@@ -596,7 +665,7 @@ function Generatesalary(props) {
                                       data-error="Lastname is required."
                                       onChange={deductionOnchange}
                                       name={deduction}
-                                      value={deduction}
+                                      value={deduction || 0}
                                     />
                                   </div>
                                 </div>
@@ -612,7 +681,7 @@ function Generatesalary(props) {
                                       type="text"
                                       onChange={netsalaryOnchange}
                                       name={netsal}
-                                      value={netsal}
+                                      value={netsal || 0}
                                       class="form-control"
                                       placeholder=""
                                       required="required"
@@ -623,17 +692,19 @@ function Generatesalary(props) {
                               </div>
 
                               <div class="col-md-12 mt-3">
-                                <Link to="/Salary_slip" className="nav-link">
+                                {/* <Link to="/Salary_slip" className="nav-link"> */}
                                   <input
                                     type="submit"
                                     class="btn btn-success btn-send  pt-2 btn-block"
                                     value="Generate Salary"
+                                    onClick={ongeneratesalary}
                                   />
-                                </Link>
+                                {/* </Link> */}
                               </div>
                             </div>
                           </div>
-                        </form>
+                          </div>
+                        {/* </form> */}
                       </div>
                     </div>
                   </div>

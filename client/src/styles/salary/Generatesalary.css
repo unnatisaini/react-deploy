@@ -27,3 +27,13 @@ label {
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+
+/* salary slip */
+
+table.table.salarysliptable{
+    table-layout: fixed;
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+}

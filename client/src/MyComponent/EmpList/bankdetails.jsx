@@ -54,7 +54,7 @@ const addBankDetails = () => {
       });
       return false;
     }
-   Axios.post("http://localhost:3001/Bankdetailcreate", {
+   Axios.post("http://localhost:3001/bankkcreate", {
       staff_id:idd,
       staff_name: sname,
       acc_holder:name,

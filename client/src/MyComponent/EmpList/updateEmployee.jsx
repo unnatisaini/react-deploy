@@ -43,6 +43,7 @@ const UpdateEmp = (props) => {
   const [appliedon, setappliedon] = useState("");
   const [statedata, setstatedata] = useState("");
   const [stateId, setStateId] = useState("");
+  const [salaryval, setsalaryval] = useState();
 
 
   const idd = localStorage.getItem('staffid');
@@ -73,6 +74,9 @@ const UpdateEmp = (props) => {
       setpic(response.data[0].pic)
       setDoj(moment(response.data[0].doj).format("YYYY-MM-DD"))
       setlastworkdate(moment(response.data[0].last_working_date).format("YYYY-MM-DD"))
+      setsalaryval(response.data[0].salary)
+      setoldsalary(response.data[0].salary)
+
       });
         department();
          }
@@ -222,8 +226,9 @@ const onincdetailclick=()=>{
       qualification: qualification,
       alternate_no: altno,
       status:status,
+      salary:salaryval
     }).then((response) => {
-      // console.log("++++++++++--------++++++"+JSON.stringify(response.staff_name))
+      
 
     });
     alert("Data is updated successfully")
@@ -231,15 +236,16 @@ const onincdetailclick=()=>{
   }
 
   const add_inc_detail= ()=>{
-  Axios.post(`http://localhost:3001/incrementlogupdate`, {
+  Axios.post(`http://localhost:3001/incrementlogcreate`, {
       staff_id: staffidd,
       staff_name: name,
       applied_on: appliedon,
       old_salary: oldsalary,
       new_salary: newsalary,
     }).then((response) => {
+      updEmployee();
     });
-    
+ 
   }
   const add_bank_detail= ()=>{
       Axios.post(`http://localhost:3001/bankkcreate`,{
@@ -256,7 +262,9 @@ const onincdetailclick=()=>{
   alert("Data is updated successfully")
 }
 
-
+const salaryyOnchange = (e) => {
+    setsalaryval(e.target.value)
+}
   const nameOnchange = (e) => {
     setName(e.target.value)
   }
@@ -334,9 +342,13 @@ const onincdetailclick=()=>{
   }
   const oldonChange = (e) => {
     setoldsalary(e.target.value)
+    setsalaryval(e.target.value)
+
   }
   const newonChange = (e) => {
     setnewsalary(e.target.value)
+    setsalaryval(e.target.value)
+    
   }
   const appliedonChange = (e) => {
     setappliedon(e.target.value)
@@ -581,7 +593,7 @@ const onincdetailclick=()=>{
                             <div class="form-group">
                               <label for="form_name">Salary*</label>
 
-                              <input type="number" name="image" accept='image/*' class="form-control " onChange={''} />
+                              <input type="number" name="image" accept='image/*' class="form-control " onChange={salaryyOnchange}  value={salaryval}/>
                             </div>
                           </div>
 
