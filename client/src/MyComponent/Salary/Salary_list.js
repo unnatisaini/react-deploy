@@ -8,7 +8,9 @@ import Header from '../common/Header';
 import {  useState } from 'react';
 import Axios from 'axios';
 import moment from "moment";
-
+import React,{useEffect} from "react";
+import { BsFillCaretLeftFill } from "react-icons/bs";
+import { BsFillCaretRightFill } from "react-icons/bs";
 
 const ExpandedComponent = ({ data }) => <div className="dropdown_detail">
 <div className="dropdown_personaldet">
@@ -23,13 +25,49 @@ const ExpandedComponent = ({ data }) => <div className="dropdown_detail">
 </div>;
 function Salary_list(props) {
   const [employeeList, setEmployeeList] = useState([]);
-
-  const getEmployees = () => {
-    Axios.get("http://localhost:3001/employees").then((response) => {
-      setEmployeeList(response.data);
-    });
+  const [salaryList, setsalaryList] = useState([]);
+  const [attendmonth, setattendmonth] = useState(
+    moment().format(`YYYY-MM-DDT00:00:00+00:00`)
+  );
+  const PreviousmonthChange = () => {
+    let decmonth = moment(attendmonth)
+      .subtract(1, "month")
+      .format(`YYYY-MM-DDT00:00:00+00:00`);
+    getEmployees();
+    setattendmonth(decmonth);
+   
   };
-  getEmployees();
+
+  const NextmonthChange = () => {
+    let decmonth = moment(attendmonth)
+      .add(1, "month")
+      .format(`YYYY-MM-DDT00:00:00+00:00`);
+
+    getEmployees();
+    setattendmonth(decmonth);
+ 
+  };
+
+  // date
+ 
+  let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
+
+  let firstdate = moment(attendmonth, "YYYY-MM")
+    .startOf("month")
+    .format(`YYYY-MM-DDT00:00:00+00:00`);
+  let lastdate = moment(attendmonth, "YYYY-MM")
+    .endOf("month")
+    .format(`YYYY-MM-DDT00:00:00+00:00`);
+  const getEmployees = () => {
+   
+    Axios.get(`http://localhost:3001/salary/${firstdate}/${lastdate}`).then((response) => {
+      setsalaryList(response.data);
+    });
+  
+  };
+  useEffect(() => {
+    getEmployees();
+  }, [attendmonth]);
   const salarygenereate =(e)=>{
     // let arr = e.target.value.split(',')
   let staffidd = e.target.value;
@@ -37,6 +75,11 @@ function Salary_list(props) {
   navigator('/GenerateSalary')
   }
  
+  // let ageSum = 0
+  // for (let i = 0; i <= salaryList.length; i++) {
+  //   ageSum += salaryList[i].salary
+  // }
+  // console.log("ageSum------4444444------"+ageSum);
 
   const columns = [
     {
@@ -51,42 +94,29 @@ function Salary_list(props) {
         sortable: true,
     },
     {
+      
         name: 'Salary',
         selector: row => row.salary,
         sortable: true,
     },
-  //   {
-  //     name: 'Current Salary',
-  //     selector: row => row.salary,
-  //     sortable: true,
-  // },
+    {
+      name: 'Current Salary',
+      selector: row => row.total,
+      sortable: true,
+  },
     {
       name: 'Action',
-      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={salarygenereate}>Generate salary</button>,
+      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
+      // && row.total != null || row.total != ''
+       ?  {undefined}
+      :salarygenereate}>{(row.total === null || row.total === '' || row.total === '0')  ? 'Generate salary' : 'Generated'}</button>,
       sortable: false,
 
   },
 ];
 const navigator=useNavigate();
-// const data = [
-//   {
-//       id: 1,
-//       profile:<div class="emp_profile_img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png"
-//       alt="Company" className='emp_profile' /></div>,
-//       title: 'Beetlejuice',
-//       director:'Developer',
-//       salary: '120000',
-//   },
-//   {
-//       id: 2,
-//       profile:<div class="emp_profile_img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png"
-//       alt="Company" className='emp_profile'/></div>,
-//       title: 'Ghostbusters',
-//       director:'Developer',
-//       salary: '120000',
 
-//   },
-// ]
+
 
   return (
 
@@ -97,9 +127,9 @@ const navigator=useNavigate();
         <div className="row">
           <Sidebar/>
 
-          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
+          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 salarylistbox_table">
+            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom salarylistbody_table">
+              <h1 className="h1"><b>Salary Management</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                 <Link to='/Salary_history' className="nav-link">
@@ -111,39 +141,19 @@ const navigator=useNavigate();
                 
               </div>
             </div>
-            <h5>Search</h5>
+           
+            
 
-            <div className='Search_box'>
-              <label>Staff Name</label>
-              <input className="form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search" onChange={props.onNameChange}
-              value={props.searchvalue} />
-             
-              <label placeholder="Search">Month</label>
-             
-           <select>Select
-            <option>Select</option>
-            <option></option>
-            <option></option>
-
-           </select>
-           <label placeholder="Search">Year</label>
-
-           <select>Select
-            <option>Select</option>
-            <option></option>
-            <option></option>
-
-           </select>
-            </div>
-
-            <div className='search_btn'>
-              <button className='btn-btn-search'>Search</button>
-              <button className='btn-btn-search'>Reset</button>
-            </div>
-            <h2 className='text-center mt-5'>Salary Management</h2>
+            <div className="monthname_sort ">
+                  <BsFillCaretLeftFill onClick={PreviousmonthChange} />
+                  <h4 className="monthname_text">
+                    {moment(attendmonth).format("MMMM-YYYY")}
+                  </h4>
+                  <BsFillCaretRightFill onClick={NextmonthChange} />
+                </div>
             <DataTable
             columns={columns}
-            data={employeeList}
+            data={salaryList}
             pagination
             expandableRows
             expandableRowsComponent={ExpandedComponent}

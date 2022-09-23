@@ -6,7 +6,8 @@ import { Link} from "react-router-dom";
 import Axios from "axios";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-
+import Sidebar from '../common/Sidebar';
+import Header from '../common/Header';
 function Generatesalary(props) {
   let navigate = useNavigate(); 
 
@@ -77,7 +78,7 @@ function Generatesalary(props) {
       setsalary(response.data[0].salary)
       setName(response.data[0].staff_name);
       setstid(response.data[0].id);
-      // deductiononclick();
+      
 
     });
   };
@@ -87,6 +88,7 @@ function Generatesalary(props) {
  const ongeneratesalary =()=>{
   Axios.post("http://localhost:3001/salarycreate",{
     staff_id:idd,
+    staff_name:name,
     basic_salary:salary,
     total:netsal,
     updated_on:attendmonth
@@ -128,7 +130,7 @@ function Generatesalary(props) {
     setia(e.target.value);
   };
   const uninformedOnchange = (e) => {
-    setua();
+    setua(e.target.value);
   };
   const halfdayOnchange = (e) => {
     sethd(e.target.value);
@@ -152,34 +154,47 @@ function Generatesalary(props) {
 
 
  const deductiononclick = () =>{
+  let onedaysal = (salary / workday)
+ 
+ let absent =( onedaysal * 3 * (ua))
+ let leave = (onedaysal * 1 * (ia))
+ let medicalleave = (onedaysal * 1 * (ml))
+ let emergencyleave = (onedaysal * 1 * (el))
+let halfday = ((onedaysal/2) * 1 * (hd))
+console.log("lc"+lc)
 
-  let onedaysal = parseInt(salary / workday)
- let absent =parseInt( onedaysal * 3 * (ua))
- let leave = parseInt(onedaysal * 1 * (ia))
- let medicalleave = parseInt(onedaysal * 1 * (ml))
- let emergencyleave = parseInt(onedaysal * 1 * (el))
-let halfday = parseInt((onedaysal/2) * 1 * (hd))
 let latecom;
 if(lc>2){
-  let diff = lc - 2 
+  let diff = (lc) - 2 
   if(diff == 1){
     latecom = 0
     }
     if(( diff % 3 == 0  && diff % 2 == 0) || diff % 3 == 0){
-        latecom = (diff/3) * onedaysal
+        latecom = (diff/3) * (onedaysal)
+        console.log("latecom3333   "+latecom)
+
     }
     {
       if(diff % 2 == 0 && diff % 3 !== 0){
-        latecom = (diff/4) * onedaysal
+        latecom = (diff/4) * (onedaysal)
+console.log("latecom222      "+latecom)
+
         }  
     }
+}if(lc<2){
+  latecom=0;
 }
-  let  deductionn =parseInt(absent) + parseInt(leave)+ parseInt(medicalleave)+ parseInt(emergencyleave)+parseInt(halfday)+parseInt(latecom);
-  setdeduction(deductionn)
- 
-    let deduct =   localStorage.setItem('deduction',deductionn)
 
-  
+console.log("latecomdfina;      "+latecom)
+
+  let  deductionn =(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom);
+  setdeduction(deductionn)
+console.log("(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom)"+(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom))
+console.log("latecom"+latecom)
+
+console.log("deductionn"+deductionn)
+
+    let deduct =   localStorage.setItem('deduction',deductionn)
   let netsalary = salary -  deductionn;
   setnetsal(netsalary)
 }
@@ -187,41 +202,15 @@ if(lc>2){
 // 
 return (
     <>
-      <Nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
-          Company name
-        </a>
-        {/* <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> */}
-        <ul className="navbar-nav px-3">
-          <li className="nav-item text-nowrap">
-            <a className="nav-link" href="#">
-              Sign out
-            </a>
-          </li>
-        </ul>
-      </Nav>
+     
+     <Header/>
       <div className="container-fluid">
-        <div className="row">
-          <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-            <div className="sidebar-sticky">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <span data-feather="shopping-cart"></span>
-                  Attendance
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    <span data-feather="users"></span>
-                    Salary List
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
 
+        <div className="row">
+          <Sidebar/>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
+              <h1 className="h1"><b>Generate Salary</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                   <Link to="/Salary_history" className="nav-link">
@@ -238,8 +227,8 @@ return (
             </div>
             <div class="container">
               <div class=" text-center mt-2">
-                <h1>Generate Salary</h1>
-                <h3>{moment(attendmonth).format('MMMM')}</h3>
+                
+                <h1>{moment(attendmonth).format('MMMM')}</h1>
               </div>
 
               <div class="row ">

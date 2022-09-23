@@ -2,7 +2,9 @@ var express = require("express");
 var router = express.Router();
 var db = require("../database");
 async function salary(req, res) {
-  db.query("SELECT * FROM salary1_tbl", (err, result) => {
+  const firstdate = req.params.firstdate;
+  const lastdate = req.params.lastdate;
+  db.query("SELECT staff_tbl.id,staff_tbl.staff_name,staff_tbl.salary,salary_tbl.total,salary_tbl.added_on,salary_tbl.updated_on FROM staff_tbl LEFT JOIN salary_tbl ON salary_tbl.staff_id=staff_tbl.id AND salary_tbl.added_on BETWEEN '"+firstdate+"' AND '"+lastdate+"' ORDER BY staff_tbl.id  DESC ", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -28,6 +30,7 @@ async function salarydetail(req, res) {
 
 async function salarycreate(req, res) {
   const staff_id = req.body.staff_id;
+  const staff_name = req.body.staff_name;
   const basic_salary = req.body.basic_salary;
   const allowance = req.body.allowance;
   const total = req.body.total;
@@ -36,9 +39,9 @@ async function salarycreate(req, res) {
   const tax = req.body.tax;
 
   db.query(
-    "INSERT INTO salary_tbl(staff_id,	basic_salary,allowance, total,added_by,	updated_on,tax) VALUES ( '" +
+    "INSERT INTO salary_tbl(staff_id,staff_name,	basic_salary,allowance, total,added_by,	updated_on,tax) VALUES ( '" +
       staff_id +
-      "','" +
+      "','"+staff_name+"','" +
       basic_salary +
       "', '" +
       allowance +
@@ -50,7 +53,7 @@ async function salarycreate(req, res) {
       updated_on +
       "','" +
       tax +
-      "')",
+      "') ON DUPLICATE KEY UPDATE total = '"+total+"'",total,
     (err, result) => {
       if (err) {
         console.log(err);

@@ -187,7 +187,7 @@ let wdays = momentmonth -  holidaycount.count;
               className="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4"
             >
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-2 mt-3 ">
-                <h2 className="attendancesection_heading"><b>Attendance History</b></h2>
+                <h2 className="h1"><b>Attendance History</b></h2>
                 <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
                     <button className="btn btn-sm btn-outline-secondary px-5 py-2">

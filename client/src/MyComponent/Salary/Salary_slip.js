@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import Axios from "axios";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-// var converter = require('number-to-words');
+import ReactToPrint from 'react-to-print';
+import fileDownload from 'js-file-download'
+var converter = require('number-to-words');
+// import { ToWords } from 'to-words';
 
 function Salary_slip(props) {
-
+    // const toWords = new ToWords();
   const idd = localStorage.getItem("staffid");
   const deductionamt = localStorage.getItem("deduction");
   const [employeeList, setEmployeeList] = useState([]);
@@ -40,8 +43,14 @@ function Salary_slip(props) {
         .endOf("month")
         .format(`YYYY-MM-DDT00:00:00+00:00`);
     const getEmployees = () => {
+       
         Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
-          setbankdetail(response.data[0]);
+            if(response.data[0] != null || response.data[0] != 'undefined' || response.data[0] != '' || response.data[0] != 'null'|| response.data[0] != undefined ){
+                setbankdetail(response.data[0]);
+            }
+            {
+                setbankdetail('');
+            }
         });
         Axios.get(`http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
         ).then((response) => {
@@ -66,10 +75,7 @@ function Salary_slip(props) {
         Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
           setEmployeeList(response.data[0]);
         });
-        Axios.get(`http://localhost:3001/salarydetail/${idd}`).then((response) => {
-          setsalaryList(response.data);
-console.log(JSON.stringify(response.data))
-        });
+     
       };
       useEffect(() => {
         getEmployees();
@@ -95,7 +101,7 @@ console.log(JSON.stringify(response.data))
     emergencyleave = (onedaysal * 1 * (el))
    halfday = ((onedaysal/2) * 1 * (hd))
    let latecom;
-   if(lc > 0) {
+  
    if(lc>2){
      let diff = lc - 2 
      if(diff == 1){
@@ -110,14 +116,20 @@ console.log(JSON.stringify(response.data))
            }  
        }
     }
-}
+    if(lc<2){
+        latecom=0;
+      }
          deductionn =absent + leave+ medicalleave+ emergencyleave+halfday+latecom;
         GrossEarnings=(employeeList.salary) 
          netsalary = (GrossEarnings) -  (deductionn);
          var words;
-        //  words = converter.toWords(netsalary);
+          words = converter.toWords[(netsalary)];
+
+
+
     return (
         <>
+       
             <div class="container mt-5 mb-5">
                 <div class="row">
                     <div class="col-md-9 mx-auto">
@@ -309,7 +321,8 @@ console.log(JSON.stringify(response.data))
                                 <Button>Home</Button>
                             </Link>
                             <a href={'/Salary_slip'} download = {'/Salary_slip.pdf'}>
-                            <Button>Download</Button>
+
+                            <Button >Download</Button>
 </a>
                         </div>
                         <div class="d-flex justify-content-end">

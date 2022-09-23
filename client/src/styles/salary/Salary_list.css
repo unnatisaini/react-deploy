@@ -28,6 +28,21 @@ text-align: center;
     /* background: #ffffff; */
     /* color: chocolate; */
   }
+  .salarylistbox_table .monthname_sort{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 25px;
+    flex-direction: row;
+    width: auto;
+    justify-content: center;
+}
+.salarylistbox_table  .monthname_sort .monthname_text{
+    font-size: 30px;
+}
+.salarylistbox_table  .monthname_sort .attendance_month{
+    font-size: 20px;
+    }
 /* ---------salary_history------------- */
 .monthwise_salary{
     display: flex;

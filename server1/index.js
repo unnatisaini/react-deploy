@@ -65,7 +65,7 @@ app.get('/departmentdelete/:id',Departmentdelete);
 app.post('/departmentupdate',Departmentupdate);
 app.get('/login',checklogin);
 app.post('/login',login);
-app.get('/salary',salary);
+app.get('/salary/:firstdate/:lastdate',salary);
 app.get('/salarydetail/:id',salarydetail);
 app.post('/salarycreate',salarycreate);
 app.get('/dailyattendance/:firstdate/:lastdate/:employeeid',dailyattendance);
