@@ -6,9 +6,21 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
+<<<<<<< HEAD
 import { confirm } from "react-confirm-box";
 const Emplist = () => {
  
+=======
+import { Button, Modal } from 'react-bootstrap';
+import { confirm } from "react-confirm-box";
+
+const Emplist = () => {
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  const [apicall, setapicall] = useState(false);
+>>>>>>> de35b74629b0f1d518645f03dce357533d9469ce
   
   const [filterText, setFilterText] = React.useState("");
     const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
@@ -157,7 +169,7 @@ const Emplist = () => {
     <Sidebar/>
     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-              <h1 className="h2">Employee List</h1>
+              <h1 className="h1"><b>Employee List</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                 

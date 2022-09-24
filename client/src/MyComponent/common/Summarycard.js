@@ -30,7 +30,7 @@ const Summarycard = (props) => {
                           <b>Employee Present Today</b>
                         </h4>
                         <h4 class="my-1 text-danger">{props.presentemployee}</h4>
-                        <p class="mb-0 font-13">5.4% </p>
+                        <p class="mb-0 font-13">{props.presentpercent}% </p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto">
                         <i class="fa fa-dollar"></i>
@@ -46,7 +46,7 @@ const Summarycard = (props) => {
                       <div>
                         <h4 class="mb-0 text-dark"><b>Employee Absent Today</b></h4>
                         <h4 class="my-1 text-success">{props.absentemployee}</h4>
-                        <p class="mb-0 font-13">4.5%</p>
+                        <p class="mb-0 font-13">{props.absentpercent}%</p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
                         <i class="fa fa-bar-chart"></i>

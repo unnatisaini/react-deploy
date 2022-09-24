@@ -43,6 +43,7 @@ const UpdateEmp = (props) => {
   const [appliedon, setappliedon] = useState("");
   const [statedata, setstatedata] = useState("");
   const [stateId, setStateId] = useState("");
+  const [salaryval, setsalaryval] = useState();
 
 
   const idd = localStorage.getItem('staffid');
@@ -73,6 +74,9 @@ const UpdateEmp = (props) => {
       setpic(response.data[0].pic)
       setDoj(moment(response.data[0].doj).format("YYYY-MM-DD"))
       setlastworkdate(moment(response.data[0].last_working_date).format("YYYY-MM-DD"))
+      setsalaryval(response.data[0].salary)
+      setoldsalary(response.data[0].salary)
+
       });
         department();
          }
@@ -84,21 +88,21 @@ const UpdateEmp = (props) => {
 const onbankdetailclick=()=>{
   // alert("----------bank")
   Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
-    setstaffidd(response.data[0].staff_id);
-    setaccname(response.data[0].acc_holder);
-    setaccno(response.data[0].account_no);
-    setbankname(response.data[0].bank_name);
-    setbranchname(response.data[0].branch_name);
-    setifsccode(response.data[0].ifsc_code);
-  // console.log("response"+response)
-
+      setstaffidd(idd);
+      setaccname(response.data[0].acc_holder);
+      setaccno(response.data[0].account_no);
+      setbankname(response.data[0].bank_name);
+      setbranchname(response.data[0].branch_name);
+      setifsccode(response.data[0].ifsc_code);
   })
+
+ 
 }
 const onincdetailclick=()=>{
   Axios.get(`http://localhost:3001/incrementdetail/${idd}`).then((response) => {
     setstaffidd(response.data[0].staff_id);
-    setoldsalary(response.data[0].old_salary);
-    setnewsalary(response.data[0].new_salary);
+    setoldsalary(salaryval);
+    // setnewsalary(response.data[0].new_salary);
     setappliedon(response.data[0].applied_on)
 
   })
@@ -127,7 +131,6 @@ const onincdetailclick=()=>{
   }, [stateId]);
 
 
-console.log("city_data===============> "+citydata)
 
   const updEmployee = () => {
     if (!name) {
@@ -223,8 +226,9 @@ console.log("city_data===============> "+citydata)
       qualification: qualification,
       alternate_no: altno,
       status:status,
+      salary:salaryval
     }).then((response) => {
-      // console.log("++++++++++--------++++++"+JSON.stringify(response.staff_name))
+      
 
     });
     alert("Data is updated successfully")
@@ -232,36 +236,63 @@ console.log("city_data===============> "+citydata)
   }
 
   const add_inc_detail= ()=>{
-  Axios.post(`http://localhost:3001/incrementlogupdate`, {
+  Axios.post(`http://localhost:3001/incrementlogcreate`, {
       staff_id: staffidd,
       staff_name: name,
       applied_on: appliedon,
-      old_salary: oldsalary,
+      old_salary: salaryval,
       new_salary: newsalary,
     }).then((response) => {
-      // console.log("++++++++++--------"+response.staff_name)
- 
-    });
+      setsalaryval(newsalary)
+      Axios.post(`http://localhost:3001/update`, {
+        id: staffidd,
+        staff_name:name,
+        dob: moment(dob).format('YYYY-MM-DDTHH:mm:ss.000Z'),
+        gender: gender,
+        email: email,
+        mobile: mobile,
+        address: address,
+        pic:pic,
+        doj: moment(doj).format('YYYY-MM-DDTHH:mm:ss.000Z'),
+        city: citydata,
+        state: statedata,
+        country: country,
+        department_id: departmentdata,
+        last_working_date: moment(lastworkdate).format('YYYY-MM-DD'),
+        password: password,
+        skills: skill,
+        experience: experience,
+        qualification: qualification,
+        alternate_no: altno,
+        status:status,
+        salary:newsalary
+      }).then((response) => {
+        
+  
+      });
+      alert("Data is updated successfully")
+     
     
+    });
   }
   const add_bank_detail= ()=>{
-  Axios.post(`http://localhost:3001/bankdetailupdate`, {
-    staff_id: staffidd,
-    staff_name: name,
-    acc_holder: accname,
-    account_no: accno,
-    bank_name: bankname,
-    branch_name: branchname,
-    ifsc_code: ifsccode,
-
-  }).then((response) => {
-    // console.log("++++++++++"+response.accname)
-
-  });
+      Axios.post(`http://localhost:3001/bankkcreate`,{
+        staff_id:idd,
+        staff_name:name,
+        acc_holder:accname,
+        account_no:accno,
+        bank_name:bankname,
+        branch_name:branchname,
+        ifsc_code:ifsccode,
+      }).then(async(response) => {
+        
+    })
   alert("Data is updated successfully")
-  }
+}
 
-
+const salaryyOnchange = (e) => {
+    setsalaryval(e.target.value)
+}
   const nameOnchange = (e) => {
     setName(e.target.value)
   }
@@ -318,7 +349,6 @@ console.log("city_data===============> "+citydata)
 
     }
   };
-  console.log('checked or not - '+ status);
 
   const accnameOnchange = (e) => {
     setaccname(e.target.value)
@@ -340,15 +370,16 @@ console.log("city_data===============> "+citydata)
   }
   const oldonChange = (e) => {
     setoldsalary(e.target.value)
+
   }
   const newonChange = (e) => {
     setnewsalary(e.target.value)
+    
   }
   const appliedonChange = (e) => {
     setappliedon(e.target.value)
   }
 
-console.log(statedata)
   return (
     <>
     
@@ -588,7 +619,7 @@ console.log(statedata)
                             <div class="form-group">
                               <label for="form_name">Salary*</label>
 
-                              <input type="number" name="image" accept='image/*' class="form-control " onChange={''} />
+                              <input type="number" name="image" accept='image/*' class="form-control " onChange={salaryyOnchange}  value={salaryval}/>
                             </div>
                           </div>
 

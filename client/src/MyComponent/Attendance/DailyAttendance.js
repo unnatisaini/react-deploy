@@ -109,7 +109,7 @@ function DailyAttendance(props) {
 
             <div className="dailyattendance_table">
               <div className="heading_ttendance_box d-flex justify-content-between align-items-center">
-                <h2 className="attendancesection_heading"><b>Daily Attendance</b></h2>
+                <h2 className="h1"><b>Daily Attendance</b></h2>
                 <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
                     <button className="btn btn-sm btn-outline-secondary px-5 py-2">

@@ -41,7 +41,6 @@ let lastdate = moment(attendmonth, "YYYY-MM")
   ).then((response) => {
     setattendancedata(response.data);
     // console.log(JSON.stringify(response.data))
-
   });
 };
 useEffect(() => {
@@ -55,7 +54,14 @@ let hcount =[];
       : null
  )
 })
-let employeelength =attendancedata?.length
+// total count employee
+let employeelength =attendancedata?.length;
+let presentcount=[];
+((attendancedata || []).map((adata)=>{
+    if(moment(adata.atd_date).format('YYYY-MM-DD')==moment(attendmonth).format('YYYY-MM-DD')){
+      presentcount.push(adata.staff_name)
+    }
+}))
 
 // sunday notification
   let startDate1 = moment().startOf('week').add(1, 'days').format('YYYY-MM-DD');
@@ -83,7 +89,7 @@ let employeelength =attendancedata?.length
           <Sidebar />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-              <h1 className="h2">Dashboard</h1>
+              <h1 className="h1"><b>Dashboard</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                   <button
@@ -105,7 +111,7 @@ let employeelength =attendancedata?.length
                 </div>
               </div>
             </div>
-            <Summarycard employeenumb={employeelength} presentemployee={''} absentemployee={''}/>
+            <Summarycard employeenumb={employeelength} presentemployee={employeelength-(presentcount?.length)} presentpercent={(employeelength/(employeelength-(presentcount?.length))*100).toFixed(2)} absentemployee={presentcount?.length} absentpercent={(((presentcount?.length)/employeelength)*100).toFixed(2)}/>
             {/* notificatn */}
             <div className="row dashboard eventsection_box ">
             <div class="col-md-4 dashboard eventsection_body">

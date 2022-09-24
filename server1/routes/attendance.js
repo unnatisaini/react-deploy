@@ -65,7 +65,7 @@ async function attendancecreate(req, res) {
 async function attendancehistory(req, res) {
   const  firstdate=req.params.firstdate;
   const  lastdate=req.params.lastdate;
-  db.query("SELECT staff_tbl.id, staff_tbl.staff_name, staff_tbl.gender, staff_tbl.city, staff_tbl.dob,staff_tbl.address, SUM(attendance_tbl.Status = 1) HD, SUM(attendance_tbl.Status=2) CL, SUM(attendance_tbl.Status = 3) ML, SUM(attendance_tbl.Status=4) EL, SUM(attendance_tbl.Status = 5) UA, SUM(attendance_tbl.Status=6) IA, SUM(attendance_tbl.Status=7) LC FROM staff_tbl LEFT join attendance_tbl on staff_tbl.id=attendance_tbl.staff_id AND atd_date BETWEEN '"+firstdate+"' AND '"+lastdate+"' GROUP BY staff_tbl.id , staff_name ORDER BY `staff_tbl`.`id` ASC",(err, result) => {
+  db.query("SELECT staff_tbl.id, staff_tbl.staff_name, staff_tbl.gender, staff_tbl.city, staff_tbl.dob,staff_tbl.address,attendance_tbl.atd_date, SUM(attendance_tbl.Status = 1) HD, SUM(attendance_tbl.Status=2) CL, SUM(attendance_tbl.Status = 3) ML, SUM(attendance_tbl.Status=4) EL, SUM(attendance_tbl.Status = 5) UA, SUM(attendance_tbl.Status=6) IA, SUM(attendance_tbl.Status=7) LC FROM staff_tbl LEFT join attendance_tbl on staff_tbl.id=attendance_tbl.staff_id AND atd_date BETWEEN '"+firstdate+"' AND '"+lastdate+"' GROUP BY staff_tbl.id , staff_name ORDER BY `staff_tbl`.`id` ASC",(err, result) => {
 
   if (err) {
     console.log(err);
@@ -76,5 +76,19 @@ async function attendancehistory(req, res) {
 });
 }
 
+async function attendancehistoryy(req, res) {
+  const  idd=req.params.idd;
+  const  firstdate=req.params.firstdate;
+  const  lastdate=req.params.lastdate;
+  db.query("SELECT staff_tbl.id, staff_tbl.staff_name, staff_tbl.gender, staff_tbl.city, staff_tbl.dob,staff_tbl.address,attendance_tbl.atd_date, SUM(attendance_tbl.Status = 1) HD, SUM(attendance_tbl.Status=2) CL, SUM(attendance_tbl.Status = 3) ML, SUM(attendance_tbl.Status=4) EL, SUM(attendance_tbl.Status = 5) UA, SUM(attendance_tbl.Status=6) IA, SUM(attendance_tbl.Status=7) LC FROM staff_tbl LEFT join attendance_tbl on staff_tbl.id=attendance_tbl.staff_id AND atd_date BETWEEN '"+firstdate+"' AND '"+lastdate+"'  WHERE staff_tbl.id = '"+idd+"'  GROUP BY staff_tbl.id , staff_name ORDER BY `staff_tbl`.`id` ASC",(err, result) => {
 
-module.exports = {attendance,attendancecreate,dailyattendance,attendancehistory};
+  if (err) {
+    console.log(err);
+  } else {
+    res.send(result);
+  }
+
+});
+}
+
+module.exports = {attendance,attendancecreate,dailyattendance,attendancehistory,attendancehistoryy};

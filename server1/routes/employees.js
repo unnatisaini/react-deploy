@@ -124,11 +124,11 @@ async function updEmpDetail(req, res) {
   const experience = req.body.experience;
   const skills = req.body.skills;
   const status = req.body.status;
-
-
+const salary=req.body.salary;
+console.log("salll"+salary)
 
   db.query(
-    "UPDATE staff_tbl  SET staff_name='" + staff_name + "',dob='" + dob + "', gender='" + gender + "',email='" + email + "',password='" + password + "', mobile='" + mobile + "',doj='" + doj + "',last_working_date='" + last_working_date + "',address='" + address + "', city='" + city + "', state='" + state + "',country='" + country + "',department_id='" + department_id + "',qualification='" + qualification + "',alternate_no='" + alternate_no + "',experience='" + experience + "',skills='" + skills + "',status='" + status + "' WHERE id = '" + id + "'",
+    "UPDATE staff_tbl  SET staff_name='" + staff_name + "',dob='" + dob + "', gender='" + gender + "',email='" + email + "',password='" + password + "', mobile='" + mobile + "',doj='" + doj + "',last_working_date='" + last_working_date + "',address='" + address + "', city='" + city + "', state='" + state + "',country='" + country + "',department_id='" + department_id + "',qualification='" + qualification + "',alternate_no='" + alternate_no + "',experience='" + experience + "',skills='" + skills + "',status='" + status + "',salary='"+salary+"' WHERE id = '" + id + "'",
     [id,
       staff_name,
       gender,
@@ -147,9 +147,24 @@ async function updEmpDetail(req, res) {
       alternate_no,
       experience,
       skills,
-      status
+      status,
+      salary
     ],
     (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+}
+async function updsalary(req, res) {
+const salary=req.body.salary;
+const id=req.body.id;
+  db.query(
+    "UPDATE staff_tbl  SET salary='"+salary+"' WHERE id = '" + id + "'",
+      [salary,id],(err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -170,4 +185,4 @@ async function empdelete(req, res) {
     }
   });
 }
-module.exports = { employees, employeecreate, country, state_list, all_cities, employeesdetail, updEmpDetail, empdelete }
+module.exports = { employees, employeecreate, country, state_list, all_cities, employeesdetail, updEmpDetail, empdelete,updsalary }

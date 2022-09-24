@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { confirm } from "react-confirm-box";
@@ -33,6 +32,8 @@ const Holidays = () => {
   
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleeditClose = () => {
     seteditOpen(false)
   };
  const OnholidayChange = (e)=>{
@@ -343,7 +344,7 @@ placeholder={''}
 
 {/* update click */}
 <div>
-      <Dialog open={editopen} onClose={handleClose} className={'popup_main_box'}>
+      <Dialog open={editopen} onClose={handleeditClose} className={'popup_main_box'}>
         <DialogTitle className={'popupheading'}>UPDATE EVENT</DialogTitle>
         <DialogContent>
         
@@ -432,7 +433,7 @@ placeholder={''}
          
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}  class='btn btn-info add-new'><b>Cancel</b></Button>
+          <Button onClick={handleeditClose}  class='btn btn-info add-new'><b>Cancel</b></Button>
        <Button onClick={updateClick}  class='btn btn-info add-new'><b>Update Event</b></Button>  
        
         </DialogActions>

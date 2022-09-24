@@ -4,15 +4,15 @@ const cors = require("cors");
 const multer = require('multer');
 const path = require('path');
 var db=require('../server1/database');
-const {employees,employeecreate,country,state_list,all_cities,employeesdetail,updEmpDetail,empdelete} = require("./routes/employees")
+const {updsalary,employees,employeecreate,country,state_list,all_cities,employeesdetail,updEmpDetail,empdelete} = require("./routes/employees")
 const {attendance,attendancecreate} = require("./routes/attendance")
 const {Department,Departmentcreate,Departmentdelete,Departmentupdate} = require("./routes/department")
 const session = require('express-session');
 const {login,checklogin} = require('./routes/login/login');
 const {emplogin,empchecklogin} = require('./routes/Emproutes/emplogin');
 const {salary,salarydetail,salarycreate} = require("./routes/salary")
-const {dailyattendance,attendancehistory} = require("./routes/attendance")
-const {BankDetail,Bankdetailcreate,Bankdetailupdate,bankdetails} = require("./routes/bankdetail")
+const {dailyattendance,attendancehistory,attendancehistoryy} = require("./routes/attendance")
+const {BankDetail,Bankdetailcreate,Bankdetailupdate,bankdetails,bankkcreate} = require("./routes/bankdetail")
 const {incrementlog,incrementlogcreate,incrementdetail,incrementlogupdate} = require("./routes/incrementlog")
 const {getLeavesData,updleaveApproveOrNot,getPendingLeaves} = require("./routes/leaves")
 const {getholidayData,holidayCreate,holidayDelete,getholiday} = require("./routes/holiday");
@@ -54,6 +54,7 @@ var upload = multer({
 
 app.get('/employees',employees);
 app.post('/update',updEmpDetail);
+app.post('/updatee',updsalary);
 app.post('/create',employeecreate);
 app.post('/delete/:id',empdelete);
 app.get('/employeedetail/:id',employeesdetail);
@@ -66,19 +67,18 @@ app.get('/departmentdelete/:id',Departmentdelete);
 app.post('/departmentupdate',Departmentupdate);
 app.get('/login',checklogin);
 app.post('/login',login);
-app.get('/salary',salary);
+app.get('/salary/:firstdate/:lastdate',salary);
 app.get('/salarydetail/:id',salarydetail);
 app.post('/salarycreate',salarycreate);
 app.get('/dailyattendance/:firstdate/:lastdate/:employeeid',dailyattendance);
 app.get('/attendancehistory/:firstdate/:lastdate',attendancehistory);
+app.get('/attendancehistoryy/:firstdate/:lastdate/:idd',attendancehistoryy);
 app.get('/BankDetail',BankDetail);
 app.get('/bankdetails/:idd',bankdetails);
-app.post('/Bankdetailcreate',Bankdetailcreate);
-app.post('/bankdetailupdate',Bankdetailupdate);
+app.post('/bankkcreate',bankkcreate);
 app.post('/incrementlog',incrementlog);
 app.get('/incrementdetail/:idd',incrementdetail);
 app.post('/incrementlogcreate',incrementlogcreate);
-app.post('/incrementlogupdate',incrementlogupdate);
 app.get('/leaves',getLeavesData);
 app.post('/updateleave',updleaveApproveOrNot);
 app.get('/pendingleave',getPendingLeaves);
