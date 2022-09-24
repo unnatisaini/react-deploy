@@ -6,21 +6,9 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
-<<<<<<< HEAD
 import { confirm } from "react-confirm-box";
 const Emplist = () => {
  
-=======
-import { Button, Modal } from 'react-bootstrap';
-import { confirm } from "react-confirm-box";
-
-const Emplist = () => {
-  // const [show, setShow] = useState(false);
-
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-  const [apicall, setapicall] = useState(false);
->>>>>>> de35b74629b0f1d518645f03dce357533d9469ce
   
   const [filterText, setFilterText] = React.useState("");
     const [resetPaginationToggle, setResetPaginationToggle] = React.useState(

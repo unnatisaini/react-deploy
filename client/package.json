@@ -2,6 +2,7 @@
   "name": "emp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://unnatisaini.github.io/EMP.git",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
+    "gh-pages": "^4.0.0",
     "js-file-download": "^0.4.12",
     "moment": "^2.29.4",
     "number-to-words": "^1.2.4",
@@ -34,7 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
