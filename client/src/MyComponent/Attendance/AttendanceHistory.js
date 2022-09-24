@@ -68,7 +68,7 @@ const getEmployees = () => {
   Axios.get(
     `http://localhost:3001/getholiday/${firstdate}/${lastdate}`
   ).then((response) => {
-    setholidaycount(response.data);
+    setholidaycount(response.data[0]);
   });
 };
 useEffect(() => {
@@ -88,12 +88,12 @@ useEffect(() => {
           .format(`YYYY-MM-DDT00:00:00+00:00`);
         setattendmonth(decmonth);
       };
-      let countday =[];
-{holidaycount.map((datee)=>{
-if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1){
-  countday.push(moment(datee.holiday_date,'YYYY-MM-DD'))
-}
-})}
+//       let countday =[];
+// {holidaycount.map((datee)=>{
+// if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1){
+//   countday.push(moment(datee.holiday_date,'YYYY-MM-DD'))
+// }
+// })}
 
 
       const columns = [
@@ -173,7 +173,7 @@ if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.s
       // 
 
   }
-let wdays = momentmonth - count.Sunday - countday.length;
+let wdays = momentmonth - holidaycount.count;
 
     return (
         <div>

@@ -46,7 +46,7 @@ async function documentcreate(req, res) {
 
 
   db.query(
-      "INSERT INTO document_tbl(info1,info2,info3,info4,info5,info6,is_verified) VALUES ('"+info1+"','"+info2+"','"+info3+"','"+info4+"','"+info5+"','"+isverified+")",
+      "INSERT INTO document_tbl(info1,info2) VALUES (','',')",
       (err, result) => {
         if (err) {
           console.log(err);

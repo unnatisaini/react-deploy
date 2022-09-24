@@ -8,7 +8,8 @@ const {employees,employeecreate,country,state_list,all_cities,employeesdetail,up
 const {attendance,attendancecreate} = require("./routes/attendance")
 const {Department,Departmentcreate,Departmentdelete,Departmentupdate} = require("./routes/department")
 const session = require('express-session');
-const {login,checklogin} = require('./routes/login/login')
+const {login,checklogin} = require('./routes/login/login');
+const {emplogin,empchecklogin} = require('./routes/Emproutes/emplogin');
 const {salary,salarydetail,salarycreate} = require("./routes/salary")
 const {dailyattendance,attendancehistory} = require("./routes/attendance")
 const {BankDetail,Bankdetailcreate,Bankdetailupdate,bankdetails} = require("./routes/bankdetail")
@@ -16,6 +17,7 @@ const {incrementlog,incrementlogcreate,incrementdetail,incrementlogupdate} = req
 const {getLeavesData,updleaveApproveOrNot,getPendingLeaves} = require("./routes/leaves")
 const {getholidayData,holidayCreate,holidayDelete,getholiday} = require("./routes/holiday");
 const {setting} = require("./routes/document")
+const {documentcreate,document_tbl,documentdetail}=require("./routes/document")
 
 app.use(cors({
   origin: ['http://localhost:3000'],
@@ -88,6 +90,15 @@ app.post('/holidayCreate',holidayCreate);
 app.get('/holidayDelete/:group_id',holidayDelete);
 // app.get('/holidaycount/:firstdate/:lastdate',holidaycount);
 app.get('/document',setting);
+
+app.post('/documentcreate',documentcreate);
+app.get('/documentdetail/:id',documentdetail);
+
+app.get('/emplogin',empchecklogin);
+app.post('/emplogin',emplogin);
+
+
+
 app.post('/upload/:id', upload.single('image'),  (req, res) => {
 
   if (!req.file) {
@@ -116,9 +127,12 @@ app.post("/documentupload/",upload.single('file'), (req, res) => {
   if (!req.file) {
       console.log("No file upload");
   } else {
+    let id = req.params.idd;
+
       console.log(req.file.filename)
       var imgsrc = 'http://localhost:3000/images/' + req.file.filename
-      var insertData = "INSERT INTO document_tbl (info1)VALUES(?)"
+      var insertData ="UPDATE document_tbl SET info1='"+imgsrc+"',info2='"+imgsrc+"' WHERE id = '"+id+"'"
+      // var insertData = "INSERT INTO document_tbl (info1)VALUES(?)"
       db.query(insertData, [imgsrc], (err, result) => {
           if (err) throw err
           console.log("file uploaded")

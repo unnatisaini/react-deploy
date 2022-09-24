@@ -6,12 +6,9 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
-import { Button, Modal } from 'react-bootstrap';
+import { confirm } from "react-confirm-box";
 const Emplist = () => {
-  // const [show, setShow] = useState(false);
-
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+ 
   
   const [filterText, setFilterText] = React.useState("");
     const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
@@ -19,6 +16,7 @@ const Emplist = () => {
     );
     let navigate = useNavigate();  
     const [employeeList, setEmployeeList] = useState([]);
+    const [apicall, setapicall] = useState(false);
 
     const filteredItems = employeeList.filter(
       item =>
@@ -50,54 +48,34 @@ const Emplist = () => {
     const getEmployees = () => {
         Axios.get("http://localhost:3001/employees").then((response) => {
           setEmployeeList(response.data);
+          setapicall(false)
         });
       };
       useEffect(() => {
         getEmployees();
-      },[]);
+      },[apicall]);
 
       
 
-  const HandleClick =(e,staff_name)=>{
-
-    let arr = e.target.value.split(',')
+  const HandleClick =(e)=>{
 
   let staffidd = e.target.value;
-  // let staname=e.target.value;
-  // console.log("staname--------"+staname)
   localStorage.setItem('staffid',staffidd);
-  // localStorage.setItem('staff_name',staname);
   navigate('/UpdateEmployee')
   }
     
-  const onClickdelete =(e)=>{
+  const onClickdelete = async(e) =>{
+    const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
+    if (result) {
     let id = e.target.value;
     console.log("id----  "+id)
-    Axios.post(`http://localhost:3001/delete/${id}`).then((response) =>{
-      // setShow(true);
-    //   <Modal show={show} onHide={handleClose} animation={false}>
-    //   <Modal.Header closeButton>
-    //     <Modal.Title>Modal heading</Modal.Title>
-    //   </Modal.Header>
-    //   <Modal.Body>{"Do you really want to delete?"+id}</Modal.Body>
-    //   <Modal.Footer>
-    //     <Button variant="secondary" onClick={handleClose}>
-    //       Close
-    //     </Button>
-    //     <Button variant="primary" onClick={handleClose}>
-    //       Save Changes
-    //     </Button>
-    //   </Modal.Footer>
-    // </Modal>
-       alert("Do you really want to delete?"+id)
-        navigate('/Emplist')
-
-      window.location.reload();
-      console.log("res"+JSON.stringify(response.data))
+    Axios.post(`http://localhost:3001/delete/${id}`)
+    .then((response) =>{
+      setapicall(true)
       
   })
-  
-  // alert("delete")
+}
+
   }
       const columns = [
         {
@@ -187,21 +165,11 @@ const Emplist = () => {
 
                 Add employee
                     </button>
-                  {/* <Link to="/AttendanceHistory" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary">
-                      Attendance History
-                    </button>
-                  </Link>
-                  <button className="btn btn-sm btn-outline-secondary">
-                    Salary History
-                  </button> */}
                 </div>
               </div>
             </div>
            <div className="dailyattendance_table">
-              {/* <h2>Employee List</h2> */}
-
-              {/* table */}
+             
               <div className="dailyattendance_table_box"> 
                 <div class="row">
                   <div class="col-lg-12 card-margin">
@@ -221,11 +189,9 @@ const Emplist = () => {
                     </div>
                   </div>
                 </div>
-                {/*  */}
+              
 
-                {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
+               
 
       
 

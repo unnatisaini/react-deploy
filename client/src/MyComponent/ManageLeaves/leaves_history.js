@@ -6,6 +6,7 @@ import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
 import { useNavigate } from "react-router-dom";
 import SearchSection from "../common/SearchSection";
+import FilterComponent from "../EmpList/FilterComponent";
 
 const ManageLeaves = () => {
   let navigate = useNavigate();
@@ -16,6 +17,8 @@ const ManageLeaves = () => {
   const [filterText, setFilterText] = React.useState("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);
+   
+
 
 
   const [leavesList, setleavesList] = useState([]);
@@ -28,14 +31,34 @@ const ManageLeaves = () => {
   useEffect(() => {
     getEmployees();
   }, []);
+  // const filteredItems = leavesList.filter(
+  //   item =>
+  //     JSON.stringify(item)
+  //       .toLowerCase()
+  //       .indexOf(filterText.toLowerCase()) !== -1
+  // );
 
+  // const subHeaderComponent = useMemo(() => {
+  //   const handleClear = () => {
+  //     if (filterText) {
+  //       setResetPaginationToggle(!resetPaginationToggle);
+  //       setFilterText("");
+  //     }
+  //   };
+
+  //   return (
+  //     <FilterComponent
+  //       onFilter={e => setFilterText(e.target.value)}
+  //       onClear={handleClear}
+  //       filterText={filterText}
+  //     />
+  //   );
+  // }, [filterText, resetPaginationToggle]);
   const HandleClickApprove = (e) => {
     let leaveId = e.target.value;
-    console.log("leaveId---------"+leaveId)
   };
   const HandleClickNotApprove = (e) => {
     let leaveId = e.target.value;
-    console.log("leaveId---------"+leaveId)
   };
 
   const columns = [
@@ -110,20 +133,7 @@ const ManageLeaves = () => {
       button: true,
     },
   ];
-  // search function
-  // const filteredItems = employeeList.filter(
-  //   (item) =>
-  //     JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
-  //     -1
-  // );
-
-  // const handleClear = () => {
-  //   if (filterText) {
-  //     setResetPaginationToggle(!resetPaginationToggle);
-  //     setFilterText("");
-  //   }
-  // };
-  //
+  
   return (
     <div className="manageLeaves_page">
       <Header />
@@ -134,13 +144,15 @@ const ManageLeaves = () => {
             <div className="dailyattendance_table">
               <h2>Manage Leaves</h2>
 
-           <div> <SearchSection
+           <div>
+            {/* <SearchSection
                labeltext={"StaffName"}
                inputtype={"text"}
                id="search"
                value={leavesList}
                onMonthChange={e => setFilterText(e.target.value)}
-             /></div>
+             /> */}
+             </div>
               <div className="dailyattendance_table_box">
              
                 <DataTable

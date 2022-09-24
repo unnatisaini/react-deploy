@@ -9,7 +9,7 @@ var db = require('../database');
 
 
 async function employees(req, res) {
-  db.query("SELECT * FROM staff_tbl", (err, result) => {
+  db.query("SELECT * FROM staff_tbl ORDER BY id DESC", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -93,7 +93,7 @@ async function employeecreate(req, res) {
 }
 // }
 async function employeesdetail(req, res) {
-  const id = req.params.id;
+  const id = req.params.idd;
   db.query("SELECT * FROM staff_tbl WHERE id ='" + id + "'", id, (err, result) => {
     if (err) {
       console.log(err);
