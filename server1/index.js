@@ -141,7 +141,10 @@ app.post("/documentupload/",upload.single('file'), (req, res) => {
 });
 
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001,function () {
   console.log("Yey, your server is running on port 3001");
 });
+// .listen(process.env.PORT || 3000, function () {
+//   console.log("SERVER STARTED PORT: 3000");
+// });
 
