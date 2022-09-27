@@ -90,11 +90,10 @@ useEffect(() => {
       };
 //       let countday =[];
 // {holidaycount.map((datee)=>{
-// if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1){
+// if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1 ){
 //   countday.push(moment(datee.holiday_date,'YYYY-MM-DD'))
 // }
 // })}
-
 
       const columns = [
         {
@@ -173,7 +172,7 @@ useEffect(() => {
     //   // 
 
   }
-let wdays = momentmonth - holidaycount.count;
+let wdays = momentmonth -  holidaycount.count;
 
     return (
         <div>

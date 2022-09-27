@@ -20,7 +20,6 @@ import DailyAttendance from "../Attendance/DailyAttendance";
 import Holidays from "../Holidays/holiday";
 import IncrementLog from "../EmpList/increment_log";
 import UpdateEmp from "../EmpList/updateEmployee";
-import Index from "../emp";
 
 function Dashboard(props) {
   let navigate = useNavigate();
@@ -29,9 +28,7 @@ function Dashboard(props) {
   return (
     <div>
       <Routes>
-      <Route path="/login1" element={<Login/>} />
-      <Route path="/" element={<Index/>} />
-
+      <Route path="/" element={<Login/>} />
 {Auth != 'success' ? navigate("/") :
 <>
 

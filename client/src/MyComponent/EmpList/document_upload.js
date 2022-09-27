@@ -6,6 +6,7 @@ function Documentupload(props) {
   const idd = localStorage.getItem('newstaffid');
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
+
   const [file3, setFile3] = useState();
   const [file4, setFile4] = useState();
   const [file5, setFile5] = useState();
@@ -72,46 +73,24 @@ const getdocuments = () => {
 
   // }
 
-  const uploaddocs = async (e) => {
-    Axios.post("http://localhost:3001/documentcreate",{
-      headers: { "Content-Type": "multipart/form-data"}
-    })
-    .then(async (response) => {
-      // let id = response.data.insertId;
-      const formData = new FormData();
-      formData.append("file", file1);
-      formData.append("fileName", fileNameone);
-      formData.append("file2", file2);
-      formData.append("fileName2", fileNametwo);
-      console.log("formdata - ----> "+JSON.stringify(formData))
-      try {
-       Axios.post(
-          `"http://localhost:3001/documentupload/${idd}"`,
-         formData,
-        );
-      } catch (ex) {
-        console.log(ex);
-      }
-      // console.log("---------------------------------------"+(`insertId`))
-        //  navigate("/Bankdetails");
-    });
-//     const formData = new FormData();
+  const uploaddoc = async (e) => {
+    const formData = new FormData();
     
-//     formData.append("file2", file2);
-//     formData.append("fileName2", fileNametwo);
-// console.log("file1---1----> "+file1)
-// console.log("file2---2----> "+file2)
-//     // console.log("fileName///////"+fileName)
-//     console.log("formdata - ----> "+JSON.stringify(formData))
-//   Axios.post("http://localhost:3001/documentupload",formData, {
-//     staff_id:idd,
+    formData.append("file2", file2);
+    formData.append("fileName2", fileNametwo);
+console.log("file1---1----> "+file1)
+console.log("file2---2----> "+file2)
+    // console.log("fileName///////"+fileName)
+    console.log("formdata - ----> "+JSON.stringify(formData))
+  Axios.post("http://localhost:3001/documentupload",formData, {
+    staff_id:idd,
     
-//      }).then((response) => {
+     }).then((response) => {
     
-//     console.log("------" +JSON.stringify( response))
-//     // navigate("/IncrementLog");
+    console.log("------" +JSON.stringify( response))
+    // navigate("/IncrementLog");
     
-//   });
+  });
 
   }
 
@@ -145,11 +124,11 @@ const getdocuments = () => {
               </div>
             <div class="">
             <form action="" method="POST" enctype="multipart/form-data">
-            <input type='file' class="form-control" onChange={imageInputChange}  name={"file"} />
-            {/* <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button> */}
+            {/* <input type='file' class="form-control" onChange={imageInputChange}  name={"file"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button> */}
             
              <input type='file' class="form-control" onChange={imageInputChange2}  name={"file2"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
             
             {/* <input type='file' class="form-control" onChange={imageInputChange3}  name={"file3"} />
             <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>
