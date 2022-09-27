@@ -28,7 +28,7 @@ function Dashboard(props) {
   return (
     <div>
       <Routes>
-      <Route path="/react-appdeploy" element={<Login/>} />
+      <Route path="/" element={<Login/>} />
 {Auth != 'success' ? navigate("/") :
 <>
 

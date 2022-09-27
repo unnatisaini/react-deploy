@@ -383,7 +383,7 @@ const salaryyOnchange = (e) => {
   return (
     <>
     
-    <img src={pic} ></img>
+    {/* <img src={pic} ></img> */}
     <div className="addemployee_box">
       <ToastContainer />
       <Header />
