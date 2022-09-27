@@ -90,18 +90,11 @@ useEffect(() => {
       };
 //       let countday =[];
 // {holidaycount.map((datee)=>{
-<<<<<<< HEAD
 // if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1){
 //   countday.push(moment(datee.holiday_date,'YYYY-MM-DD'))
 // }
 // })}
 
-=======
-// if(moment(datee.holiday_date,'YYYY-MM-DD').format('dddd') != 'Sunday' && datee.status === 1 && datee.is_holiday === 1 ){
-//   countday.push(moment(datee.holiday_date,'YYYY-MM-DD'))
-// }
-// })}
->>>>>>> de35b74629b0f1d518645f03dce357533d9469ce
 
       const columns = [
         {
