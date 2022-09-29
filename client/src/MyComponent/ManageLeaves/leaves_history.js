@@ -24,7 +24,7 @@ const ManageLeaves = () => {
   const [leavesList, setleavesList] = useState([]);
 
   const getEmployees = () => {
-    Axios.get("http://localhost:3001/leaves").then((response) => {
+    Axios.get("http://apnaorganicstore.in/index/leaves").then((response) => {
       setleavesList(response.data);
     });
   };

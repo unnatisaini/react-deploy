@@ -16,7 +16,7 @@ const Leavedropdown = (props) => {
 
 useEffect(() => {
   Axios.get(
-    `http://localhost:3001/dailyattendance/${props.firstdate}/${props.lastdate}/${employeid}`
+    `http://apnaorganicstore.in/index/dailyattendance/${props.firstdate}/${props.lastdate}/${employeid}`
   ).then((response) => {
     setattendancedata(response.data);
   });
@@ -61,7 +61,7 @@ useEffect(() => {
     
      val = e.target.value;
 
-     Axios.post("http://localhost:3001/attendance/create", {
+     Axios.post("http://apnaorganicstore.in/index/attendance/create", {
       staff_id: id[2],
       staff_name: id[1],
       Status: val,

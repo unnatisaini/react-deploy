@@ -29,7 +29,7 @@ const AttendanceDetail = (props) => {
     setattendmonth(decmonth);
   };
   const Empdetail = () => {
-    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`http://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
       setEmployedata(response)
       });
          }

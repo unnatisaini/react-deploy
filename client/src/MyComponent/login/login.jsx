@@ -24,7 +24,7 @@ const Login = () => {
       return false;
      }
 
-      Axios.post('http://localhost:3001/login', {mail,pass,}).then((response) => {
+      Axios.post('http://apnaorganicstore.in/index/login', {mail,pass,}).then((response) => {
         setauthenticated(response.data.message)
      
         toast(response.data.message,{

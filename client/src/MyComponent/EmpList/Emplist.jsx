@@ -51,7 +51,7 @@ const Emplist = () => {
    
 
     const getEmployees = () => {
-        Axios.get("http://localhost:3001/employees").then((response) => {
+        Axios.get("http://apnaorganicstore.in/index/employees").then((response) => {
           setEmployeeList(response.data);
           setapicall(false)
         });
@@ -75,7 +75,7 @@ const Emplist = () => {
     let id = e.target.value;
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
-    Axios.post(`http://localhost:3001/delete/${id}`).then((response) =>{
+    Axios.post(`http://apnaorganicstore.in/index/delete/${id}`).then((response) =>{
         setapicall(true)
   })
 };

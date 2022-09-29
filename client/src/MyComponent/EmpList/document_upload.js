@@ -36,7 +36,7 @@ function Documentupload(props) {
   };
 
 const getdocuments = () => {
-    Axios.get("http://localhost:3001/document").then((response) => {
+    Axios.get("http://apnaorganicstore.in/index/document").then((response) => {
        setdoc(response.data);
        console.log("response.data"+(response.data.documents))
     });
@@ -61,7 +61,7 @@ const getdocuments = () => {
   //   // formData.append("fileName6", fileNamesix);
   //   // console.log("fileName///////"+fileName)
   //   console.log("formdata - ----> "+JSON.stringify(formData))
-  // Axios.post("http://localhost:3001/documentupload",formData, {
+  // Axios.post("http://apnaorganicstore.in/index/documentupload",formData, {
   //   staff_id:idd,
     
   //    }).then((response) => {
@@ -82,7 +82,7 @@ console.log("file1---1----> "+file1)
 console.log("file2---2----> "+file2)
     // console.log("fileName///////"+fileName)
     console.log("formdata - ----> "+JSON.stringify(formData))
-  Axios.post("http://localhost:3001/documentupload",formData, {
+  Axios.post("http://apnaorganicstore.in/index/documentupload",formData, {
     staff_id:idd,
     
      }).then((response) => {

@@ -45,7 +45,7 @@ const Holidays = () => {
  }
   const handleadd = () => {
   const diffmnth= Math.abs(moment(fromDays).diff(moment(toDays), 'days'));
-      Axios.post("http://localhost:3001/holidayCreate",{
+      Axios.post("http://apnaorganicstore.in/index/holidayCreate",{
       event: event,
       discription: description,
       is_holiday: hoday,
@@ -66,7 +66,7 @@ const Holidays = () => {
   };
 
   const getHoliday = () => {
-    Axios.get("http://localhost:3001/holiday").then((response) => {
+    Axios.get("http://apnaorganicstore.in/index/holiday").then((response) => {
       setHolidaydata(response.data);
       setapicall(false)
     });
@@ -114,7 +114,7 @@ const Holidays = () => {
   const DelClick = async (group_id) => {
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
-      Axios.get(`http://localhost:3001/holidayDelete/${group_id}`, {
+      Axios.get(`http://apnaorganicstore.in/index/holidayDelete/${group_id}`, {
     }).then((response) => {
       setapicall(true)
     });
@@ -166,7 +166,7 @@ const Holidays = () => {
   };
  
   const updateClick = () => {
-    Axios.get(`http://localhost:3001/holidayDelete/${SelectedData}`, {
+    Axios.get(`http://apnaorganicstore.in/index/holidayDelete/${SelectedData}`, {
     }).then((response) => {
     });
     handleadd();

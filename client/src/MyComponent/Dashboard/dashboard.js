@@ -32,12 +32,12 @@ let lastdate = moment(attendmonth, "YYYY-MM")
  // event
  const getEmployees = () => {
   Axios.get(
-    `http://localhost:3001/holiday`
+    `http://apnaorganicstore.in/index/holiday`
   ).then((response) => {
     setholidaycount(response.data);
   });
   Axios.get(
-    `http://localhost:3001/attendancehistory/${firstdate}/${lastdate}`
+    `http://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
     // console.log(JSON.stringify(response.data))
