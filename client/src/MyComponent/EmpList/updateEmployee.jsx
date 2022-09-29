@@ -52,7 +52,7 @@ const UpdateEmp = (props) => {
 
 
   const Empdetail = () => {
-    Axios.get(`http://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
       // console.log(response.data[0].dob)
       setstaffidd(response.data[0].id)
       setEmployeeList(response.data[0]);
@@ -87,7 +87,7 @@ const UpdateEmp = (props) => {
 
 const onbankdetailclick=()=>{
   // alert("----------bank")
-  Axios.get(`http://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
+  Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
       setstaffidd(idd);
       setaccname(response.data[0].acc_holder);
       setaccno(response.data[0].account_no);
@@ -99,7 +99,7 @@ const onbankdetailclick=()=>{
  
 }
 const onincdetailclick=()=>{
-  Axios.get(`http://apnaorganicstore.in/index/incrementdetail/${idd}`).then((response) => {
+  Axios.get(`https://apnaorganicstore.in/index/incrementdetail/${idd}`).then((response) => {
     setstaffidd(response.data[0].staff_id);
     setoldsalary(salaryval);
     // setnewsalary(response.data[0].new_salary);
@@ -108,20 +108,20 @@ const onincdetailclick=()=>{
   })
 }
   const department = () => {
-    Axios.get("http://apnaorganicstore.in/index/department").then((response) => {
+    Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
       setdepart(response.data);
     });
   };
 
   const getStates = () => {
-    Axios.get("http://apnaorganicstore.in/index/state").then((response) => {
+    Axios.get("https://apnaorganicstore.in/index/state").then((response) => {
       setState(response.data);
 
     });
   };
 
   const getCity = () => {
-    Axios.get(`http://apnaorganicstore.in/index/city/${stateId}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/city/${stateId}`).then((response) => {
       setCity(response.data);
     });
   };
@@ -205,7 +205,7 @@ const onincdetailclick=()=>{
     }
 
 
-    Axios.post(`http://apnaorganicstore.in/index/update`, {
+    Axios.post(`https://apnaorganicstore.in/index/update`, {
       id: staffidd,
       staff_name:name,
       dob: moment(dob).format('YYYY-MM-DDTHH:mm:ss.000Z'),
@@ -236,7 +236,7 @@ const onincdetailclick=()=>{
   }
 
   const add_inc_detail= ()=>{
-  Axios.post(`http://apnaorganicstore.in/index/incrementlogcreate`, {
+  Axios.post(`https://apnaorganicstore.in/index/incrementlogcreate`, {
       staff_id: staffidd,
       staff_name: name,
       applied_on: appliedon,
@@ -244,7 +244,7 @@ const onincdetailclick=()=>{
       new_salary: newsalary,
     }).then((response) => {
       setsalaryval(newsalary)
-      Axios.post(`http://apnaorganicstore.in/index/update`, {
+      Axios.post(`https://apnaorganicstore.in/index/update`, {
         id: staffidd,
         staff_name:name,
         dob: moment(dob).format('YYYY-MM-DDTHH:mm:ss.000Z'),
@@ -276,7 +276,7 @@ const onincdetailclick=()=>{
     });
   }
   const add_bank_detail= ()=>{
-      Axios.post(`http://apnaorganicstore.in/index/bankkcreate`,{
+      Axios.post(`https://apnaorganicstore.in/index/bankkcreate`,{
         staff_id:idd,
         staff_name:name,
         acc_holder:accname,

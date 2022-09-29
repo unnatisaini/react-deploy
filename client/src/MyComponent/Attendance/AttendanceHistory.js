@@ -61,12 +61,12 @@ const handleClear = () => {
 //
 const getEmployees = () => {
   Axios.get(
-    `http://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
+    `https://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
   });
   Axios.get(
-    `http://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
+    `https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
   ).then((response) => {
     setholidaycount(response.data[0]);
   });

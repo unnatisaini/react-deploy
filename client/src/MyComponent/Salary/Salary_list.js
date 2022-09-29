@@ -60,7 +60,7 @@ function Salary_list(props) {
     .format(`YYYY-MM-DDT00:00:00+00:00`);
   const getEmployees = () => {
    
-    Axios.get(`http://apnaorganicstore.in/index/salary/${firstdate}/${lastdate}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/salary/${firstdate}/${lastdate}`).then((response) => {
       setsalaryList(response.data);
     });
   

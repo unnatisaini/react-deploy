@@ -54,7 +54,7 @@ const addBankDetails = () => {
       });
       return false;
     }
-   Axios.post("http://apnaorganicstore.in/index/bankkcreate", {
+   Axios.post("https://apnaorganicstore.in/index/bankkcreate", {
       staff_id:idd,
       staff_name: sname,
       acc_holder:name,

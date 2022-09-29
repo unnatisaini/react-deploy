@@ -60,7 +60,7 @@ const handleClear = () => {
 //
 const getEmployees = () => {
   Axios.get(
-    `http://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
+    `https://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
   });

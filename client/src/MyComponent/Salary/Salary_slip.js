@@ -44,7 +44,7 @@ function Salary_slip(props) {
         .format(`YYYY-MM-DDT00:00:00+00:00`);
     const getEmployees = () => {
        
-        Axios.get(`http://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
+        Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
             if(response.data[0] != null || response.data[0] != 'undefined' || response.data[0] != '' || response.data[0] != 'null'|| response.data[0] != undefined ){
                 setbankdetail(response.data[0]);
             }
@@ -52,7 +52,7 @@ function Salary_slip(props) {
                 setbankdetail('');
             }
         });
-        Axios.get(`http://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
+        Axios.get(`https://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
         ).then((response) => {
     sethd(response.data[0].HD);
     setlc(response.data[0].LC);
@@ -66,13 +66,13 @@ function Salary_slip(props) {
        
         });
    
-        Axios.get(`http://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
+        Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
         ).then((response) => {
           setholidaycount(response.data[0]);
           let wdays = momentmonth -  response.data[0].count;
           setwday(wdays)
         });
-        Axios.get(`http://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
+        Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
           setEmployeeList(response.data[0]);
         });
      
