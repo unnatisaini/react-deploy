@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   let navigate = useNavigate();
   const signOut = () =>{
-    localStorage.setItem("authenticated",null);
+    // localStorage.setItem("authenticated",null);
     navigate("/EmployeeManagement/");
   }
   return (
@@ -18,7 +18,7 @@ const Header = () => {
         {/* <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> */}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
-          <button className="btn btn-md btn-outline-dark text-light" onClick={signOut} >
+          <button className="btn btn-md btn-outline-secondary" onClick={signOut} >
           Sign out </button>
           </li>
         </ul>
