@@ -32,7 +32,7 @@ function Dashboard(props) {
 {Auth != 'success' ? navigate("/") :
 <>
 
-<Route path="/dashboard" element={<Dashboardd/>} />
+<Route path="/EmployeeManagement/dashboard" element={<Dashboardd/>} />
       <Route path="/EmployeeManagement/Emplist" element={<Emplist/>} />
       <Route path="/EmployeeManagement/login" element={<Login/>} />
       <Route path="/EmployeeManagement/AddEmployee" element={<AddEmployee/>} />
