@@ -32,26 +32,26 @@ function Dashboard(props) {
 {Auth != 'success' ? navigate("/") :
 <>
 
-<Route path="/EmployeeManagement/dashboard" element={<Dashboardd/>} />
-      <Route path="/EmployeeManagement/Emplist" element={<Emplist/>} />
-      <Route path="/EmployeeManagement/login" element={<Login/>} />
-      <Route path="/EmployeeManagement/AddEmployee" element={<AddEmployee/>} />
-      <Route path="/EmployeeManagement/UpdateEmployee" element={<UpdateEmp/>} />
-      <Route path="/EmployeeManagement/EmployeeDetail" element={<EmployeeDetail/>} />
-      <Route path="/EmployeeManagement/department" element={<Department/>} />
-      <Route path="/EmployeeManagement/Bankdetails" element={<Bankdetails/>} />
-      <Route path="/EmployeeManagement/IncrementLog" element={<IncrementLog/>} />
-      <Route path="/EmployeeManagement/Attendance" element={<DailyAttendance />} />
-      <Route path="/EmployeeManagement/AttendanceDetail" element={<AttendanceDetail />} />
-      <Route path="/EmployeeManagement/AttendanceHistory" element={<AttendanceHistory />} />
-       <Route path="/EmployeeManagement/Salary_list" element={<Salary_list />} />
+<Route path="/dashboard" element={<Dashboardd/>} />
+      <Route path="/Emplist" element={<Emplist/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/AddEmployee" element={<AddEmployee/>} />
+      <Route path="/UpdateEmployee" element={<UpdateEmp/>} />
+      <Route path="/EmployeeDetail" element={<EmployeeDetail/>} />
+      <Route path="/department" element={<Department/>} />
+      <Route path="/Bankdetails" element={<Bankdetails/>} />
+      <Route path="/IncrementLog" element={<IncrementLog/>} />
+      <Route path="/Attendance" element={<DailyAttendance />} />
+      <Route path="/AttendanceDetail" element={<AttendanceDetail />} />
+      <Route path="/AttendanceHistory" element={<AttendanceHistory />} />
+       <Route path="/Salary_list" element={<Salary_list />} />
 
-<Route path="/EmployeeManagement/Salary_slip" element={<Salary_slip />} />
-<Route path="/EmployeeManagement/Generatesalary" element={<Generatesalary/>} />
-<Route path="/EmployeeManagement/Salary_history" element={<Salary_history/>} />
-<Route path="/EmployeeManagement/leaves" element={<CurrentLeaves/>} />
-<Route path="/EmployeeManagement/all_leaves" element={<ManageLeaves/>} />
-<Route path="/EmployeeManagement/holiday" element={<Holidays/>} />
+<Route path="/Salary_slip" element={<Salary_slip />} />
+<Route path="/Generatesalary" element={<Generatesalary/>} />
+<Route path="/Salary_history" element={<Salary_history/>} />
+<Route path="/leaves" element={<CurrentLeaves/>} />
+<Route path="/all_leaves" element={<ManageLeaves/>} />
+<Route path="/holiday" element={<Holidays/>} />
 
 </>
 }
