@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   let navigate = useNavigate();
   const signOut = () =>{
-    // localStorage.setItem("authenticated",null);
+    localStorage.setItem("authenticated",null);
     navigate("/EmployeeManagement/");
   }
   return (
