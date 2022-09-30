@@ -32,12 +32,12 @@ const Login = () => {
           autoClose: 5000,
       });
          
-          // if (response.data.message === 'success') {
-          //   localStorage.setItem("authenticated",response.data.message);
+          if (response.data.message === 'success') {
+            localStorage.setItem("authenticated",response.data.message);
             navigate('/dashboard');
-          // }
-          // else {
-          // }
+          }
+          else {
+          }
       });
   };
   console.log("authenticated   --- > "+authenticated)
