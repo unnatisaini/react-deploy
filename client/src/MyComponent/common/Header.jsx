@@ -18,7 +18,7 @@ const Header = () => {
         {/* <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> */}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
-          <button className="btn btn-md btn-outline-light text-dark" onClick={signOut} >
+          <button className="btn btn-md btn-outline-dark text-light" onClick={signOut} >
           Sign out </button>
           </li>
         </ul>
