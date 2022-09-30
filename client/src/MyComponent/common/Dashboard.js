@@ -29,7 +29,7 @@ function Dashboard(props) {
     <div>
       <Routes>
       <Route path="/EmployeeManagement/" element={<Login/>} />
-{Auth != 'success' ? navigate("/") :
+{Auth != 'success' ? navigate("/EmployeeManagement/") :
 <>
 
 <Route path="/dashboard" element={<Dashboardd/>} />
