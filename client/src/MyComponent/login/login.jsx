@@ -34,7 +34,7 @@ const Login = () => {
          
           if (response.data.message === 'success') {
             localStorage.setItem("authenticated",response.data.message);
-            navigate('/EmployeeManagement/dashboard');
+            navigate('/dashboard');
           }
           else {
           }
