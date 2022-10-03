@@ -35,7 +35,7 @@ function Dashboard(props) {
 <Route path="/dashboard" element={<Dashboardd/>} />
       <Route path="/Emplist" element={<Emplist/>} />
       <Route path="/login" element={<Login/>} />
-      <Route path="/EmployeeManagement/AddEmployee" element={<AddEmployee/>} />
+      <Route path="/AddEmployee" element={<AddEmployee/>} />
       <Route path="/UpdateEmployee" element={<UpdateEmp/>} />
       <Route path="/EmployeeDetail" element={<EmployeeDetail/>} />
       <Route path="/department" element={<Department/>} />

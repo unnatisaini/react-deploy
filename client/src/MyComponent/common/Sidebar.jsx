@@ -15,11 +15,11 @@ const Sidebar = () => {
             </div>
             <ul class="nav-news-feed">
               <li><i class="fa-solid fa-house m-0"></i><div className='m-0'>
-              <a href='/dashboard'>Dashboard</a>
-              {/* <Link to="/dashboard" className="nav-link">
+              {/* <a href='/dashboard'>Dashboard</a> */}
+              <Link to="/dashboard" className="nav-link">
                     <span data-feather="shopping-cart"></span>
                     Dashboard
-                  </Link> */}
+                  </Link>
                   </div></li>
                   <li><i class="fa fa-user" aria-hidden="true  m-0"></i><div className=' m-0'><Link to="/Emplist" className="nav-link">
                     <span data-feather="shopping-cart"></span>

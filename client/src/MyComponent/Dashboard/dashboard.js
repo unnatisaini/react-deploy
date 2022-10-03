@@ -92,15 +92,15 @@ let presentcount=[];
               <h1 className="h1"><b>Dashboard</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
-                <a href="/EmployeeManagement/AddEmployee">Add employee</a>
-                  {/* <button
+                {/* <a href="/AddEmployee">Add employee</a> */}
+                  <button
                     className="btn btn-sm btn-outline-secondary"
                     onClick={() => {
                       navigate("/AddEmployee");
                     }}
                   >
                     Add employee
-                  </button> */}
+                  </button>
                   <Link to="/AttendanceHistory" className="nav-link">
                     <button className="btn btn-sm btn-outline-secondary">
                       Attendance History
