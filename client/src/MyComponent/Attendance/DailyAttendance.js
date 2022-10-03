@@ -61,10 +61,10 @@ function DailyAttendance(props) {
     mdays.push(changeformat);
   }
   const getEmployees = () => {
-    Axios.get(`http://localhost:3001/employees`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/employees`).then((response) => {
       setEmployeedata(response.data);
     });
-    Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`).then((response) => {
       setholiday(response.data);
     });
   };

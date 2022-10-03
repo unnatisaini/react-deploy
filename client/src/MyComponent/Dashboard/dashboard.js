@@ -32,12 +32,12 @@ let lastdate = moment(attendmonth, "YYYY-MM")
  // event
  const getEmployees = () => {
   Axios.get(
-    `http://localhost:3001/holiday`
+    `https://apnaorganicstore.in/index/holiday`
   ).then((response) => {
     setholidaycount(response.data);
   });
   Axios.get(
-    `http://localhost:3001/attendancehistory/${firstdate}/${lastdate}`
+    `https://apnaorganicstore.in/index/attendancehistory/${firstdate}/${lastdate}`
   ).then((response) => {
     setattendancedata(response.data);
     // console.log(JSON.stringify(response.data))
@@ -92,6 +92,7 @@ let presentcount=[];
               <h1 className="h1"><b>Dashboard</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
+                {/* <a href="/AddEmployee">Add employee</a> */}
                   <button
                     className="btn btn-sm btn-outline-secondary"
                     onClick={() => {

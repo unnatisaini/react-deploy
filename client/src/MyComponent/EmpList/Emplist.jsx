@@ -6,9 +6,15 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
+import { Button, Modal } from 'react-bootstrap';
 import { confirm } from "react-confirm-box";
+
 const Emplist = () => {
- 
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  const [apicall, setapicall] = useState(false);
   
   const [filterText, setFilterText] = React.useState("");
     const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
@@ -16,7 +22,6 @@ const Emplist = () => {
     );
     let navigate = useNavigate();  
     const [employeeList, setEmployeeList] = useState([]);
-    const [apicall, setapicall] = useState(false);
 
     const filteredItems = employeeList.filter(
       item =>
@@ -46,7 +51,7 @@ const Emplist = () => {
    
 
     const getEmployees = () => {
-        Axios.get("http://localhost:3001/employees").then((response) => {
+        Axios.get("https://apnaorganicstore.in/index/employees").then((response) => {
           setEmployeeList(response.data);
           setapicall(false)
         });
@@ -57,25 +62,23 @@ const Emplist = () => {
 
       
 
-  const HandleClick =(e)=>{
+  const HandleClick =(e,staff_name)=>{
+
+    let arr = e.target.value.split(',')
 
   let staffidd = e.target.value;
   localStorage.setItem('staffid',staffidd);
   navigate('/UpdateEmployee')
   }
     
-  const onClickdelete = async(e) =>{
+  const onClickdelete =async(e)=>{
+    let id = e.target.value;
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
-    let id = e.target.value;
-    console.log("id----  "+id)
-    Axios.post(`http://localhost:3001/delete/${id}`)
-    .then((response) =>{
-      setapicall(true)
-      
+    Axios.post(`https://apnaorganicstore.in/index/delete/${id}`).then((response) =>{
+        setapicall(true)
   })
-}
-
+};
   }
       const columns = [
         {
@@ -165,11 +168,21 @@ const Emplist = () => {
 
                 Add employee
                     </button>
+                  {/* <Link to="/AttendanceHistory" className="nav-link">
+                    <button className="btn btn-sm btn-outline-secondary">
+                      Attendance History
+                    </button>
+                  </Link>
+                  <button className="btn btn-sm btn-outline-secondary">
+                    Salary History
+                  </button> */}
                 </div>
               </div>
             </div>
            <div className="dailyattendance_table">
-             
+              {/* <h2>Employee List</h2> */}
+
+              {/* table */}
               <div className="dailyattendance_table_box"> 
                 <div class="row">
                   <div class="col-lg-12 card-margin">
@@ -189,9 +202,11 @@ const Emplist = () => {
                     </div>
                   </div>
                 </div>
-              
+                {/*  */}
 
-               
+                {/* <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button> */}
 
       
 

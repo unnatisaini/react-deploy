@@ -18,7 +18,7 @@ const [depart, setdepart] = useState([]);
 const idd = localStorage.getItem('staffid');
 
 const getEmployees = (id) => {
-    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
         setEmployeeDetail(response.data)
         console.log("--------"+JSON.stringify(response.data))
         setapicall(false)
@@ -30,7 +30,7 @@ const getEmployees = (id) => {
   },[apicall]);
 
   const department = () => {
-    Axios.get(`http://localhost:3001/department`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/department`).then((response) => {
         setdepart(response.data);
         setapicall(true)
         

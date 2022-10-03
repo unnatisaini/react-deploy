@@ -14,10 +14,13 @@ const Sidebar = () => {
             	<a href="#" class="text-white"><i class="fa fa-user"></i> 1,299 followers</a>
             </div>
             <ul class="nav-news-feed">
-              <li><i class="fa-solid fa-house m-0"></i><div className='m-0'><Link to="/dashboard" className="nav-link">
+              <li><i class="fa-solid fa-house m-0"></i><div className='m-0'>
+              {/* <a href='/dashboard'>Dashboard</a> */}
+              <Link to="/dashboard" className="nav-link">
                     <span data-feather="shopping-cart"></span>
                     Dashboard
-                  </Link></div></li>
+                  </Link>
+                  </div></li>
                   <li><i class="fa fa-user" aria-hidden="true  m-0"></i><div className=' m-0'><Link to="/Emplist" className="nav-link">
                     <span data-feather="shopping-cart"></span>
                     Employee

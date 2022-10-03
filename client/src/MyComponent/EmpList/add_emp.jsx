@@ -134,7 +134,7 @@ const AddEditEmp = (props) => {
 
   
       
-    Axios.post("http://localhost:3001/create",{
+    Axios.post("https://apnaorganicstore.in/index/create",{
       
       staff_name: name,
       dob: Dob,
@@ -167,7 +167,7 @@ const AddEditEmp = (props) => {
       console.log("formdata - ----> "+JSON.stringify(formData))
       try {
        Axios.post(
-          `http://localhost:3001/upload/${id}`,
+          `https://apnaorganicstore.in/index/upload/${id}`,
          formData,
         );
       } catch (ex) {
@@ -180,19 +180,19 @@ const AddEditEmp = (props) => {
 }
 
   const department = () => {
-    Axios.get("http://localhost:3001/department").then((response) => {
+    Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
       setdepart(response.data);
     });
   };
 
   const getStates = () => {
-    Axios.get("http://localhost:3001/state").then((response) => {
+    Axios.get("https://apnaorganicstore.in/index/state").then((response) => {
       setState(response.data);
      
     });
   };
   const getCity = () => {
-    Axios.get(`http://localhost:3001/city/${stateId}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/city/${stateId}`).then((response) => {
       setCity(response.data);
     
     });

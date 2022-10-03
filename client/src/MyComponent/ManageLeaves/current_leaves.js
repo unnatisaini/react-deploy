@@ -20,7 +20,7 @@ const CurrentLeaves = () => {
   const [leavesList, setleavesList] = useState([]);
 
   const getEmployees = () => {
-    Axios.get(`http://localhost:3001/pendingleave`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/pendingleave`).then((response) => {
       setleavesList(response.data);
     });
   };
@@ -32,7 +32,7 @@ const CurrentLeaves = () => {
     let leaveId = e.target.value;
     console.log(`${id} --- ${leaveId}`)
   
-  //   Axios.post("http://localhost:3001/updateleave", {
+  //   Axios.post("https://apnaorganicstore.in/index/updateleave", {
   //     id : id,
   //     status: leaveId,  
   // }).then((response) => {
@@ -40,7 +40,7 @@ const CurrentLeaves = () => {
     // navigate("/leaves"); 
   // });
 
-  Axios.post(`http://localhost:3001/updateleave`, {
+  Axios.post(`https://apnaorganicstore.in/index/updateleave`, {
           id : id,
         status: leaveId
         }).then((response) => {

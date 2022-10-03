@@ -49,13 +49,13 @@ function Generatesalary(props) {
     .format(`YYYY-MM-DDT00:00:00+00:00`);
   //
   const getEmployees = () => {
-    Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
       setbankdetail(response.data[0]);
       setaccno(response.data[0].account_no);
       setbanknam(response.data[0].bank_name);
     });
    
-    Axios.get(`http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
+    Axios.get(`https://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
     ).then((response) => {
       setattendancedata(response.data[0]);
       sethd(response.data[0].HD);
@@ -67,13 +67,13 @@ function Generatesalary(props) {
       setua(response.data[0].UA)
 
     });
-    Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`
+    Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
     ).then((response) => {
       setholidaycount(response.data[0]);
      let wdays = momentmonth -  response.data[0].count;
       setworkday(wdays);
     });
-    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
       setEmployeeList(response.data);
       setsalary(response.data[0].salary)
       setName(response.data[0].staff_name);
@@ -86,7 +86,7 @@ function Generatesalary(props) {
     getEmployees();
   }, [firstdate,idd,lastdate]);
  const ongeneratesalary =()=>{
-  Axios.post("http://localhost:3001/salarycreate",{
+  Axios.post("https://apnaorganicstore.in/index/salarycreate",{
     staff_id:idd,
     staff_name:name,
     basic_salary:salary,
