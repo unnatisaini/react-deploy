@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.use(cors({
-  origin: ['https://empdeploy.herokuapp.com/'],
+  origin: ['https://empdeploy.herokuapp.com'],
   methods: ['GET', 'POST'],
   credentials: true,
 }
