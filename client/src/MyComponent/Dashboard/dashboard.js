@@ -92,7 +92,7 @@ let presentcount=[];
               <h1 className="h1"><b>Dashboard</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
-                <a href="/AddEmployee">Add employee</a>
+                <a href="/EmployeeManagement/AddEmployee">Add employee</a>
                   {/* <button
                     className="btn btn-sm btn-outline-secondary"
                     onClick={() => {
