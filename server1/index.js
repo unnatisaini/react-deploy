@@ -22,11 +22,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.use(cors({
-  origin: ['http://localhost:3000'],
+  origin: ['https://we2codetechnology.github.io'],
   methods: ['GET', 'POST'],
   credentials: true,
 }
 ));
+
+
 // app.use(cors());
 app.use(express.json());
 app.use(express.static("./public"))
@@ -101,7 +103,7 @@ app.post('/upload/:id', upload.single('image'),  (req, res) => {
       // console.log(req.file.filename)
       let id = req.params.id;
       // console.log("id----------=>"+id)
-      var imgsrc = 'http://localhost:3000/images/'+ req.file.filename
+      var imgsrc = 'https://we2codetechnology.github.io/images/'+ req.file.filename
       // console.log("imgsrc----------=>"+imgsrc)
 
       var insertData ="UPDATE staff_tbl SET pic='"+imgsrc+"' WHERE id = '"+id+"'"
@@ -121,7 +123,7 @@ app.post("/documentupload/",upload.single('file'), (req, res) => {
       console.log("No file upload");
   } else {
       console.log(req.file.filename)
-      var imgsrc = 'http://localhost:3000/images/' + req.file.filename
+      var imgsrc = 'https://we2codetechnology.github.io/images/' + req.file.filename
       var insertData = "INSERT INTO document_tbl (info1)VALUES(?)"
       db.query(insertData, [imgsrc], (err, result) => {
           if (err) throw err
