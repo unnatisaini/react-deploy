@@ -3,9 +3,6 @@ import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Axios from "axios";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
-import ReactToPrint from 'react-to-print';
-import fileDownload from 'js-file-download'
 var converter = require('number-to-words');
 // import { ToWords } from 'to-words';
 
@@ -134,175 +131,175 @@ function Salary_slip(props) {
                 <div class="row">
                     <div class="col-md-9 mx-auto">
                         <div class="text-center lh-1 mb-2">
-                            <h6 class="fw-bold">Payslip</h6> <span class="fw-normal">Payment slip for the month of August 2022</span>
+                            <h3 class="fw-bold">Payslip</h3> <span class="fw-normal"  className='label_text'>Payment slip for the month of August 2022</span>
                         </div>
-                        <div class="d-flex justify-content-end"> <span><b>Working Branch:</b>We2code Technology</span> </div>
+                        <div class="d-flex justify-content-end label_text"> <span><b>Working Branch:</b>We2code Technology</span> </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder">EMP Id:</span> <small class="ms-3">{employeeList.id}</small> </div>
+                                        <div> <span class="fw-bolder label_text">EMP Id:</span> <small class="ms-3 label_text">{employeeList.id}</small> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder">EMP Name:</span> <small class="ms-3">{employeeList.staff_name}</small> </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div> <span class="fw-bolder">Designation and Department:</span> <small class="ms-3">{employeeList.department_id}</small> </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div> <span class="fw-bolder">Payment Month:</span> <small class="ms-3">{moment(bankdetail.added_on).format('YYYY-MMMM')}</small> </div>
+                                        <div> <span class="fw-bolder label_text">EMP Name:</span> <small class="ms-3 label_text">{employeeList.staff_name}</small> </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                            <div> <span class="fw-bolder">Name of Bank:</span> <small class="ms-3">{bankdetail.bank_name}</small> </div>
+                                        <div> <span class="fw-bolder label_text">Designation and Department:</span> <small class="ms-3 label_text">{employeeList.department_id}</small> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div> <span class="fw-bolder label_text">Payment Month:</span> <small class="ms-3 label_text">{moment(bankdetail.added_on).format('YYYY-MMMM')}</small> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                            <div> <span class="fw-bolder label_text">Name of Bank:</span> <small class="ms-3 label_text">{bankdetail.bank_name}</small> </div>
                         </div>
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder">Mode of Payment:</span> <small class="ms-3">Online</small> </div>
+                                        <div> <span class="fw-bolder label_text">Mode of Payment:</span> <small class="ms-3 label_text">Online</small> </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder">Date of Payment:</span> <small class="ms-3">{moment(bankdetail.added_on).format('YYYY-MMMM-DD')}</small> </div>
+                                        <div> <span class="fw-bolder label_text">Date of Payment:</span> <small class="ms-3 label_text">{moment(bankdetail.added_on).format('YYYY-MMMM-DD')}</small> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder">Ac No.:</span> <small class="ms-3">{bankdetail.account_no}</small> </div>
+                                        <div> <span class="fw-bolder label_text">Ac No.:</span> <small class="ms-3 label_text">{bankdetail.account_no}</small> </div>
                                     </div>
                                 </div>
                             </div>
                             <table class="mt-4 table table-bordered salarysliptable">
                                 <thead class="bg-dark text-white">
                                     <tr>
-                                        <th scope="col">Desciption</th>
-                                        <th scope="col">Earnings</th>
-                                        <th scope="col">Deductions</th>
-
+                                        <th scope="row" className='label_text'>Description</th>
+                                        <th scope="row" colspan="2" className='label_text'>Earnings</th>
+                                        <th scope="row" colspan="1" className='label_text'>Deductions</th>
+                                         
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">Basic</th>
-                                        <td>{employeeList.salary}</td>
-
+                                        <th scope="row"  className='label_text'>Basic</th>
+                                        <td className='label_text' colspan="2">{employeeList.salary}</td>
+                                        <td colspan="2"> </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Dearness Allowance</th>
-                                        <td>{salaryList.allowance}</td>
+                                        <th scope="row"  className='label_text' >Dearness Allowance</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance}</td>
                                         <td colspan="2"> </td>
 
 
                                     </tr>
                                     <tr>
-                                        <th scope="row">House Rent Allowance</th>
-                                        <td>{salaryList.allowance} </td>
+                                        <th scope="row"  className='label_text' >House Rent Allowance</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance} </td>
                                         <td colspan="2"> </td>
                                     </tr>
 
                                     <tr>
-                                        <th scope="row">Sales Incentive</th>
-                                        <td>{salaryList.allowance}</td>
-                                        <td colspan="2"> </td>
-
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Leave Encashment</th>
-                                        <td>{salaryList.allowance}</td>
-                                        <td colspan="2"> </td>
-
-
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Holiday Wages</th>
-                                        <td>{salaryList.allowance}</td>
+                                        <th scope="row"  className='label_text' >Sales Incentive</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance}</td>
                                         <td colspan="2"> </td>
 
 
                                     </tr>
                                     <tr>
-                                        <th scope="row">Special Allowance</th>
-                                        <td>{salaryList.allowance}</td>
+                                        <th scope="row"  className='label_text'>Leave Encashment</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance}</td>
                                         <td colspan="2"> </td>
 
 
 
                                     </tr>
                                     <tr>
-                                        <th scope="row">PF</th>
-                                        <td></td>
-                                        <td colspan="2">{salaryList.tax}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> ESI</th>
-                                        <td></td>
-                                        <td colspan="2">{salaryList.tax}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> Professional Tax</th>
-                                        <td></td>
-                                        <td colspan="2">{salaryList.tax}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Other</th>
-                                        <td></td>
-                                        <td colspan="2">{salaryList.tax}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Absent</th>
-                                        <td></td>
-                                        <td colspan="2">{absent}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Leave</th>
-                                        <td></td>
-                                        <td colspan="2">{leave}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> Late Comings</th>
-                                        <td></td>
-                                        <td colspan="2">{latecom}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> Half Day </th>
-                                        <td></td>
-                                        <td colspan="2">{halfday}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">CL</th>
-                                        <td></td>
-                                        <td colspan="2">{'0'}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">ML</th>
-                                        <td></td>
-                                        <td colspan="2">{medicalleave}</td>
-                                    </tr>
-                                    <tr class="border-top">
-                                        <th scope="row">Total</th>
-                                        <td>{GrossEarnings}</td>
-                                        <td colspan="2">{deductionamt}</td>
-
-                                    </tr>
-                                    <tr class="border-top">
-                                        <th scope="row">Gross Earnings(A)</th>
-                                        <td></td>
-                                        <td colspan="2">{GrossEarnings}</td>
-
-                                    </tr>
-                                    <tr class="border-top">
-                                        <th scope="row">Gross Deduction(B)</th>
-                                        <td></td>
-                                        <td colspan="2">{deductionamt}</td>
+                                        <th scope="row"  className='label_text' >Holiday Wages</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance}</td>
+                                        <td colspan="2"> </td>
 
 
                                     </tr>
-                                    <tr class="border-top">
-                                        <th scope="row">Net Salary Payable(A-B)</th>
-                                        <td>{netsalary}</td>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>Special Allowance</th>
+                                        <td className='label_text' colspan="2">{salaryList.allowance}</td>
+                                        <td colspan="2"> </td>
+
+
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>PF</th>
                                         <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{salaryList.tax}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'> ESI</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{salaryList.tax}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'> Professional Tax</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{salaryList.tax}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>Other</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{salaryList.tax}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>Absent</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{absent}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>Leave</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{leave}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'> Late Comings</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{latecom}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'> Half Day </th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{halfday}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>CL</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{'0'}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"  className='label_text'>ML</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{medicalleave}</td>
+                                    </tr>
+                                    <tr class="border-top">
+                                        <th scope="row"  className='label_text'>Total</th>
+                                        <td className='label_text' colspan="2">{GrossEarnings}</td>
+                                        <td colspan="2" className='label_text'>{deductionamt}</td>
+
+                                    </tr>
+                                    <tr class="border-top">
+                                        <th scope="row"  className='label_text'>Gross Earnings(A)</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{GrossEarnings}</td>
+
+                                    </tr>
+                                    <tr class="border-top">
+                                        <th scope="row"  className='label_text'>Gross Deduction(B)</th>
+                                        <td colspan="2"></td>
+                                        <td colspan="2" className='label_text'>{deductionamt}</td>
+
+
+                                    </tr>
+                                    <tr class="border-top">
+                                        <th scope="row"  className='label_text'>Net Salary Payable(A-B)</th>
+                                        <td className='label_text' colspan="2">{netsalary}</td>
+                                        <td colspan="2" className='label_text'></td>
 
 
                                     </tr>
@@ -310,23 +307,23 @@ function Salary_slip(props) {
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-md-4"> <br /> <span class="fw-bold">Net Pay : {netsalary}</span> </div>
+                            <div class="col-md-4"> <br /> <span class="fw-bold label_text" >Net Pay : {netsalary}</span> </div>
                             <div class="border col-md-8 mt-2">
-                                <div class="d-flex flex-column"> <span>In Words</span> <span><b>{words} only</b></span> </div>
+                                <div class="d-flex flex-column label_text"> <span>In Words</span> <span><b>{words} only</b></span> </div>
                             </div>
                         </div>
                         <div class="d-flex gap-2">
                             <Link to='/Salary_list' className="nav-link">
 
-                                <Button>Home</Button>
+                                <Button><h4>Home</h4></Button>
                             </Link>
                             <a href={'/Salary_slip'} download = {'/Salary_slip.pdf'}>
 
-                            <Button >Download</Button>
+                            <Button> <h4>Download</h4></Button>
 </a>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <div class="d-flex flex-column mt-2"><span class="mt-4">Regards</span> <span class="fw-bolder">We2code Technology</span>  </div>
+                            <div class="d-flex flex-column mt-2"><span class="mt-4 label_text">Regards</span> <span class="fw-bolder label_text">We2code Technology</span>  </div>
                         </div>
                     </div>
                 </div>

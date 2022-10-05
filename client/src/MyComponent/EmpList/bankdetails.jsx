@@ -102,14 +102,14 @@ const nameOnchange = (e) => {
                 <form id="contact-form" role="form">
                   <div class="controls">
                     
-                    <h5 class="mt-4"><b>Bank Details-</b></h5>
-                    <div class="row">
+                    {/* <h5 class="mt-4"><b>Bank Details-</b></h5> */}
+                    <div class="row mt-4">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="form_name">Account Holder*</label>
+                          <label for="form_name"  className='label_text'>Account Holder*</label>
 
                           <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Name"
+                            <input type="text" class="form-control label_text" placeholder="Name"
                               aria-label="Username" aria-describedby="basic-addon1"
                             onChange={nameOnchange} />
                           </div>
@@ -117,16 +117,16 @@ const nameOnchange = (e) => {
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="form_name">Bank Name*</label>
-                          <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required"
+                          <label for="form_name"  className='label_text'>Bank Name*</label>
+                          <input id="form_name" type="text" name="name" class="form-control label_text " placeholder="" required="required"
                           onChange={banknamOnchange} />
 
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="form_lastname">Branch Name *</label>
-                          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                          <label for="form_lastname"  className='label_text'>Branch Name *</label>
+                          <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                            onChange={branchnamOnchange} />
 
                         </div>
@@ -135,16 +135,16 @@ const nameOnchange = (e) => {
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="form_lastname">IFSC Code *</label>
-                          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                          <label for="form_lastname "  className='label_text'>IFSC Code *</label>
+                          <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                           onChange={ifscOnchange}  />
 
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label for="form_lastname">Account No. *</label>
-                          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required" 
+                          <label for="form_lastname"  className='label_text'>Account No. *</label>
+                          <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required" 
                           onChange={accnoOnchange} />
 
                         </div>
@@ -154,7 +154,7 @@ const nameOnchange = (e) => {
 
                     <div class="col-md-3">
 
-                        <button type="button" class="btn btn-primary btn-send  pt-2 " onClick={addBankDetails}>Add Bank Details</button>
+                        <button type="button" class="btn btn-primary btn-send  pt-2 " onClick={addBankDetails}><h4>Add Bank Details</h4></button>
                        </div>
                   </div>
                  </div>

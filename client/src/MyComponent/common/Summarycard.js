@@ -10,9 +10,9 @@ const Summarycard = (props) => {
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <h4 class="mb-0 text-dark"> <b>Total Employee</b></h4>
-                        <h4 class="my-1 text-info">{props.employeenumb}</h4>
-                        {/* <p class="mb-0 font-13">2.5% </p> */}
+                        <h3 class="mb-0 text-dark"> <b>Total Employee</b></h3>
+                        <h3 class="my-1 text-info">{props.employeenumb}</h3>
+                       
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
                         <i class="fa fa-shopping-cart"></i>
@@ -26,10 +26,10 @@ const Summarycard = (props) => {
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <h4 class="mb-0 text-dark">
+                        <h3 class="mb-0 text-dark">
                           <b>Employee Present Today</b>
-                        </h4>
-                        <h4 class="my-1 text-danger">{props.presentemployee}</h4>
+                        </h3>
+                        <h3 class="my-1 text-danger">{props.presentemployee}</h3>
                         <p class="mb-0 font-13">{props.presentpercent}% </p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto">
@@ -44,8 +44,8 @@ const Summarycard = (props) => {
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div>
-                        <h4 class="mb-0 text-dark"><b>Employee Absent Today</b></h4>
-                        <h4 class="my-1 text-success">{props.absentemployee}</h4>
+                        <h3 class="mb-0 text-dark"><b>Employee Absent Today</b></h3>
+                        <h3 class="my-1 text-success">{props.absentemployee}</h3>
                         <p class="mb-0 font-13">{props.absentpercent}%</p>
                       </div>
                       <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">

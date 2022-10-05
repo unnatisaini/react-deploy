@@ -93,28 +93,28 @@ return (
 
                       <form id="contact-form" role="form">
                         <div class="controls">
-                            <h5 class="mt-4"><b>Increment Log</b></h5>
-                            <div class="row">
+                            {/* <h5 class="mt-4"><b>Increment Log</b></h5> */}
+                            <div class="row mt-4">
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_name">Old Salary*</label>
-                                  <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required" 
+                                  <label for="form_name" className='label_text'>Old Salary*</label>
+                                  <input id="form_name" type="text" name="name" class="form-control label_text " placeholder="" required="required" 
                                   value={salary} onChange={oldonChange} />
 
                                 </div>
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_lastname">New Salary *</label>
-                                  <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required" 
+                                  <label for="form_lastname" className='label_text'>New Salary *</label>
+                                  <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required" 
                                    onChange={newonChange}/>
 
                                 </div>
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_lastname">Applied on*</label>
-                                  <input id="form_lastname" type="date" name="surname" class="form-control" placeholder="" required="required"
+                                  <label for="form_lastname" className='label_text'>Applied on*</label>
+                                  <input id="form_lastname" type="date" name="surname" class="form-control label_text" placeholder="" required="required"
                                    onChange={appliedonChange} />
 
                                 </div>
@@ -125,7 +125,7 @@ return (
 
                             <div class="col-md-4 mt-3">
 
-                              <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={addincrementDetails}>Submit</button>
+                              <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={addincrementDetails}><h3>Submit</h3></button>
 
                             </div>
 

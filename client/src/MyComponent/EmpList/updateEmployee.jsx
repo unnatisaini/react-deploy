@@ -390,29 +390,22 @@ const salaryyOnchange = (e) => {
       <div className="addemployee_box_row">
         <Sidebar className='sidebar_add_emp' />
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 className="h2">Update Employee Details</h1>
+        <div className="emp_table">
+
+          <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
+            <h1 className="h1">Update Employee Details</h1>
             <div className="btn-toolbar mb-2 mb-md-0">
-              {/* <div className="btn-group mr-2">
-                <Link to="/AttendanceHistory" className="nav-link">
-                  <button className="btn btn-sm btn-outline-secondary">
-                    Attendance History
-                  </button>
-                </Link>
-                <button className="btn btn-sm btn-outline-secondary">
-                  Salary History
-                </button>
-              </div> */}
+             
             </div>
           </div>
           <div class="container_fluid">
 
             <Tabs>
               <TabList>
-                <Tab>Personal Details</Tab>
-                <Tab onClick={onbankdetailclick}>Bank Details</Tab>
-                <Tab onClick={onincdetailclick}>Increment Details</Tab>
-                <Tab>Document Upload</Tab>
+                <Tab> <h3>Personal Details</h3></Tab>
+                <Tab onClick={onbankdetailclick}><h3>Bank Details</h3></Tab>
+                <Tab onClick={onincdetailclick}><h3>Increment Details</h3></Tab>
+                <Tab><h3>Document Upload</h3></Tab>
              </TabList>
              <TabPanel >
                 <div class="row ">
@@ -420,15 +413,15 @@ const salaryyOnchange = (e) => {
                   <div class="container">
                     <form id="contact-form" role="form">
                       <div class="controls">
-                        <h5 class="mt-4"><b>Personal Details-</b></h5>
+                        {/* <h5 class="mt-4"><b>Personal Details-</b></h5> */}
 
-                        <div class="row">
+                        <div class="row mt-4">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Name of Employee *</label>
+                              <label for="form_name" className='label_text'>Name of Employee *</label>
 
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Name"
+                                <input type="text" class="form-control label_text label_text" placeholder="Name"
                                   aria-label="Username" aria-describedby="basic-addon1"
                                   value={name} onChange={nameOnchange} />
                               </div>
@@ -436,10 +429,10 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Date of Birth *</label>
+                              <label for="form_name" className='label_text'>Date of Birth *</label>
 
                               <div class="input-group mb-3">
-                                <input type="date" class="form-control" placeholder="Dob"
+                                <input type="date" class="form-control label_text" placeholder="Dob"
                                   aria-label="Dob" aria-describedby="basic-addon1"
                                   value={dob} onChange={dobOnchange} />
                               </div>
@@ -449,11 +442,11 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Gender*</label>
+                              <label for="form_lastname" className='label_text'>Gender*</label>
 
                               <div class="input-group mb-3">
 
-                                <select onChange={genderOnchange} className={"dept"} value={gender} >Select
+                                <select onChange={genderOnchange} className={"dept label_text"} value={gender} >Select
                                   <option value="">Select</option>
 
                                   <option value="Male">Male</option>
@@ -466,10 +459,10 @@ const salaryyOnchange = (e) => {
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Qualification*</label>
+                              <label for="form_name" className='label_text'>Qualification*</label>
 
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder=""
+                                <input type="text" class="form-control label_text" placeholder=""
                                   aria-label="Username" aria-describedby="basic-addon1"
                                   onChange={qualificationOnchange} value={qualification} />
                               </div>
@@ -478,18 +471,18 @@ const salaryyOnchange = (e) => {
                           <div class="col-md-4">
 
                             <div class="form-group">
-                              <label for="form_lastname">Mobile*</label>
+                              <label for="form_lastname" className='label_text'>Mobile*</label>
 
-                              <input type="number" class="form-control" placeholder="Mobile no."
+                              <input type="number" class="form-control label_text" placeholder="Mobile no."
                                 aria-label="Mobile no." aria-describedby="basic-addon1"
                                 onChange={mobileOnchange} value={mobile} />
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Residence Phone No.</label>
+                              <label for="form_lastname" className='label_text'>Residence Phone No.</label>
 
-                              <input type="number" class="form-control" placeholder=""
+                              <input type="number" class="form-control label_text" placeholder=""
                                 onChange={alternatenoOnchange} value={altno} />
                             </div>
                           </div>
@@ -499,8 +492,8 @@ const salaryyOnchange = (e) => {
                         <div class="row mt-4">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Country*</label>
-                              <select onChange={countryOnchange} className={"dept"} value={country} >Country
+                              <label for="form_lastname" className='label_text'>Country*</label>
+                              <select onChange={countryOnchange} className={"dept label_text"} value={country} >Country
                                 <option value={''}>Select</option>
 
                                 <option value={'India'}>India</option>
@@ -509,9 +502,9 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">State*</label>
+                              <label for="form_lastname" className='label_text'>State*</label>
       
-                     <select onChange={stateOnchange}  className={"dept"} value={statedata}>Select
+                     <select onChange={stateOnchange}  className={"dept label_text"} value={statedata}>Select
                     <option>State</option>
                     {(state || []).map((statedata) => (
                       <option value={[statedata.state,statedata.id]}
@@ -522,8 +515,8 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">City *</label>
-                              <select onChange={cityOnchange} className={"dept"} value={citydata}>Select
+                              <label for="form_name" className='label_text'>City *</label>
+                              <select onChange={cityOnchange} className={"dept label_text'"} value={citydata}>Select
                                 <option>City</option>
                                 {(city || []).map((citydata) => (
 
@@ -538,18 +531,18 @@ const salaryyOnchange = (e) => {
                           <div class="col-md-4">
                             <div class="form-group">
 
-                              <label for="form_name">Address *</label>
+                              <label for="form_name" className='label_text'>Address *</label>
                             
-                              <textarea type="text" class="form-control" onChange={addressOnchange} value={address} />
+                              <textarea type="text" class="form-control label_text" onChange={addressOnchange} value={address} />
                             </div>
                           </div>
 
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Email *</label>
+                              <label for="form_name" className='label_text'>Email *</label>
 
                               <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Email"
+                                <input type="email" class="form-control label_text" placeholder="Email"
                                   aria-label="email" aria-describedby="basic-addon1"
                                   onChange={emailOnchange} value={email} />
                               </div>
@@ -557,9 +550,9 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Skills</label>
+                              <label for="form_name" className='label_text'>Skills</label>
 
-                              <input type="text" class="form-control" placeholder="Skills"
+                              <input type="text" class="form-control label_text" placeholder="Skills"
                                 aria-label="email" aria-describedby="basic-addon1"
                                 onChange={skillOnchange} value={skill} />
                             </div>
@@ -571,9 +564,9 @@ const salaryyOnchange = (e) => {
                           <div class="col-md-4">
 
                             <div class="form-group">
-                              <label for="form_lastname">Experience *</label>
+                              <label for="form_lastname" className='label_text'>Experience *</label>
 
-                              <input type="text" class="form-control" placeholder="job experience"
+                              <input type="text" class="form-control label_text" placeholder="job experience"
                                 aria-label="Date of joining" aria-describedby="basic-addon1"
                                 onChange={expOnchange} value={experience} />
                             </div>
@@ -581,17 +574,17 @@ const salaryyOnchange = (e) => {
                           <div class="col-md-4">
 
                             <div class="form-group">
-                              <label for="form_lastname">Date of joining *</label>
+                              <label for="form_lastname" className='label_text'>Date of joining *</label>
 
-                              <input type="date" class="form-control" placeholder="Date of joining"
+                              <input type="date" class="form-control label_text" placeholder="Date of joining"
                                 aria-label="Date of joining" aria-describedby="basic-addon1"
                                 onChange={dojOnchange} value={doj} />
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Department *</label>
-                              <select className='dept' onChange={departOnchange} value={departmentdata}>Select
+                              <label for="form_lastname" className='label_text'>Department *</label>
+                              <select className='dept label_text' onChange={departOnchange} value={departmentdata}>Select
                                 <option>Department</option>
                                 {(depart || []).map((depart) => (
 
@@ -609,23 +602,23 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-4 mt-3">
                             <div class="form-group">
-                              <label for="form_name">Choose File *</label>
+                              <label for="form_name" className='label_text'>Choose File *</label>
 
-                              <input type="file" name="image" accept='image/*' class="form-control " onChange={picOnchange} />
+                              <input type="file" name="image" accept='image/*' class="form-control label_text " onChange={picOnchange} />
                             </div>
                           </div>
 
                           <div class="col-md-4 mt-3">
                             <div class="form-group">
-                              <label for="form_name">Salary*</label>
+                              <label for="form_name" className='label_text'>Salary*</label>
 
-                              <input type="number" name="image" accept='image/*' class="form-control " onChange={salaryyOnchange}  value={salaryval}/>
+                              <input type="number" name="image" accept='image/*' class="form-control label_text " onChange={salaryyOnchange}  value={salaryval}/>
                             </div>
                           </div>
 
                           <div class="col-md-4 mt-3">
                             <div class="form-group">
-                              <label for="form_name">Status *</label>
+                              <label for="form_name" className='label_text'>Status *</label>
 
                               <div className='status_check'>
                                 {status===1 ?
@@ -633,13 +626,13 @@ const salaryyOnchange = (e) => {
                                   :
                                   <input type="checkbox" onChange={statusOnchange} value={status} />
                                 } 
-                                <span>Active</span>
+                                <span className='label_text'>Active</span>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3 mt-3">
-                          <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={updEmployee}>Update Employee</button>
+                          <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={updEmployee}><h3>Update Employee</h3></button>
                         </div>
                       </div>
                     </form>
@@ -653,14 +646,14 @@ const salaryyOnchange = (e) => {
                     <form id="contact-form" role="form">
                       <div class="controls">
 
-                        <h5 class="mt-4"><b>Bank Details-</b></h5>
-                        <div class="row">
+                        {/* <h5 class="mt-4"><b>Bank Details-</b></h5> */}
+                        <div class="row mt-4">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Account Holder*</label>
+                              <label for="form_name" className='label_text'>Account Holder*</label>
 
                               <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Name"
+                                <input type="text" class="form-control label_text" placeholder="Name"
                                   aria-label="Username" aria-describedby="basic-addon1"
                                   onChange={accnameOnchange} value={accname} />
                               </div>
@@ -668,16 +661,16 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Bank Name*</label>
-                              <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required"
+                              <label for="form_name" className='label_text'>Bank Name*</label>
+                              <input id="form_name" type="text" name="name" class="form-control label_text" placeholder="" required="required"
                                 onChange={banknamOnchange} value={bankname} />
 
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Branch Name *</label>
-                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                              <label for="form_lastname" className='label_text'>Branch Name *</label>
+                              <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                                 onChange={branchnamOnchange} value={branchname} />
 
                             </div>
@@ -686,16 +679,16 @@ const salaryyOnchange = (e) => {
                         <div class="row">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">IFSC Code *</label>
-                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                              <label for="form_lastname" className='label_text'>IFSC Code *</label>
+                              <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                                 onChange={ifscOnchange} value={ifsccode} />
 
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Account No. *</label>
-                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                              <label for="form_lastname" className='label_text'>Account No. *</label>
+                              <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                                 onChange={accnoOnchange} value={accno} />
 
                             </div>
@@ -705,7 +698,7 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-3">
 
-                            <button type="button" class="btn btn-primary btn-send  pt-2 " onClick={add_bank_detail}>Update Bank Details</button>
+                            <button type="button" class="btn btn-primary btn-send  pt-2 " onClick={add_bank_detail}><h3>Update Bank Details</h3></button>
                           </div>
                         </div>
                       </div>
@@ -716,34 +709,34 @@ const salaryyOnchange = (e) => {
 
 
               <TabPanel>
-                <div class="row ">
+                <div class="row mt-4">
 
                   <div class="container">
 
                     <form id="contact-form" role="form">
                       <div class="controls">
-                        <h5 class="mt-4"><b>Increment Log</b></h5>
-                        <div class="row">
+                        {/* <h5 class="mt-4"><b>Increment Log</b></h5> */}
+                        <div class="row mt-4">
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name">Old Salary*</label>
-                              <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required"
+                              <label for="form_name" className='label_text'>Old Salary*</label>
+                              <input id="form_name" type="text" name="name" class="form-control label_text" placeholder="" required="required"
                                 onChange={oldonChange} value={oldsalary} />
 
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">New Salary *</label>
-                              <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" required="required"
+                              <label for="form_lastname" className='label_text'>New Salary *</label>
+                              <input id="form_lastname" type="text" name="surname" class="form-control label_text" placeholder="" required="required"
                                 onChange={newonChange} value={newsalary} />
 
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_lastname">Applied on*</label>
-                              <input id="form_lastname" type="date" name="surname" class="form-control" placeholder="" required="required"
+                              <label for="form_lastname" className='label_text'>Applied on*</label>
+                              <input id="form_lastname" type="date" name="surname" class="form-control label_text" placeholder="" required="required"
                                 onChange={appliedonChange} value={appliedon} />
 
                             </div>
@@ -754,7 +747,7 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-4 mt-3">
 
-                            <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={add_inc_detail}>Increment Update</button>
+                            <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={add_inc_detail}><h3> Increment Update</h3></button>
                           </div>
                         </div>
                       </div>
@@ -763,6 +756,7 @@ const salaryyOnchange = (e) => {
                 </div>
               </TabPanel>
             </Tabs>
+          </div>
           </div>
 </main>
 

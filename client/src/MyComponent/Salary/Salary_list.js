@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import '../../styles/salary/Salary_list.css';
 import { Link, useNavigate } from "react-router-dom";
-import { Nav } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
 import Sidebar from '../common/Sidebar';
 import Header from '../common/Header';
@@ -11,6 +9,7 @@ import moment from "moment";
 import React,{useEffect} from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
+
 
 const ExpandedComponent = ({ data }) => <div className="dropdown_detail">
 <div className="dropdown_personaldet">
@@ -106,7 +105,7 @@ function Salary_list(props) {
   },
     {
       name: 'Action',
-      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
+      selector: row => <button className="btn btn-lg btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
       // && row.total != null || row.total != ''
        ?  {undefined}
       :salarygenereate}>{(row.total === null || row.total === '' || row.total === '0')  ? 'Generate salary' : 'Generated'}</button>,
@@ -128,16 +127,18 @@ const navigator=useNavigate();
           <Sidebar/>
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 salarylistbox_table">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom salarylistbody_table">
+          <div className="salarydata_table">
+
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
               <h1 className="h1"><b>Salary Management</b></h1>
-              <div className="btn-toolbar mb-2 mb-md-0">
-                <div className="btn-group mr-2">
+              <div className="btn-group mr-2 px-5">
+                
                 <Link to='/Salary_history' className="nav-link">
 
-                  <button className="btn btn-sm btn-outline-secondary">Salary Summary</button>
+                  <button className="btn btn-sm btn-outline-secondary px-5 py-2"><h3>Salary Summary</h3></button>
                 </Link>
                  
-                </div>
+               
                 
               </div>
             </div>
@@ -152,6 +153,7 @@ const navigator=useNavigate();
                   <BsFillCaretRightFill onClick={NextmonthChange} />
                 </div>
             <DataTable
+            className='emp_data'
             columns={columns}
             data={salaryList}
             pagination
@@ -159,6 +161,7 @@ const navigator=useNavigate();
             expandableRowsComponent={ExpandedComponent}
           
         />
+        </div>
           </main>
 
         </div>

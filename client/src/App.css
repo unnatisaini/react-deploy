@@ -1,10 +1,10 @@
 @import "./styles/Attendance/DailyAttendance.css";
 @import "./styles/Attendance/AttendanceHistory.css";
+@import "./styles/Attendance/dashboard.css";
 @import "./styles/Dashboard.css";
 @import "./styles/EmpList/emplist.css";
 @import "./styles/salary/Salary_list.css";
 @import "./styles/salary/Generatesalary.css";
-@import "./styles/Dashboard.css";
 @import "./styles/Login/login.css";
 @import "./styles/Department/Department.css";
 @import "./styles/leaves/leaves.css";

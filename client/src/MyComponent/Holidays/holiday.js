@@ -1,7 +1,6 @@
 import React, { useState, useEffect,useMemo } from "react";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-import { Link } from "react-router-dom";
 import Axios from "axios";
 import DataTable from "react-data-table-component";
 import FilterComponent from "../Department/FilterComponent";
@@ -247,14 +246,14 @@ const Holidays = () => {
           <Sidebar />
           {/*  */}
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 ">
           
             </div>
       {/* popup */}
 {/* add click */}
             <div>
       <Dialog open={open} onClose={handleClose} className={'popup_main_box'}>
-        <DialogTitle className="popupheading">ADD EVENT</DialogTitle>
+        <DialogTitle className="popupheading"><b>ADD EVENT</b></DialogTitle>
         <DialogContent className="popup_content_box">
       
           <TextField
@@ -311,22 +310,22 @@ placeholder={''}
 
           />
 
-           <p className="p-0 mb-0 mt-4 text-dark">Status</p>
+           <p className="p-0 mb-0 mt-4 text-dark h4">Status</p>
            <div className="p-0 mb-0 text-dark d-flex align-items-center">
            <div className={'mr-4 d-flex align-items-center'}>
-           <p className="mb-0 mr-2">Active</p>
+           <p className="mb-0 mr-2 h5">Active</p>
          <input type={'radio'}  onChange={onChangeStatuss}
             value={1} name={Status+event} />
             </div>
            <div className={'d-flex align-items-center px-5'}>
-           <p className="mb-0 mr-2">InActive</p>
+           <p className="mb-0 mr-2 h5">InActive</p>
              <input type={'radio'}  onChange={onChangeStatuss}
             value={0} name={Status+event}/>
             </div>
             </div>
 
 <div className="p-0 mb-0 mt-4 text-dark ">
-          <p className="text-dark mb-0 p-0">IsHoliday</p>
+          <p className="text-dark mb-0 p-0 h4">IsHoliday</p>
          <input type={'checkbox'}  onChange={OnholidayChange}
             value={hoday}/>
         </div>  
@@ -433,27 +432,32 @@ placeholder={''}
          
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleeditClose}  class='btn btn-info add-new'><b>Cancel</b></Button>
-       <Button onClick={updateClick}  class='btn btn-info add-new'><b>Update Event</b></Button>  
+          <Button onClick={handleeditClose}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Cancel</b></Button>
+       <Button onClick={updateClick}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Update Event</b></Button>  
        
         </DialogActions>
       </Dialog>
     </div>
     {/*  */}
     
-            <div class="row department_header">
-              <div class="col-sm-3">
-                <h2 className="attendancesection_heading">
+           
+            <div className="holiday_table">
+            <div class=" d-flex justify-content-between align-items-center border-bottom pb-5">
+
+             
+                <h1 className="h1">
                   <b> Events & Holidays </b>
-                </h2>
-              </div>
+                </h1>
+            
           
-            </div>
-            <div className="add_event_btn">
-              <Button variant="outlined"    class='btn btn-info add-new' onClick={handleClickOpen} >
+            
+            <div className="btn-group mr-2 px-5">
+              <Button variant="outlined" class='btn btn-sm btn-outline-secondary px-5 py-2  add-new ' onClick={handleClickOpen} >
           <b> Add Events</b> 
-            </Button></div>
-          
+            </Button>
+            </div>
+          </div>
+          </div>
             <DataTable
               highlightOnHover
               pointerOnHover

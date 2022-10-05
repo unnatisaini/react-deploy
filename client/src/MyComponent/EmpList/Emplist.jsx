@@ -6,14 +6,11 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import { useNavigate } from "react-router-dom";
 import FilterComponent from "./FilterComponent";
-import { Button, Modal } from 'react-bootstrap';
 import { confirm } from "react-confirm-box";
+import '../../styles/EmpList/emplist.css';
+
 
 const Emplist = () => {
-  // const [show, setShow] = useState(false);
-
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
   const [apicall, setapicall] = useState(false);
   
   const [filterText, setFilterText] = React.useState("");
@@ -100,13 +97,13 @@ const Emplist = () => {
 
         },
         {
-            name: 'email',
+            name: 'Email',
             selector: row => row.email,
         sortable: true,
 
         },
         {
-            name: 'mobile',
+            name: 'Mobile',
             selector: row => row.mobile,
         sortable: true,
 
@@ -142,8 +139,8 @@ const Emplist = () => {
         },
         {
           name: "Actions",
-          cell: (row) =>( <div> <button  onClick={HandleClick} value={row.id}>Edit</button>
-          <button  onClick={onClickdelete} value={row.id}>Delete</button>
+          cell: (row) =>( <div className='action_btn'> <button  onClick={HandleClick} value={row.id} className="firsticpn fas fa-pen"></button>
+          <button  onClick={onClickdelete} value={row.id}   className="fas fa-trash-alt"></button>
           </div> ),
           ignoreRowClick: true,
           allowOverflow: true,
@@ -159,62 +156,23 @@ const Emplist = () => {
         <div className="row">
     <Sidebar/>
     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+    <div className="emp_table">
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
               <h1 className="h1"><b>Employee List</b></h1>
-              <div className="btn-toolbar mb-2 mb-md-0">
-                <div className="btn-group mr-2">
-                
-                <button className="btn btn-sm btn-outline-secondary" onClick={()=> {navigate("/AddEmployee");}}>
+              <div className="btn-group mr-2 px-5">
 
-                Add employee
+              <button className="btn btn-sm btn-outline-secondary px-5 py-2" onClick={()=> {navigate("/AddEmployee");}}>
+                  <h3>Add employee</h3>
                     </button>
-                  {/* <Link to="/AttendanceHistory" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary">
-                      Attendance History
-                    </button>
-                  </Link>
-                  <button className="btn btn-sm btn-outline-secondary">
-                    Salary History
-                  </button> */}
-                </div>
               </div>
             </div>
            <div className="dailyattendance_table">
-              {/* <h2>Employee List</h2> */}
-
-              {/* table */}
               <div className="dailyattendance_table_box"> 
-                <div class="row">
-                  <div class="col-lg-12 card-margin">
-                    <div class="card search-form">
-                      <div class="card-body p-0">
-                        <form id="search-form">
-                          <div class="row">
-                            <div class="col-12">
-                              <div class="row no-gutters">
-                                <div class="col-lg-8 col-md-6 col-sm-12 p-0"></div>
-                                <div class="col-lg-1 col-md-3 col-sm-12 p-0"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/*  */}
+                
+               
 
-                {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
-      
-
-
-
-
-          
     <DataTable
+    className='emp_data'
             pagination
             highlightOnHover
 		        pointerOnHover
@@ -225,6 +183,7 @@ const Emplist = () => {
             subHeaderComponent={subHeaderComponent}
       />  
           </div>
+            </div>
             </div>
           </main>
         </div>

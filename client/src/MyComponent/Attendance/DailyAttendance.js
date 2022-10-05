@@ -105,23 +105,19 @@ function DailyAttendance(props) {
           <Sidebar />
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            {/* <Summarycard /> */}
-
-            <div className="dailyattendance_table">
-              <div className="heading_ttendance_box d-flex justify-content-between align-items-center">
+              <div className="dailyattendance_table">
+              <div className=" d-flex justify-content-between align-items-center ">
                 <h2 className="h1"><b>Daily Attendance</b></h2>
                 <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
                     <button className="btn btn-sm btn-outline-secondary px-5 py-2">
-                      Attendance History
+                     <h3>Attendance History</h3> 
                     </button>
                   </Link>
                 </div>
               </div>
-              {/* table */}
               <div className="dailyattendance_table_box">
-                {/* searchsection */}
-                <div className="search_section_top">
+              <div className="search_section_top">
                   <LeaveName
                     heading={"HD - "}
                     FullName={"HALFDAY"}

@@ -31,29 +31,7 @@ const ManageLeaves = () => {
   useEffect(() => {
     getEmployees();
   }, []);
-  // const filteredItems = leavesList.filter(
-  //   item =>
-  //     JSON.stringify(item)
-  //       .toLowerCase()
-  //       .indexOf(filterText.toLowerCase()) !== -1
-  // );
 
-  // const subHeaderComponent = useMemo(() => {
-  //   const handleClear = () => {
-  //     if (filterText) {
-  //       setResetPaginationToggle(!resetPaginationToggle);
-  //       setFilterText("");
-  //     }
-  //   };
-
-  //   return (
-  //     <FilterComponent
-  //       onFilter={e => setFilterText(e.target.value)}
-  //       onClear={handleClear}
-  //       filterText={filterText}
-  //     />
-  //   );
-  // }, [filterText, resetPaginationToggle]);
   const HandleClickApprove = (e) => {
     let leaveId = e.target.value;
   };
@@ -142,16 +120,11 @@ const ManageLeaves = () => {
           <Sidebar />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="dailyattendance_table">
-              <h2>Manage Leaves</h2>
-
+            <div className=" d-flex justify-content-between align-items-center border-bottom pb-5 ">
+              <h1  className="h1"><b>Manage Leaves</b></h1>
+              </div>
            <div>
-            {/* <SearchSection
-               labeltext={"StaffName"}
-               inputtype={"text"}
-               id="search"
-               value={leavesList}
-               onMonthChange={e => setFilterText(e.target.value)}
-             /> */}
+            
              </div>
               <div className="dailyattendance_table_box">
              
@@ -162,7 +135,7 @@ const ManageLeaves = () => {
                   defaultSortField="name"
                   columns={columns}
                   data={leavesList}
-                  // subHeaderComponent={subHeaderComponent}
+                 
                 />
               </div>
             </div>

@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import React, { useState, useEffect } from "react";
 import "../../styles/salary/Generatesalary.css";
-import { Nav } from "react-bootstrap";
 import { Link} from "react-router-dom";
 import Axios from "axios";
 import moment from "moment";
@@ -92,7 +90,7 @@ function Generatesalary(props) {
     basic_salary:salary,
     total:netsal,
     updated_on:attendmonth
-    // allowance:allowval,
+ 
   }).then(async (response) => {
   });
   navigate('/Salary_slip')
@@ -209,21 +207,10 @@ return (
         <div className="row">
           <Sidebar/>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <div className="salarydata_table">
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
               <h1 className="h1"><b>Generate Salary</b></h1>
-              <div className="btn-toolbar mb-2 mb-md-0">
-                <div className="btn-group mr-2">
-                  <Link to="/Salary_history" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary">
-                      View
-                    </button>
-                  </Link>
-                  {/* <Link to='/Salary_slip' className="nav-link">
-
-                  <button className="btn btn-sm btn-outline-secondary">Salary Slip</button>
-                  </Link> */}
-                </div>
-              </div>
+              
             </div>
             <div class="container">
               <div class=" text-center mt-2">
@@ -242,14 +229,15 @@ return (
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_name">
+                                  <label for="form_name"  className='label_text'>
                                     Name of Employee *
                                   </label>
                                   <input
+                                  
                                     id="form_name"
                                     type="text"
                                     name={name}
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     required="required"
                                     data-error="Firstname is required."
@@ -260,13 +248,13 @@ return (
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_lastname">
+                                  <label for="form_lastname"  className='label_text'>
                                     Employee Id *
                                   </label>
                                   <input
                                     id="form_lastname"
                                     type="text"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     required="required"
                                     data-error="Lastname is required."
@@ -278,20 +266,20 @@ return (
                               </div>
                             </div>
                           </div>
-                          <h6 class="mt-2">
+                          <h4 class="mt-2">
                             <b>Bank Details-</b>
-                          </h6>
+                          </h4>
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="form_name">Account no. *</label>
+                                <label for="form_name"  className='label_text'>Account no. *</label>
                                 <input
                                   id="form_name"
                                   type="text"
                                   name={accno}
                                   value={accno}
                                   onChange={accountOnchange}
-                                  class="form-control"
+                                  class="form-control label_text "
                                   placeholder=""
                                   required="required"
                                 />
@@ -299,7 +287,7 @@ return (
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="form_lastname">
+                                <label for="form_lastname "  className='label_text'>
                                   Name of Bank *
                                 </label>
                                 <input
@@ -308,21 +296,21 @@ return (
                                   name={banknam}
                                   value={banknam}
                                   onChange={banknameOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
                               </div>
                             </div>
                           </div>
-                          <h6 class="mt-2">
+                          <h4 class="mt-2">
                             <b>Working Details-</b>
-                          </h6>
+                          </h4>
 
                           <div class="row">
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_name">
+                                <label for="form_name"  className='label_text'>
                                   Total working days *
                                 </label>
                                 <input
@@ -331,7 +319,7 @@ return (
                                   name={workday}
                                   value={workday}
                                   onChange={workdayOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                   data-error="Firstname is required."
@@ -340,7 +328,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">
+                                <label for="form_lastname"  className='label_text'>
                                   Late comings *
                                 </label>
                                 <input
@@ -349,7 +337,7 @@ return (
                                   name={lc}
                                   value={lc}
                                   onChange={lateOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -357,14 +345,14 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">Leave *</label>
+                                <label for="form_lastname"  className='label_text'>Leave *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={ia}
                                   value={ia}
                                   onChange={informedOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -372,14 +360,14 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">Half days *</label>
+                                <label for="form_lastname"  className='label_text'>Half days *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={hd}
                                   value={hd}
                                   onChange={halfdayOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -387,14 +375,14 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">Absent *</label>
+                                <label for="form_lastname"  className='label_text'>Absent *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={ua}
                                   value={ua}
                                   onChange={uninformedOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -402,14 +390,14 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">CL *</label>
+                                <label for="form_lastname"  className='label_text'>CL *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={cl}
                                   value={cl}
                                   onChange={casualOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -417,14 +405,14 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">ML *</label>
+                                <label for="form_lastname"  className='label_text'>ML *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={ml}
                                   value={ml}
                                   onChange={medicalOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
@@ -433,31 +421,31 @@ return (
 
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname">EL *</label>
+                                <label for="form_lastname"  className='label_text'>EL *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
                                   name={el}
                                   value={el}
                                   onChange={emergencyOnchange}
-                                  class="form-control"
+                                  class="form-control label_text"
                                   placeholder=""
                                   required="required"
                                 />
                               </div>
                             </div>
-                            <h6 class="mt-2">
+                            <h4 class="mt-2">
                               <b>Salary Details-</b>
-                            </h6>
+                            </h4>
 {/* salary */}
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_name">Basic *</label>
+                                  <label for="form_name"  className='label_text'>Basic *</label>
                                   <input
                                     id="form_name"
                                     type="text"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     required="required"
                                     data-error="Firstname is required."
@@ -476,7 +464,7 @@ return (
                                     id="form_lastname"
                                     type="text"
                                     name="surname"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     required="required"
                                     data-error="Lastname is required."
@@ -485,21 +473,21 @@ return (
                               </div> */}
                             </div>
                             {/* allowance */}
-                            <h6 class="mt-2">
+                            <h4 class="mt-2">
                               <b>Allowance-</b>
-                            </h6>
+                            </h4>
 
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_email">
+                                  <label for="form_email"  className='label_text'>
                                     House Rent Allowance *
                                   </label>
                                   <input
                                     id="form_email"
                                     type="number"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -510,14 +498,14 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_email">
+                                  <label for="form_email"  className='label_text'>
                                     Dearness Allowance *
                                   </label>
                                   <input
                                     id="form_email"
                                     type="number"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -526,14 +514,14 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_need">
+                                  <label for="form_need"  className='label_text'>
                                     Other Allowance *
                                   </label>
                                   <input
                                     id="form_email"
                                     type="number"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -541,21 +529,21 @@ return (
                                 </div>
                               </div>
                             </div>
-                            <h6 class="mt-2">
+                            <h4 class="mt-2">
                               <b>Deduction-</b>
-                            </h6>
+                            </h4>
 
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message">
+                                  <label for="form_message"  className='label_text'>
                                     Professional Tax *
                                   </label>
                                   <input
                                     id="form_email"
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -564,12 +552,12 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message">Income Tax *</label>
+                                  <label for="form_message"  className='label_text'>Income Tax *</label>
                                   <input
                                     id="form_email"
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -578,12 +566,12 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message">ESI *</label>
+                                  <label for="form_message"  className='label_text'>ESI *</label>
                                   <input
                                     id="form_email"
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -591,13 +579,13 @@ return (
                                 </div>
                               </div>
                               <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group"  className='label_text'>
                                   <label for="form_message">PF *</label>
                                   <input
                                     id="form_email"
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -606,14 +594,14 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message">
+                                  <label for="form_message"  className='label_text'>
                                     Other Deduction
                                   </label>
                                   <input
                                     id="form_email"
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    class="form-control label_text"
                                     placeholder=""
                                     // required="required"
                                     data-error="Valid email is required."
@@ -623,7 +611,7 @@ return (
                               <div class="row p-2">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label for="form_name">
+                                    <label for="form_name"  className='label_text'>
                                       <b>TOTAL EARNING *</b>
                                     </label>
                                     <input
@@ -632,7 +620,7 @@ return (
                                       name={salary}
                                       value={salary}
                                       onChange={salarynoOnchange}
-                                      class="form-control"
+                                      class="form-control label_text"
                                       placeholder=""
                                       required="required"
                                       data-error="Firstname is required."
@@ -641,14 +629,14 @@ return (
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label for="form_lastname">
+                                    <label for="form_lastname"  className='label_text'>
                                       <b>TOTAL DEDUCTION *</b>
                                     </label>
                                     <button onClick={deductiononclick} >click</button>
                                     <input
                                       id="form_lastname"
                                       type="text"
-                                      class="form-control"
+                                      class="form-control label_text"
                                       placeholder=""
                                       required="required"
                                       data-error="Lastname is required."
@@ -662,7 +650,7 @@ return (
                               <div class="row p-2">
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label for="form_name">
+                                    <label for="form_name"  className='label_text'>
                                       <b>Net Salary *</b>
                                     </label>
                                     <input
@@ -671,7 +659,7 @@ return (
                                       onChange={netsalaryOnchange}
                                       name={netsal}
                                       value={netsal || 0}
-                                      class="form-control"
+                                      class="form-control label_text"
                                       placeholder=""
                                       required="required"
                                       data-error="Firstname is required."
@@ -680,25 +668,26 @@ return (
                                 </div>
                               </div>
 
-                              <div class="col-md-12 mt-3">
-                                {/* <Link to="/Salary_slip" className="nav-link"> */}
+                              <div class="mt-3">
+                             
                                   <input
                                     type="submit"
                                     class="btn btn-success btn-send  pt-2 btn-block"
                                     value="Generate Salary"
                                     onClick={ongeneratesalary}
                                   />
-                                {/* </Link> */}
+                             
                               </div>
                             </div>
                           </div>
                           </div>
-                        {/* </form> */}
+                     
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </main>
         </div>

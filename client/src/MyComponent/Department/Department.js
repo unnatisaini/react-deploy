@@ -1,13 +1,12 @@
 import React, { useState, useEffect,useMemo } from "react";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-import { Link } from "react-router-dom";
 import Axios from "axios";
 import DataTable from "react-data-table-component";
 import FilterComponent from "./FilterComponent";
 import Inputadd from "./Inputadd";
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { confirm } from "react-confirm-box";
 
 const Department = () => {
@@ -143,12 +142,12 @@ const Department = () => {
   //
   const columns = [
     {
-      name: "Id",
+      name: 'Id',
       selector: (row) => row.id,
       sortable: true,
     },
     {
-      name: "Department",
+      name: 'Department',
       selector: (row) => {
         return SelectedData === row.id ? (
           <input
@@ -164,7 +163,7 @@ const Department = () => {
       sortable: true,
     },
     {
-      name: "Actions",
+      name: 'Actions',
       cell: (row) => [
         SelectedData === row.id && isedit === true ? (
           <>
@@ -209,19 +208,21 @@ const Department = () => {
           <Sidebar />
           {/*  */}
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            {/* main section */}
             
-            <div class="row department_header col-md-12">
-              <div class="col-sm-10">
-                <h1>
+          <div className="dailyattendance_table">
+            
+            <div class=" d-flex justify-content-between align-items-center border-bottom pb-5">
+             
+                <h1 className="h1">
                   <b>Department Details</b>
                 </h1>
-              </div>
-              <div class="col-sm-2">
-                <div class="addinput_popup">
+                <div className="btn-group mr-2 px-5 addinput_popup">
+             
+              {/* <div class="col-sm-1"> */}
+                {/* <div class="addinput_popup"> */}
                   <button
                     type="button"
-                    class="btn btn-info add-new"
+                    class="btn btn-sm btn-outline-secondary px-5 py-2 add-new"
                     onClick={addDEpartment}
                   >
                     <i class="fa fa-plus"></i> Add New
@@ -230,7 +231,7 @@ const Department = () => {
                    <Inputadd value={departname} onChange={onNameAdd} onCrossclick={CancelClick}/>
                    
                   ) : null}
-                </div>
+                {/* </div> */}
               </div>
             </div>
            
@@ -243,10 +244,11 @@ const Department = () => {
               subHeader
               subHeaderComponent={subHeaderComponent}
             />
+            </div>
           </main>
         </div>
       </div>
-      <script></script>
+     
     </>
   );
 };

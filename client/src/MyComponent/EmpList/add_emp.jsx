@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import React, { useEffect, useState } from 'react';
 import Header from '../common/Header';
 import Axios from 'axios';
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
-import '../../styles/salary/Generatesalary.css';
+import '../../styles/EmpList/emplist.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Bankdetails from './bankdetails';
@@ -294,22 +293,10 @@ const AddEditEmp = (props) => {
 
         <Sidebar className='sidebar_add_emp' />
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div className='detail_side_heading'>
-          </div>
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <div className="emp_table">
+          <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
             <h1 className="h1"><b>Add Employee</b></h1>
-            <div className="btn-toolbar mb-2 mb-md-0">
-              <div className="btn-group mr-2">
-                <Link to="/AttendanceHistory" className="nav-link">
-                  <button className="btn btn-sm btn-outline-secondary">
-                    Attendance History
-                  </button>
-                </Link>
-                <button className="btn btn-sm btn-outline-secondary">
-                  Salary History
-                </button>
-              </div>
-            </div>
+           
           </div>
 
 
@@ -317,10 +304,10 @@ const AddEditEmp = (props) => {
 
 <Tabs>
     <TabList>
-      <Tab>Personal Details</Tab>
-      <Tab>Bank Details</Tab>
-      <Tab>Increment Details</Tab>
-      <Tab>Document Upload</Tab>
+      <Tab><h3>Personal Details</h3></Tab>
+      <Tab><h3>Bank Details</h3></Tab>
+      <Tab><h3>Increment Details</h3></Tab>
+      <Tab><h3>Document Upload</h3></Tab>
 
 
     </TabList>
@@ -331,15 +318,15 @@ const AddEditEmp = (props) => {
 {/* <div class="container"> */}
 {/* <form id="contact-form" role="form" method="post" action="/" enctype="multipart/form-data"> */}
   <div class="controls">
-    <h5 class="mt-4"><b>Personal Details-</b></h5>
+    {/* <h4 class="mt-4"><b>Personal Details-</b></h4> */}
 
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-4">
         <div class="form-group">
-          <label for="form_name">Name of Employee *</label>
+          <label for="form_name" className='label_text'>Name of Employee *</label>
 
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Name"
+            <input type="text" class="form-control label_text" placeholder="Name"
               aria-label="Username" aria-describedby="basic-addon1"
               onChange={nameOnchange} />
           </div>
@@ -347,10 +334,10 @@ const AddEditEmp = (props) => {
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="form_name">Date of Birth *</label>
+          <label for="form_name" className='label_text'>Date of Birth *</label>
 
           <div class="input-group mb-3">
-            <input type="date" class="form-control" placeholder="Name"
+            <input type="date" class="form-control label_text" placeholder="Name"
               aria-label="Username" aria-describedby="basic-addon1"
               onChange={dobOnchange} />
           </div>
@@ -360,11 +347,11 @@ const AddEditEmp = (props) => {
 
       <div class="col-md-4">
         <div class="form-group">
-          <label for="form_lastname">Gender*</label>
+          <label for="form_lastname" className='label_text'>Gender*</label>
 
           <div class="input-group mb-3">
 
-            <select onChange={genderOnchange} className={"dept"}>Select
+            <select onChange={genderOnchange} className={"dept label_text "} >Select
               <option value="">Select</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -376,10 +363,10 @@ const AddEditEmp = (props) => {
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <label for="form_name">Qualification*</label>
+          <label for="form_name" className='label_text'>Qualification*</label>
 
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder=""
+            <input type="text" class="form-control label_text" placeholder=""
               aria-label="Username" aria-describedby="basic-addon1"
               onChange={qualificationOnchange} />
           </div>
@@ -388,17 +375,17 @@ const AddEditEmp = (props) => {
       <div class="col-md-4">
 
         <div class="form-group">
-          <label for="form_lastname">Mobile*</label>
+          <label for="form_lastname" className='label_text'>Mobile*</label>
 
-          <input type="number" class="form-control" placeholder="Mobile no."
+          <input type="number" class="form-control label_text" placeholder="Mobile no."
             onChange={mobileOnchange} />
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="form_lastname">Residence Phone No.</label>
+          <label for="form_lastname" className='label_text'>Residence Phone No.</label>
 
-          <input type="number" class="form-control" placeholder=""
+          <input type="number" class="form-control label_text" placeholder=""
             onChange={alternatenoOnchange} />
         </div>
       </div>
@@ -411,8 +398,8 @@ const AddEditEmp = (props) => {
     
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_lastname">Country*</label>
-        <select onChange={countryOnchange} className={"dept"}>Country
+        <label for="form_lastname" className='label_text'>Country*</label>
+        <select onChange={countryOnchange} className={"dept label_text"}>Country
         <option value={''}>Select</option>
 
         <option value={'India'}>India</option>
@@ -421,9 +408,9 @@ const AddEditEmp = (props) => {
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_lastname">State*</label>
+        <label for="form_lastname" className='label_text'>State*</label>
        
-        <select onChange={stateOnchange}  className={"dept"}>Select
+        <select onChange={stateOnchange}  className={"dept label_text"}>Select
                     <option>State</option>
                     {(state || []).map((statedata) => (
                       <option value={[statedata.state,statedata.id]}
@@ -434,8 +421,8 @@ const AddEditEmp = (props) => {
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_name">City *</label>
-        <select onChange={cityOnchange} className={"dept"}>Select
+        <label for="form_name" className='label_text'>City *</label>
+        <select onChange={cityOnchange} className={"dept label_text"}>Select
                     <option>City</option>
                     {(city || []).map((citydata) => (
 
@@ -450,26 +437,26 @@ const AddEditEmp = (props) => {
     <div class="col-md-4">
       <div class="form-group">
 
-        <label for="form_name">Address *</label>
+        <label for="form_name" className='label_text'>Address *</label>
 
-        <textarea type="text" class="form-control" onChange={addressOnchange} />
+        <textarea type="text" class="form-control label_text" onChange={addressOnchange} />
       </div>
     </div>
 
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_name">Email *</label>
+        <label for="form_name" className='label_text'>Email *</label>
 
-        <input type="email" class="form-control" placeholder="Email"
+        <input type="email" class="form-control label_text" placeholder="Email"
           aria-label="email" aria-describedby="basic-addon1"
           onChange={emailOnchange} />
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_name">Skills</label>
+        <label for="form_name" className='label_text'>Skills</label>
 
-        <input type="text" class="form-control" placeholder="Skills"
+        <input type="text" class="form-control label_text" placeholder="Skills"
           aria-label="email" aria-describedby="basic-addon1"
           onChange={skillOnchange} />
       </div>
@@ -481,9 +468,9 @@ const AddEditEmp = (props) => {
     <div class="col-md-4">
 
       <div class="form-group">
-        <label for="form_lastname">Experience *</label>
+        <label for="form_lastname" className='label_text'>Experience *</label>
 
-        <input type="text" class="form-control" placeholder="job experience"
+        <input type="text" class="form-control label_text" placeholder="job experience"
           aria-label="Date of joining" aria-describedby="basic-addon1"
           onChange={expOnchange} />
       </div>
@@ -491,17 +478,17 @@ const AddEditEmp = (props) => {
     <div class="col-md-4">
 
       <div class="form-group">
-        <label for="form_lastname">Date of joining *</label>
+        <label for="form_lastname" className='label_text'>Date of joining *</label>
 
-        <input type="date" class="form-control" placeholder="Date of joining"
+        <input type="date" class="form-control label_text" placeholder="Date of joining"
           aria-label="Date of joining" aria-describedby="basic-addon1"
           onChange={dojOnchange} />
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="form_lastname">Department *</label>
-        <select onChange={departOnchange} className={"dept"}>Select
+        <label for="form_lastname" className='label_text'>Department *</label>
+        <select onChange={departOnchange} className={"dept label_text"}>Select
           <option>Department</option>
           {(depart || []).map((depart) => (
 
@@ -519,9 +506,9 @@ const AddEditEmp = (props) => {
     <div class="col-md-4 mt-3">
       <div class="form-group">
    
-      <label for="form_name">Choose File *</label>
+      <label for="form_name" className='label_text'>Choose File *</label>
 
-        <input type="file" name="image" class="form-control " onChange={saveFile} />
+        <input type="file" name="image" class="form-control label_text " onChange={saveFile} />
        
       </div>
      
@@ -530,21 +517,21 @@ const AddEditEmp = (props) => {
 
     <div class="col-md-4 mt-3">
       <div class="form-group">
-      <label for="form_name">Salary*</label>
+      <label for="form_name" className='label_text'>Salary*</label>
 
-        <input type="number" name="" accept='' class="form-control " onChange={salaryOnchange} />
+        <input type="number" name="" accept='' class="form-control label_text " onChange={salaryOnchange} />
       </div>
     </div>
 
     <div class="col-md-4 mt-3">
       <div class="form-group">
-    <label for="form_name">Status *</label>
+    <label for="form_name" className='label_text'>Status *</label>
 
        <div className='status_check'>
           
            <input type="checkbox" onChange={statusOnchange} value={status?1:0}/>
           
-          <span>Active</span>
+          <span className='label_text'>Active</span>
 </div>
 
           
@@ -554,7 +541,7 @@ const AddEditEmp = (props) => {
     </div>
     </div>
   <div class="col-md-3 mt-3">
- <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={addEmployee}>Add Employee</button>
+ <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={addEmployee}><h3>Add Employee</h3></button>
 </div>
 {/* </form> */}
 
@@ -572,6 +559,7 @@ const AddEditEmp = (props) => {
       <Documentupload/>
     </TabPanel>
   </Tabs>
+ </div>
  </div>
 </main>
  </div>

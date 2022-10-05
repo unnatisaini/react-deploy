@@ -141,8 +141,11 @@ const CurrentLeaves = () => {
           <Sidebar />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="dailyattendance_table">
-              <h2>Leaves</h2>
+            <div className=" d-flex justify-content-between align-items-center border-bottom pb-5 ">
 
+              <h1  className="h1"><b>Leaves</b></h1>
+              </div>
+ 
               <div className="dailyattendance_table_box">
                 <DataTable
                   pagination
