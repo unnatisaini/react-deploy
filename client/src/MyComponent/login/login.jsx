@@ -57,33 +57,33 @@ const Login = () => {
       
  <div className='signin_logo mb-3'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
         <div className="mt-3">
-          <label className="label_text">Email address</label>
+          <label className="labeltextnew">Email address</label>
           <input
             type="email"
-            className="form-control label_text"
+            className="form-control labeltextnew"
             placeholder="Enter email"
             value={mail}
             onChange={emailOnchange}
           />
         </div>
-        <div className="mb-3">
-          <label className="label_text">Password</label>
+        <div className="mt-3">
+          <label className="labeltextnew">Password</label>
           <input
             type="password"
-            className="form-control label_text"
+            className="form-control labeltextnew"
             placeholder="Enter password"
             value={pass}
             onChange={passwordOnchange}
           />
         </div>
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
+        <div className="mt-3">
+          <div className="custom-control custom-checkbox remember_text">
             <input
               type="checkbox"
               className="custom-control-input"
               id="customCheck1"
             />
-            <label className="custom-control-label label_text" htmlFor="customCheck1">
+            <label className="custom-control-label labeltextnew" htmlFor="customCheck1">
               Remember me
             </label>
           </div>

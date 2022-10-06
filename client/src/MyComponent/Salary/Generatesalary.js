@@ -214,7 +214,7 @@ function Generatesalary(props) {
               <div class="container">
                 <div class=" text-center mt-2">
 
-                  <h1 className="border-bottom">{moment(attendmonth).format('MMMM')} Month Salary</h1>
+                  <h1>{moment(attendmonth).format('MMMM')} Month Salary</h1>
                 </div>
 
                 <div class="row ">

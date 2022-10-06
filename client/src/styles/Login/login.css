@@ -33,3 +33,7 @@
     font-size: 20px;
     line-height: revert;
 }
+.remember_text{
+    display: flex;
+    gap:3px;
+}
