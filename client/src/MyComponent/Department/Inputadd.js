@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
+import '../../styles/Department/Department.css';
+
 
 const Input = styled.input.attrs(props => ({
     type: "text",

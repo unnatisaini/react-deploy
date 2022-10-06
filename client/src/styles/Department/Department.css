@@ -9,7 +9,7 @@
   }
 .department_header .addinput_popup .nameadddep{
    display: flex;
-   margin-right: 45px;
+   /* margin-right: 45px; */
 }
 .editnameinput{
     height: 32px;
