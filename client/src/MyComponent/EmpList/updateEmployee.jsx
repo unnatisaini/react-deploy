@@ -632,7 +632,7 @@ const salaryyOnchange = (e) => {
                           </div>
                         </div>
                         <div class="col-md-3 mt-3">
-                          <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={updEmployee}><h3>Update Employee</h3></button>
+                          <button type="button" class="btn btn-primary  pt-2 btn-block" onClick={updEmployee}><h3>Update Employee</h3></button>
                         </div>
                       </div>
                     </form>
@@ -698,7 +698,7 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-3">
 
-                            <button type="button" class="btn btn-primary btn-send  pt-2 " onClick={add_bank_detail}><h3>Update Bank Details</h3></button>
+                            <button type="button" class="btn btn-primary pt-2 " onClick={add_bank_detail}><h3>Update Bank Details</h3></button>
                           </div>
                         </div>
                       </div>
@@ -747,7 +747,7 @@ const salaryyOnchange = (e) => {
 
                           <div class="col-md-4 mt-3">
 
-                            <button type="button" class="btn btn-primary btn-send  pt-2 btn-block" onClick={add_inc_detail}><h3> Increment Update</h3></button>
+                            <button type="button" class="btn btn-primary  pt-2 btn-block" onClick={add_inc_detail}><h3> Increment Update</h3></button>
                           </div>
                         </div>
                       </div>
