@@ -28,9 +28,9 @@
     color: #ffffff;
     line-height: 40px;
    }
-   .sign_out_btn:hover{
+   /* .sign_out_btn:hover{
    background: transparent;
-   }
+   } */
    .summary_card{
     padding-top: 20px;
    }
