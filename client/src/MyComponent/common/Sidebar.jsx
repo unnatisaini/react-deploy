@@ -23,7 +23,7 @@ const Sidebar = () => {
                     Dashboard
                   </Link>
                   </div></li>
-                  <li><i class="fa fa-user m-0"></i><div className='m-0'>
+                  <li><i class="fa fa-user m-0"></i><div className='m-2'>
                     <Link to="/Emplist" className="nav-link">
                     <span data-feather="shopping-cart"></span>
                     Employee
@@ -33,7 +33,7 @@ const Sidebar = () => {
                     <span data-feather="users"></span>
                     Department
                   </Link></div></li>
-                  <li><i className='fa fa-file-powerpoint-o  m-0'></i><div className='m-0'>
+                  <li><i className='fa fa-file-powerpoint-o  m-0'></i><div className='m-3'>
                      <Link to="/Attendance" className="nav-link">
                     <span data-feather="users"></span>
                     Attendance

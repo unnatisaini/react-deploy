@@ -7,8 +7,8 @@
     align-items: center;
     gap: 10px;
   }
-.department_header .addinput_popup .nameadddep{
-   display: flex;
+ .nameadddep{
+   display: flex ;
    /* margin-right: 45px; */
 }
 .editnameinput{
