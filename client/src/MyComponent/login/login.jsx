@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Axios from 'axios';
 import { RingLoader } from  'react-spinners'
+import '../../styles/Login/login.css';
 
 const Login = () => {
   let navigate = useNavigate();
