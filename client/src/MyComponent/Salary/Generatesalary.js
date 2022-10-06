@@ -578,8 +578,8 @@ return (
                                 </div>
                               </div>
                               <div class="col-md-4">
-                                <div class="form-group"  className='labletextnew'>
-                                  <label for="form_message">PF *</label>
+                                <div class="form-group" >
+                                  <label for="form_message"  className='labletextnew'>PF *</label>
                                   <input
                                     id="form_email"
                                     type="email"
