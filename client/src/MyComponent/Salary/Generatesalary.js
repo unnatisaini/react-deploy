@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from '../common/Sidebar';
 import Header from '../common/Header';
 function Generatesalary(props) {
-  let navigate = useNavigate(); 
+  let navigate = useNavigate();
 
   const idd = localStorage.getItem("staffid");
   const [employeeList, setEmployeeList] = useState([]);
@@ -51,7 +51,7 @@ function Generatesalary(props) {
       setaccno(response.data[0].account_no);
       setbanknam(response.data[0].bank_name);
     });
-   
+
     Axios.get(`https://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
     ).then((response) => {
       setattendancedata(response.data[0]);
@@ -67,7 +67,7 @@ function Generatesalary(props) {
     Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
     ).then((response) => {
       setholidaycount(response.data[0]);
-     let wdays = momentmonth -  response.data[0].count;
+      let wdays = momentmonth - response.data[0].count;
       setworkday(wdays);
     });
     Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
@@ -75,26 +75,26 @@ function Generatesalary(props) {
       setsalary(response.data[0].salary)
       setName(response.data[0].staff_name);
       setstid(response.data[0].id);
-      
+
 
     });
   };
   useEffect(() => {
     getEmployees();
-  }, [firstdate,idd,lastdate]);
- const ongeneratesalary =()=>{
-  Axios.post("https://apnaorganicstore.in/index/salarycreate",{
-    staff_id:idd,
-    staff_name:name,
-    basic_salary:salary,
-    total:netsal,
-    updated_on:attendmonth
- 
-  }).then(async (response) => {
-  });
-  navigate('/Salary_slip')
+  }, [firstdate, idd, lastdate]);
+  const ongeneratesalary = () => {
+    Axios.post("https://apnaorganicstore.in/index/salarycreate", {
+      staff_id: idd,
+      staff_name: name,
+      basic_salary: salary,
+      total: netsal,
+      updated_on: attendmonth
 
-}
+    }).then(async (response) => {
+    });
+    navigate('/Salary_slip')
+
+  }
 
   const nameOnchange = (e) => {
     setName(e.target.value);
@@ -141,320 +141,320 @@ function Generatesalary(props) {
   const netsalaryOnchange = (e) => {
     setnetsal(e.target.value);
   };
-    // const onallowancechange = (e) => {
-    //   setallowval(e.target.value);
-    //  let salaryy =parseInt(e.target.value)
-    //  setsalary(salaryy)
-    // };
-  
-// create salary
+  // const onallowancechange = (e) => {
+  //   setallowval(e.target.value);
+  //  let salaryy =parseInt(e.target.value)
+  //  setsalary(salaryy)
+  // };
+
+  // create salary
 
 
- const deductiononclick = () =>{
-  let onedaysal = (salary / workday)
- 
- let absent =( onedaysal * 3 * (ua))
- let leave = (onedaysal * 1 * (ia))
- let medicalleave = (onedaysal * 1 * (ml))
- let emergencyleave = (onedaysal * 1 * (el))
-let halfday = ((onedaysal/2) * 1 * (hd))
-console.log("lc"+lc)
+  const deductiononclick = () => {
+    let onedaysal = (salary / workday)
 
-let latecom;
-if(lc>2){
-  let diff = (lc) - 2 
-  if(diff == 1){
-    latecom = 0
+    let absent = (onedaysal * 3 * (ua))
+    let leave = (onedaysal * 1 * (ia))
+    let medicalleave = (onedaysal * 1 * (ml))
+    let emergencyleave = (onedaysal * 1 * (el))
+    let halfday = ((onedaysal / 2) * 1 * (hd))
+    console.log("lc" + lc)
+
+    let latecom;
+    if (lc > 2) {
+      let diff = (lc) - 2
+      if (diff == 1) {
+        latecom = 0
+      }
+      if ((diff % 3 == 0 && diff % 2 == 0) || diff % 3 == 0) {
+        latecom = (diff / 3) * (onedaysal)
+        console.log("latecom3333   " + latecom)
+
+      }
+      {
+        if (diff % 2 == 0 && diff % 3 !== 0) {
+          latecom = (diff / 4) * (onedaysal)
+          console.log("latecom222      " + latecom)
+
+        }
+      }
+    } if (lc < 2) {
+      latecom = 0;
     }
-    if(( diff % 3 == 0  && diff % 2 == 0) || diff % 3 == 0){
-        latecom = (diff/3) * (onedaysal)
-        console.log("latecom3333   "+latecom)
 
-    }
-    {
-      if(diff % 2 == 0 && diff % 3 !== 0){
-        latecom = (diff/4) * (onedaysal)
-console.log("latecom222      "+latecom)
+    console.log("latecomdfina;      " + latecom)
 
-        }  
-    }
-}if(lc<2){
-  latecom=0;
-}
+    let deductionn = (absent) + (leave) + (medicalleave) + (emergencyleave) + (halfday) + (latecom);
+    setdeduction(deductionn)
+    console.log("(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom)" + (absent) + (leave) + (medicalleave) + (emergencyleave) + (halfday) + (latecom))
+    console.log("latecom" + latecom)
 
-console.log("latecomdfina;      "+latecom)
+    console.log("deductionn" + deductionn)
 
-  let  deductionn =(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom);
-  setdeduction(deductionn)
-console.log("(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom)"+(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom))
-console.log("latecom"+latecom)
+    let deduct = localStorage.setItem('deduction', deductionn)
+    let netsalary = salary - deductionn;
+    setnetsal(netsalary)
+  }
 
-console.log("deductionn"+deductionn)
-
-    let deduct =   localStorage.setItem('deduction',deductionn)
-  let netsalary = salary -  deductionn;
-  setnetsal(netsalary)
-}
-
-// 
-return (
+  // 
+  return (
     <>
-     
-     <Header/>
+
+      <Header />
       <div className="container-fluid">
 
         <div className="row">
-          <Sidebar/>
+          <Sidebar />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <div className="salarydata_table">
-            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
-              <h1 className="h1"><b>Generate Salary</b></h1>
-              
-            </div>
-            <div class="container">
-              <div class=" text-center mt-2">
-                
-                <h1 className="border-bottom">{moment(attendmonth).format('MMMM')} Month Salary</h1>
-              </div>
+            <div className="salarydata_table">
+              <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
+                <h1 className="h1"><b>Generate Salary</b></h1>
 
-              <div class="row ">
-                <div class="col-lg-8 mx-auto">
-                  <div class="card mt-2 mx-auto p-4 bg-light">
-                    <div class="card-body bg-light">
-                      <div class="container">
-                      <div>
-                        {/* <form id="contact-form" role="form"> */}
-                          <div class="controls">
+              </div>
+              <div class="container">
+                <div class=" text-center mt-2">
+
+                  <h1 className="border-bottom">{moment(attendmonth).format('MMMM')} Month Salary</h1>
+                </div>
+
+                <div class="row ">
+                  <div class="col-lg-8 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                      <div class="card-body bg-light">
+                        <div class="container">
+                          <div>
+                            {/* <form id="contact-form" role="form"> */}
+                            <div class="controls">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="form_name" className='labletextnew'>
+                                      Name of Employee *
+                                    </label>
+                                    <input
+
+                                      id="form_name"
+                                      type="text"
+                                      name={name}
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      required="required"
+                                      data-error="Firstname is required."
+                                      value={name}
+                                      onChange={nameOnchange}
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="form_lastname" className='labletextnew'>
+                                      Employee Id *
+                                    </label>
+                                    <input
+                                      id="form_lastname"
+                                      type="text"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      required="required"
+                                      data-error="Lastname is required."
+                                      name={stid}
+                                      value={stid}
+                                      onChange={stidOnchange}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <h4 class="mt-2">
+                              <b>Bank Details-</b>
+                            </h4>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_name"  className='labletextnew'>
-                                    Name of Employee *
-                                  </label>
+                                  <label for="form_name" className='labletextnew'>Account no. *</label>
                                   <input
-                                  
                                     id="form_name"
                                     type="text"
-                                    name={name}
-                                    class="form-control label_text"
+                                    name={accno}
+                                    value={accno}
+                                    onChange={accountOnchange}
+                                    class="form-control label_text "
                                     placeholder=""
                                     required="required"
-                                    data-error="Firstname is required."
-                                    value={name}
-                                    onChange={nameOnchange}
                                   />
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_lastname"  className='labletextnew'>
-                                    Employee Id *
+                                  <label for="form_lastname " className='labletextnew'>
+                                    Name of Bank *
                                   </label>
                                   <input
                                     id="form_lastname"
                                     type="text"
+                                    name={banknam}
+                                    value={banknam}
+                                    onChange={banknameOnchange}
                                     class="form-control label_text"
                                     placeholder=""
                                     required="required"
-                                    data-error="Lastname is required."
-                                    name={stid}
-                                    value={stid}
-                                    onChange={stidOnchange}
                                   />
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <h4 class="mt-2">
-                            <b>Bank Details-</b>
-                          </h4>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="form_name"  className='labletextnew'>Account no. *</label>
-                                <input
-                                  id="form_name"
-                                  type="text"
-                                  name={accno}
-                                  value={accno}
-                                  onChange={accountOnchange}
-                                  class="form-control label_text "
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="form_lastname "  className='labletextnew'>
-                                  Name of Bank *
-                                </label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={banknam}
-                                  value={banknam}
-                                  onChange={banknameOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <h4 class="mt-2">
-                            <b>Working Details-</b>
-                          </h4>
-
-                          <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_name"  className='labletextnew'>
-                                  Total working days *
-                                </label>
-                                <input
-                                  id="form_name"
-                                  type="text"
-                                  name={workday}
-                                  value={workday}
-                                  onChange={workdayOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                  data-error="Firstname is required."
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>
-                                  Late comings *
-                                </label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={lc}
-                                  value={lc}
-                                  onChange={lateOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>Leave *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={ia}
-                                  value={ia}
-                                  onChange={informedOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>Half days *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={hd}
-                                  value={hd}
-                                  onChange={halfdayOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>Absent *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={ua}
-                                  value={ua}
-                                  onChange={uninformedOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>CL *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={cl}
-                                  value={cl}
-                                  onChange={casualOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>ML *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={ml}
-                                  value={ml}
-                                  onChange={medicalOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
-
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                <label for="form_lastname"  className='labletextnew'>EL *</label>
-                                <input
-                                  id="form_lastname"
-                                  type="text"
-                                  name={el}
-                                  value={el}
-                                  onChange={emergencyOnchange}
-                                  class="form-control label_text"
-                                  placeholder=""
-                                  required="required"
-                                />
-                              </div>
-                            </div>
                             <h4 class="mt-2">
-                              <b>Salary Details-</b>
+                              <b>Working Details-</b>
                             </h4>
-{/* salary */}
+
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-3">
                                 <div class="form-group">
-                                  <label for="form_name"  className='labletextnew'>Basic *</label>
+                                  <label for="form_name" className='labletextnew'>
+                                    Total working days *
+                                  </label>
                                   <input
                                     id="form_name"
                                     type="text"
+                                    name={workday}
+                                    value={workday}
+                                    onChange={workdayOnchange}
                                     class="form-control label_text"
                                     placeholder=""
                                     required="required"
                                     data-error="Firstname is required."
-                                    name={salary}
-                                    value={salary}
-                                    onChange={salarynoOnchange}
                                   />
                                 </div>
                               </div>
-                              {/* <div class="col-md-6">
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>
+                                    Late comings *
+                                  </label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={lc}
+                                    value={lc}
+                                    onChange={lateOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>Leave *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={ia}
+                                    value={ia}
+                                    onChange={informedOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>Half days *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={hd}
+                                    value={hd}
+                                    onChange={halfdayOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>Absent *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={ua}
+                                    value={ua}
+                                    onChange={uninformedOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>CL *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={cl}
+                                    value={cl}
+                                    onChange={casualOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>ML *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={ml}
+                                    value={ml}
+                                    onChange={medicalOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="form_lastname" className='labletextnew'>EL *</label>
+                                  <input
+                                    id="form_lastname"
+                                    type="text"
+                                    name={el}
+                                    value={el}
+                                    onChange={emergencyOnchange}
+                                    class="form-control label_text"
+                                    placeholder=""
+                                    required="required"
+                                  />
+                                </div>
+                              </div>
+                              <h4 class="mt-2">
+                                <b>Salary Details-</b>
+                              </h4>
+                              {/* salary */}
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="form_name" className='labletextnew'>Basic *</label>
+                                    <input
+                                      id="form_name"
+                                      type="text"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      required="required"
+                                      data-error="Firstname is required."
+                                      name={salary}
+                                      value={salary}
+                                      onChange={salarynoOnchange}
+                                    />
+                                  </div>
+                                </div>
+                                {/* <div class="col-md-6">
                                 <div class="form-group">
                                   <label for="form_lastname">
                                     Current Salary *
@@ -470,224 +470,216 @@ return (
                                   />
                                 </div>
                               </div> */}
-                            </div>
-                            {/* allowance */}
-                            <h4 class="mt-2">
-                              <b>Allowance-</b>
-                            </h4>
+                              </div>
+                              {/* allowance */}
+                              <h4 class="mt-2">
+                                <b>Allowance-</b>
+                              </h4>
 
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_email"  className='labletextnew'>
-                                    House Rent Allowance *
-                                  </label>
-                                  <input
-                                    id="form_email"
-                                    type="number"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                    onChange={'onallowancechange'}
-                                    value={allowval}
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_email"  className='labletextnew'>
-                                    Dearness Allowance *
-                                  </label>
-                                  <input
-                                    id="form_email"
-                                    type="number"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_need"  className='labletextnew'>
-                                    Other Allowance *
-                                  </label>
-                                  <input
-                                    id="form_email"
-                                    type="number"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <h4 class="mt-2">
-                              <b>Deduction-</b>
-                            </h4>
-
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_message"  className='labletextnew'>
-                                    Professional Tax *
-                                  </label>
-                                  <input
-                                    id="form_email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_message"  className='labletextnew'>Income Tax *</label>
-                                  <input
-                                    id="form_email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_message"  className='labletextnew'>ESI *</label>
-                                  <input
-                                    id="form_email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group" >
-                                  <label for="form_message"  className='labletextnew'>PF *</label>
-                                  <input
-                                    id="form_email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label for="form_message"  className='labletextnew'>
-                                    Other Deduction
-                                  </label>
-                                  <input
-                                    id="form_email"
-                                    type="email"
-                                    name="email"
-                                    class="form-control label_text"
-                                    placeholder=""
-                                    // required="required"
-                                    data-error="Valid email is required."
-                                  />
-                                </div>
-                              </div>
-                              <div class="row p-2">
-                                <div class="col-md-6">
+                              <div class="row">
+                                <div class="col-md-4">
                                   <div class="form-group">
-                                    <label for="form_name"  className='labletextnew'>
-                                      <b>TOTAL EARNING *</b>
+                                    <label for="form_email" className='labletextnew'>
+                                      House Rent Allowance *
                                     </label>
                                     <input
-                                      id="form_name"
-                                      type="text"
-                                      name={salary}
-                                      value={salary}
-                                      onChange={salarynoOnchange}
+                                      id="form_email"
+                                      type="number"
+                                      name="email"
                                       class="form-control label_text"
                                       placeholder=""
-                                      required="required"
-                                      data-error="Firstname is required."
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                      onChange={'onallowancechange'}
+                                      value={allowval}
                                     />
                                   </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                   <div class="form-group">
-                                    <label for="form_lastname"  className='labletextnew'>
-                                      <b>TOTAL DEDUCTION *</b>
+                                    <label for="form_email" className='labletextnew'>
+                                      Dearness Allowance *
                                     </label>
-                                    <button onClick={deductiononclick} >click</button>
                                     <input
-                                      id="form_lastname"
-                                      type="text"
+                                      id="form_email"
+                                      type="number"
+                                      name="email"
                                       class="form-control label_text"
                                       placeholder=""
-                                      required="required"
-                                      data-error="Lastname is required."
-                                      onChange={deductionOnchange}
-                                      name={deduction}
-                                      value={deduction || 0}
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="form_need" className='labletextnew'>
+                                      Other Allowance *
+                                    </label>
+                                    <input
+                                      id="form_email"
+                                      type="number"
+                                      name="email"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      // required="required"
+                                      data-error="Valid email is required."
                                     />
                                   </div>
                                 </div>
                               </div>
-                              <div class="row p-2">
-                                <div class="col-md-12">
+                              <h4 class="mt-2">
+                                <b>Deduction-</b>
+                              </h4>
+
+                              <div class="row">
+                                <div class="col-md-4">
                                   <div class="form-group">
-                                    <label for="form_name"  className='labletextnew'>
-                                      <b>Net Salary *</b>
+                                    <label for="form_message" className='labletextnew'>
+                                      Professional Tax *
                                     </label>
                                     <input
-                                      id="form_name"
-                                      type="text"
-                                      onChange={netsalaryOnchange}
-                                      name={netsal}
-                                      value={netsal || 0}
+                                      id="form_email"
+                                      type="email"
+                                      name="email"
                                       class="form-control label_text"
                                       placeholder=""
-                                      required="required"
-                                      data-error="Firstname is required."
+                                      // required="required"
+                                      data-error="Valid email is required."
                                     />
                                   </div>
                                 </div>
-                              </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="form_message" className='labletextnew'>Income Tax *</label>
+                                    <input
+                                      id="form_email"
+                                      type="email"
+                                      name="email"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="form_message" className='labletextnew'>ESI *</label>
+                                    <input
+                                      id="form_email"
+                                      type="email"
+                                      name="email"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group" >
+                                    <label for="form_message" className='labletextnew'>PF *</label>
+                                    <input
+                                      id="form_email"
+                                      type="email"
+                                      name="email"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="form_message" className='labletextnew'>
+                                      Other Deduction
+                                    </label>
+                                    <input
+                                      id="form_email"
+                                      type="email"
+                                      name="email"
+                                      class="form-control label_text"
+                                      placeholder=""
+                                      // required="required"
+                                      data-error="Valid email is required."
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row p-2">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="form_name" className='labletextnew'>
+                                        <b>TOTAL EARNING *</b>
+                                      </label>
+                                      <input
+                                        id="form_name"
+                                        type="text"
+                                        name={salary}
+                                        value={salary}
+                                        onChange={salarynoOnchange}
+                                        class="form-control label_text"
+                                        placeholder=""
+                                        required="required"
+                                        data-error="Firstname is required."
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="form_lastname" className='labletextnew'>
+                                        <b>TOTAL DEDUCTION *</b>
+                                      </label>
+                                      <button onClick={deductiononclick} >click</button>
+                                      <input
+                                        id="form_lastname"
+                                        type="text"
+                                        class="form-control label_text"
+                                        placeholder=""
+                                        required="required"
+                                        data-error="Lastname is required."
+                                        onChange={deductionOnchange}
+                                        name={deduction}
+                                        value={deduction || 0}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row p-2">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="form_name" className='labletextnew'>
+                                        <b>Net Salary *</b>
+                                      </label>
+                                      <input
+                                        id="form_name"
+                                        type="text"
+                                        onChange={netsalaryOnchange}
+                                        name={netsal}
+                                        value={netsal || 0}
+                                        class="form-control label_text"
+                                        placeholder=""
+                                        required="required"
+                                        data-error="Firstname is required."
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
 
-                              <div class="mt-3">
-                                <button type="submit"  onClick={ongeneratesalary}  class="btn btn-success btn-send  pt-2 btn-block"><h3>Generate Salary</h3></button>
-                             
-                                  {/* <input
-                                    type="submit"
-                                    class="btn btn-success btn-send  pt-2 btn-block"
-                                    value="Generate Salary"
-                                    onClick={ongeneratesalary}
-                                  /> */}
-                             
+                                <div class="mt-3">
+                                  <button type="submit" onClick={ongeneratesalary} class="btn btn-primary btn-send  pt-2"><h3>Generate Salary</h3></button>
+                              </div>
                               </div>
                             </div>
                           </div>
-                          </div>
-                     
+
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           </main>
         </div>

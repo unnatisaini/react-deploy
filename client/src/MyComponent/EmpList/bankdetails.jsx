@@ -154,7 +154,7 @@ const nameOnchange = (e) => {
 
                     <div class="col-md-3">
 
-                        <button type="button" class="btn btn-primary pt-2 " onClick={addBankDetails}><h4>Add Bank Details</h4></button>
+                        <button type="button" class="btn btn-primary pt-2 " onClick={addBankDetails}><h3>Add Bank Details</h3></button>
                        </div>
                   </div>
                  </div>

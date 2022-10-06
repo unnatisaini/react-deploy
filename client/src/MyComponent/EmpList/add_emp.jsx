@@ -541,7 +541,7 @@ const AddEditEmp = (props) => {
     </div>
     </div>
   <div class="col-md-3 mt-3">
- <button type="button" class="btn btn-primary  pt-2 btn-block" onClick={addEmployee}><h3>Add Employee</h3></button>
+ <button type="button" class="btn btn-primary pt-2 " onClick={addEmployee}><h3>Add Employee</h3></button>
 </div>
 {/* </form> */}
 
