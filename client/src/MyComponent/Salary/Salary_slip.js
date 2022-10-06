@@ -174,7 +174,7 @@ function Salary_slip(props) {
                                     <tr>
                                         <th scope="row" className='label_text'>Description</th>
                                         <th scope="row" colspan="2" className='label_text'>Earnings</th>
-                                        <th scope="row" colspan="1" className='label_text'>Deductions</th>
+                                        <th scope="row" colspan="2" className='label_text'>Deductions</th>
                                          
                                     </tr>
                                 </thead>
