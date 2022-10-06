@@ -15,7 +15,7 @@ const Header = () => {
         <p className="company_name">
           We2Code Technology
         </p>
-         <button className="sign_out_btn" onClick={signOut} >
+         <button className="btn sign_out_btn" onClick={signOut} >
           <p className="sign_out_text">Sign out</p>
            </button>
        
