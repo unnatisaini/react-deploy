@@ -280,19 +280,19 @@ function Salary_slip(props) {
                                     <tr class="border-top">
                                         <th scope="row"  className='label_text'>Total</th>
                                         <td className='label_text' colspan="2">{GrossEarnings}</td>
-                                        <td colspan="2" className='label_text'>{deductionamt}</td>
+                                        <td colspan="2" className='label_text'>{deductionn}</td>
 
                                     </tr>
                                     <tr class="border-top">
                                         <th scope="row"  className='label_text'>Gross Earnings(A)</th>
-                                        <td colspan="2"></td>
                                         <td colspan="2" className='label_text'>{GrossEarnings}</td>
+                                        <td colspan="2" ></td>
 
                                     </tr>
                                     <tr class="border-top">
                                         <th scope="row"  className='label_text'>Gross Deduction(B)</th>
                                         <td colspan="2"></td>
-                                        <td colspan="2" className='label_text'>{deductionamt}</td>
+                                        <td colspan="2" className='label_text'>{deductionn}</td>
 
 
                                     </tr>

@@ -668,7 +668,7 @@ return (
                               </div>
 
                               <div class="mt-3">
-                                <button type="submit"  onClick={ongeneratesalary} value="Generate Salary" class="btn btn-success btn-send  pt-2 btn-block"></button>
+                                <button type="submit"  onClick={ongeneratesalary}  class="btn btn-success btn-send  pt-2 btn-block"><h3>Generate Salary</h3></button>
                              
                                   {/* <input
                                     type="submit"
