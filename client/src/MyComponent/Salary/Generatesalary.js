@@ -228,7 +228,7 @@ return (
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_name"  className='label_text'>
+                                  <label for="form_name"  className='labletextnew'>
                                     Name of Employee *
                                   </label>
                                   <input
@@ -247,7 +247,7 @@ return (
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_lastname"  className='label_text'>
+                                  <label for="form_lastname"  className='labletextnew'>
                                     Employee Id *
                                   </label>
                                   <input
@@ -271,7 +271,7 @@ return (
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="form_name"  className='label_text'>Account no. *</label>
+                                <label for="form_name"  className='labletextnew'>Account no. *</label>
                                 <input
                                   id="form_name"
                                   type="text"
@@ -286,7 +286,7 @@ return (
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="form_lastname "  className='label_text'>
+                                <label for="form_lastname "  className='labletextnew'>
                                   Name of Bank *
                                 </label>
                                 <input
@@ -309,7 +309,7 @@ return (
                           <div class="row">
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_name"  className='label_text'>
+                                <label for="form_name"  className='labletextnew'>
                                   Total working days *
                                 </label>
                                 <input
@@ -327,7 +327,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>
+                                <label for="form_lastname"  className='labletextnew'>
                                   Late comings *
                                 </label>
                                 <input
@@ -344,7 +344,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>Leave *</label>
+                                <label for="form_lastname"  className='labletextnew'>Leave *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -359,7 +359,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>Half days *</label>
+                                <label for="form_lastname"  className='labletextnew'>Half days *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -374,7 +374,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>Absent *</label>
+                                <label for="form_lastname"  className='labletextnew'>Absent *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -389,7 +389,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>CL *</label>
+                                <label for="form_lastname"  className='labletextnew'>CL *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -404,7 +404,7 @@ return (
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>ML *</label>
+                                <label for="form_lastname"  className='labletextnew'>ML *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -420,7 +420,7 @@ return (
 
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="form_lastname"  className='label_text'>EL *</label>
+                                <label for="form_lastname"  className='labletextnew'>EL *</label>
                                 <input
                                   id="form_lastname"
                                   type="text"
@@ -440,7 +440,7 @@ return (
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label for="form_name"  className='label_text'>Basic *</label>
+                                  <label for="form_name"  className='labletextnew'>Basic *</label>
                                   <input
                                     id="form_name"
                                     type="text"
@@ -479,7 +479,7 @@ return (
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_email"  className='label_text'>
+                                  <label for="form_email"  className='labletextnew'>
                                     House Rent Allowance *
                                   </label>
                                   <input
@@ -497,7 +497,7 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_email"  className='label_text'>
+                                  <label for="form_email"  className='labletextnew'>
                                     Dearness Allowance *
                                   </label>
                                   <input
@@ -513,7 +513,7 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_need"  className='label_text'>
+                                  <label for="form_need"  className='labletextnew'>
                                     Other Allowance *
                                   </label>
                                   <input
@@ -535,7 +535,7 @@ return (
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message"  className='label_text'>
+                                  <label for="form_message"  className='labletextnew'>
                                     Professional Tax *
                                   </label>
                                   <input
@@ -551,7 +551,7 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message"  className='label_text'>Income Tax *</label>
+                                  <label for="form_message"  className='labletextnew'>Income Tax *</label>
                                   <input
                                     id="form_email"
                                     type="email"
@@ -565,7 +565,7 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message"  className='label_text'>ESI *</label>
+                                  <label for="form_message"  className='labletextnew'>ESI *</label>
                                   <input
                                     id="form_email"
                                     type="email"
@@ -578,7 +578,7 @@ return (
                                 </div>
                               </div>
                               <div class="col-md-4">
-                                <div class="form-group"  className='label_text'>
+                                <div class="form-group"  className='labletextnew'>
                                   <label for="form_message">PF *</label>
                                   <input
                                     id="form_email"
@@ -593,7 +593,7 @@ return (
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label for="form_message"  className='label_text'>
+                                  <label for="form_message"  className='labletextnew'>
                                     Other Deduction
                                   </label>
                                   <input
@@ -610,7 +610,7 @@ return (
                               <div class="row p-2">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label for="form_name"  className='label_text'>
+                                    <label for="form_name"  className='labletextnew'>
                                       <b>TOTAL EARNING *</b>
                                     </label>
                                     <input
@@ -628,7 +628,7 @@ return (
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <label for="form_lastname"  className='label_text'>
+                                    <label for="form_lastname"  className='labletextnew'>
                                       <b>TOTAL DEDUCTION *</b>
                                     </label>
                                     <button onClick={deductiononclick} >click</button>
@@ -649,7 +649,7 @@ return (
                               <div class="row p-2">
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label for="form_name"  className='label_text'>
+                                    <label for="form_name"  className='labletextnew'>
                                       <b>Net Salary *</b>
                                     </label>
                                     <input
@@ -668,13 +668,14 @@ return (
                               </div>
 
                               <div class="mt-3">
+                                <button type="submit"  onClick={ongeneratesalary} value="Generate Salary" class="btn btn-success btn-send  pt-2 btn-block"></button>
                              
-                                  <input
+                                  {/* <input
                                     type="submit"
                                     class="btn btn-success btn-send  pt-2 btn-block"
                                     value="Generate Salary"
                                     onClick={ongeneratesalary}
-                                  />
+                                  /> */}
                              
                               </div>
                             </div>
