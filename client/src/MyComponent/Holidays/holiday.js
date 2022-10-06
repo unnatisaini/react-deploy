@@ -257,7 +257,7 @@ const Holidays = () => {
         <DialogContent className="popup_content_box">
       
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -270,7 +270,7 @@ const Holidays = () => {
           />
          
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -283,7 +283,7 @@ const Holidays = () => {
 
           />
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -297,7 +297,7 @@ placeholder={''}
           />
           
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -332,8 +332,8 @@ placeholder={''}
          
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}  class='btn btn-info add-new'><b>Cancel</b></Button>
-       <Button onClick={handleadd}  class='btn btn-info add-new'><b>Add Event</b></Button> 
+          <Button onClick={handleClose}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Cancel</b></Button>
+       <Button onClick={handleadd}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Add Event</b></Button> 
       
         </DialogActions>
       </Dialog>
@@ -348,7 +348,7 @@ placeholder={''}
         <DialogContent>
         
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -361,7 +361,7 @@ placeholder={''}
           />
        
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -374,7 +374,7 @@ placeholder={''}
 
           />
           <TextField
-           className={'popupfieldss'}
+           className={'popupfieldss label_text'}
             autoFocus
             margin="dense"
             id="name"
@@ -401,10 +401,10 @@ placeholder={''}
 
           />
 
-           <p className="p-0 mb-0 mt-4 text-dark">Status</p>
+           <p className="p-0 mb-0 mt-4 text-dark h4">Status</p>
            <div className="p-0 mb-0 text-dark d-flex align-items-center">
            <div className={'mr-4 d-flex align-items-center'}>
-           <p className="mb-0 mr-2">Active</p>
+           <p className="mb-0 mr-2 h5" >Active</p>
            {Status === 1 ?
          <input type={'radio'}  onChange={onChangeStatuss}
             value={1} name={Status+event} checked/>:
@@ -413,7 +413,7 @@ placeholder={''}
             }
             </div>
            <div className={'d-flex align-items-center px-5'}>
-           <p className="mb-0 mr-2">InActive</p>
+           <p className="mb-0 mr-2 h5">InActive</p>
            {Status === 0 ?
          <input type={'radio'}  onChange={onChangeStatuss}
             value={0} name={Status+event} checked/>:
@@ -423,7 +423,7 @@ placeholder={''}
             </div>
 
 <div className="p-0 mb-0 mt-4 text-dark">
-          <p className="text-dark mb-0 p-0">IsHoliday</p>
+          <p className="text-dark mb-0 p-0 h4">IsHoliday</p>
           {hoday === 1 ?
          <input type={'checkbox'}  onChange={OnholidayChange}
             value={hoday} checked/>  : <input type={'checkbox'}  onChange={OnholidayChange}

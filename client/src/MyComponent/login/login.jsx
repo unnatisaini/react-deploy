@@ -59,7 +59,7 @@ const Login = () => {
           <label>Email address</label>
           <input
             type="email"
-            className="form-control"
+            className="form-control label_text"
             placeholder="Enter email"
             value={mail}
             onChange={emailOnchange}
@@ -69,7 +69,7 @@ const Login = () => {
           <label>Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control label_text"
             placeholder="Enter password"
             value={pass}
             onChange={passwordOnchange}
@@ -79,17 +79,17 @@ const Login = () => {
           <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
-              className="custom-control-input"
+              className="custom-control-input label_text"
               id="customCheck1"
             />
-            <label className="custom-control-label" htmlFor="customCheck1">
+            <label className="custom-control-label label_text" htmlFor="customCheck1">
               Remember me
             </label>
           </div>
         </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-success submit_btn" onClick={onSubmit} >
-            Submit
+           <h3>Submit</h3> 
           </button>
         </div>
        
