@@ -218,7 +218,7 @@ const Department = () => {
                 </h1>
                 <div className="btn-group mr-2 px-5 addinput_popup">
              
-              {/* <div class="col-sm-1"> */}
+              <div class="col-sm-1">
                 {/* <div class="addinput_popup"> */}
                   <button
                     type="button"
@@ -231,7 +231,7 @@ const Department = () => {
                    <Inputadd value={departname} onChange={onNameAdd} onCrossclick={CancelClick}/>
                    
                   ) : null}
-                {/* </div> */}
+                </div>
               </div>
             </div>
            
