@@ -1,7 +1,7 @@
 .popup_main_box .popupheading{
 font-size: 25px;
 }
-.popup_main_box .popup_content_box .popupfieldss label {
+.popup_main_box .popupfieldss {
     font-size: 15px;
 }
 input[type=date]:required:invalid::-webkit-datetime-edit {
