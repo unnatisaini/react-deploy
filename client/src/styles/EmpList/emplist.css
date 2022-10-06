@@ -4,6 +4,10 @@ flex-direction: column;
 gap: 20px;
 margin: 20px 0;
 }
+.eOtTIX{
+    background: #000000 !important;
+    color: #ffffff !important;
+}
 .eBYPLT{
     font-size: 15px !important;
     font-weight: 500 !important;
