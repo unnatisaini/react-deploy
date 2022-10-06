@@ -30,5 +30,6 @@
 }
 .submit_text{
     color: #ffffff;
-    
+    font-size: 20px;
+    line-height: revert;
 }

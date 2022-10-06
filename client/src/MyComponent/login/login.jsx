@@ -54,7 +54,7 @@ const Login = () => {
         <div className='login_container'>
       <div className='login_section' >
       
- <div className='signin_logo'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
+ <div className='signin_logo mb-3'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
         <div className="mb-3">
           <label className="label_text">Email address</label>
           <input
