@@ -57,20 +57,20 @@ const Login = () => {
       
  <div className='signin_logo mb-3'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
         <div className="mt-3">
-          <label className="labeltextnew">Email address</label>
+          <label className="labletextnew">Email address</label>
           <input
             type="email"
-            className="form-control labeltextnew"
+            className="form-control labletextnew"
             placeholder="Enter email"
             value={mail}
             onChange={emailOnchange}
           />
         </div>
         <div className="mt-3">
-          <label className="labeltextnew">Password</label>
+          <label className="labletextnew">Password</label>
           <input
             type="password"
-            className="form-control labeltextnew"
+            className="form-control labletextnew"
             placeholder="Enter password"
             value={pass}
             onChange={passwordOnchange}
@@ -83,7 +83,7 @@ const Login = () => {
               className="custom-control-input"
               id="customCheck1"
             />
-            <label className="custom-control-label labeltextnew" htmlFor="customCheck1">
+            <label className="custom-control-label labletextnew" htmlFor="customCheck1">
               Remember me
             </label>
           </div>
