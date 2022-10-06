@@ -257,7 +257,7 @@ const Holidays = () => {
         <DialogContent className="popup_content_box">
       
           <TextField
-           className={'popupfieldss label_text'}
+           className={''}
             autoFocus
             margin="dense"
             id="name"
@@ -270,7 +270,7 @@ const Holidays = () => {
           />
          
           <TextField
-           className={'popupfieldss label_text'}
+           className={''}
             autoFocus
             margin="dense"
             id="name"
@@ -283,7 +283,7 @@ const Holidays = () => {
 
           />
           <TextField
-           className={'popupfieldss label_text'}
+           className={''}
             autoFocus
             margin="dense"
             id="name"
@@ -293,11 +293,11 @@ const Holidays = () => {
             variant="standard"
             onChange={onChangeToDays} 
             value={toDays}
-placeholder={''}
+            placeholder={''}
           />
           
           <TextField
-           className={'popupfieldss label_text'}
+           className={''}
             autoFocus
             margin="dense"
             id="name"
@@ -324,7 +324,7 @@ placeholder={''}
             </div>
             </div>
 
-<div className="p-0 mb-0 mt-4 text-dark ">
+           <div className="p-0 mb-0 mt-4 text-dark ">
           <p className="text-dark mb-0 p-0 h4">IsHoliday</p>
          <input type={'checkbox'}  onChange={OnholidayChange}
             value={hoday}/>
@@ -348,7 +348,7 @@ placeholder={''}
         <DialogContent>
         
           <TextField
-           className={'popupfieldss label_text'}
+           className={'popupfieldss'}
             autoFocus
             margin="dense"
             id="name"
@@ -361,7 +361,7 @@ placeholder={''}
           />
        
           <TextField
-           className={'popupfieldss label_text'}
+           className={'popupfieldss'}
             autoFocus
             margin="dense"
             id="name"
@@ -374,7 +374,7 @@ placeholder={''}
 
           />
           <TextField
-           className={'popupfieldss label_text'}
+           className={'popupfieldss'}
             autoFocus
             margin="dense"
             id="name"
@@ -388,7 +388,7 @@ placeholder={''}
           />
           
           <TextField
-           className={'popupfieldss label_text'}
+           className={'popupfieldss'}
             autoFocus
             margin="dense"
             id="name"
