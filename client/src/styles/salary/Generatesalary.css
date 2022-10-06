@@ -27,7 +27,10 @@ label {
 	margin-left: 10px;
 	margin-right: 10px;
 }
-
+.labletextnew{
+    font-size: 15px;
+    font-weight: 500px !important;
+}
 
 /* salary slip */
 

@@ -172,7 +172,7 @@ const Department = () => {
               onClick={updateClick.bind(this, row.id)}
               className="firsticpn fa-solid fa-plus"
             ></i>
-            ,
+            
             <i
               onClick={CAnceledit.bind(this, row.id)}
               className="fa-solid fa-xmark"
@@ -185,7 +185,7 @@ const Department = () => {
               onClick={editClick.bind(this, row.id)}
               className="firsticpn fas fa-pen"
             ></i>
-            ,
+            
             <i
               onClick={DelClick.bind(this, row.id)}
               className="fas fa-trash-alt"
