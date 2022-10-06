@@ -139,8 +139,8 @@ const Emplist = () => {
         },
         {
           name: "Actions",
-          cell: (row) =>( <div className='action_btn'> <button  onClick={HandleClick} value={row.id} className="firsticpn fas fa-pen"></button>
-          <button  onClick={onClickdelete} value={row.id}   className="fas fa-trash-alt"></button>
+          cell: (row) =>( <div className='action_btn'> <button  onClick={HandleClick} value={row.id} className="firsticonn fas fa-pen"></button>
+          <button  onClick={onClickdelete} value={row.id}   className="firsticonn fas fa-trash-alt"></button>
           </div> ),
           ignoreRowClick: true,
           allowOverflow: true,

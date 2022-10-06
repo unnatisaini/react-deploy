@@ -219,7 +219,7 @@ const Department = () => {
                 <div className="btn-group mr-2 px-5 addinput_popup">
              
               <div class="col-sm-1">
-                {/* <div class="addinput_popup"> */}
+                <div class="addinput_popup">
                   <button
                     type="button"
                     class="btn btn-sm btn-outline-secondary px-5 py-2 add-new"
@@ -233,6 +233,7 @@ const Department = () => {
                   ) : null}
                 </div>
               </div>
+            </div>
             </div>
            
             <DataTable

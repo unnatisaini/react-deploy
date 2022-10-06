@@ -56,4 +56,8 @@ display: flex;
 .form-control.checkbox_status {
     width: 0 !important;
   }
+  .firsticonn{
+    background: none;
+    border: none;
+  }
 
