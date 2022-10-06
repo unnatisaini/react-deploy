@@ -56,7 +56,7 @@ const Login = () => {
       
  <div className='signin_logo'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
         <div className="mb-3">
-          <label>Email address</label>
+          <label className="label_text">Email address</label>
           <input
             type="email"
             className="form-control label_text"
@@ -66,7 +66,7 @@ const Login = () => {
           />
         </div>
         <div className="mb-3">
-          <label>Password</label>
+          <label className="label_text">Password</label>
           <input
             type="password"
             className="form-control label_text"
@@ -79,7 +79,7 @@ const Login = () => {
           <div className="custom-control custom-checkbox">
             <input
               type="checkbox"
-              className="custom-control-input label_text"
+              className="custom-control-input"
               id="customCheck1"
             />
             <label className="custom-control-label label_text" htmlFor="customCheck1">
@@ -89,8 +89,8 @@ const Login = () => {
         </div>
         <div className="d-grid">
           <button type="submit" className="btn btn-success submit_btn" onClick={onSubmit} >
-           <h3>Submit</h3> 
-          </button>
+           <p className='submit_text'>Submit</p></button>
+        
         </div>
        
       </div>
