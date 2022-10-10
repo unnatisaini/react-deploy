@@ -144,10 +144,11 @@ ul.online-users li span.online-dot{
   margin: auto;
 }
 
-img.profile-photo {
-    height: 58px;
-    width: 58px;
-    border-radius: 50%;
+.profile-photo {
+  height: 72px;
+  width: 211px;
+  padding: 5px;
+  margin: 10px;
 }
 
 ul.online-users {

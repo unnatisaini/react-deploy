@@ -82,6 +82,9 @@ function Generatesalary(props) {
   useEffect(() => {
     getEmployees();
   }, [firstdate, idd, lastdate]);
+ 
+console.log("_______iddd_________"+idd)
+console.log("_______netsal_________"+netsal)
   const ongeneratesalary = () => {
     Axios.post("https://apnaorganicstore.in/index/salarycreate", {
       staff_id: idd,
@@ -192,8 +195,10 @@ function Generatesalary(props) {
     console.log("deductionn" + deductionn)
 
     let deduct = localStorage.setItem('deduction', deductionn)
-    let netsalary = salary - deductionn;
+    let netsalary = salary-deductionn ;
+    console.log("netsal++++++++"+netsalary)
     setnetsal(netsalary)
+    
   }
 
   // 
@@ -227,30 +232,21 @@ function Generatesalary(props) {
                             <div class="controls">
                               <div class="row">
                                 <div class="col-md-6">
-                                  <div class="form-group">
+                                  <div class="form-group sal_input_text">
                                     <label for="form_name" className='labletextnew'>
                                       Name of Employee *
                                     </label>
-                                    <input
-
-                                      id="form_name"
-                                      type="text"
-                                      name={name}
-                                      class="form-control label_text"
-                                      placeholder=""
-                                      required="required"
-                                      data-error="Firstname is required."
-                                      value={name}
-                                      onChange={nameOnchange}
-                                    />
+                                   <small class="label_text detail_text  p-2">{name}</small>
                                   </div>
                                 </div>
                                 <div class="col-md-6">
-                                  <div class="form-group">
+                                  <div class="form-group sal_input_text">
                                     <label for="form_lastname" className='labletextnew'>
                                       Employee Id *
                                     </label>
-                                    <input
+                                   <small class="label_text detail_text p-2">{stid}</small>
+
+                                    {/* <input
                                       id="form_lastname"
                                       type="text"
                                       class="form-control label_text"
@@ -260,7 +256,7 @@ function Generatesalary(props) {
                                       name={stid}
                                       value={stid}
                                       onChange={stidOnchange}
-                                    />
+                                    /> */}
                                   </div>
                                 </div>
                               </div>
@@ -270,9 +266,11 @@ function Generatesalary(props) {
                             </h4>
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group sal_input_text">
                                   <label for="form_name" className='labletextnew'>Account no. *</label>
-                                  <input
+                                  <small class="label_text detail_text p-2">{accno}</small>
+
+                                  {/* <input
                                     id="form_name"
                                     type="text"
                                     name={accno}
@@ -281,15 +279,17 @@ function Generatesalary(props) {
                                     class="form-control label_text "
                                     placeholder=""
                                     required="required"
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                               <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group sal_input_text">
                                   <label for="form_lastname " className='labletextnew'>
                                     Name of Bank *
                                   </label>
-                                  <input
+                                  <small class="label_text detail_text p-2">{banknam}</small>
+
+                                  {/* <input
                                     id="form_lastname"
                                     type="text"
                                     name={banknam}
@@ -298,7 +298,7 @@ function Generatesalary(props) {
                                     class="form-control label_text"
                                     placeholder=""
                                     required="required"
-                                  />
+                                  /> */}
                                 </div>
                               </div>
                             </div>
@@ -668,7 +668,7 @@ function Generatesalary(props) {
                                 </div>
 
                                 <div class="mt-3">
-                                  <button type="submit" onClick={ongeneratesalary} class="btn btn-primary btn-send  pt-2"><h3>Generate Salary</h3></button>
+                                  <button type="submit" onClick={ongeneratesalary} class="btn sign_out_btn text-white text-center px-3 py-2  pt-2"><h3>Generate Salary</h3></button>
                               </div>
                               </div>
                             </div>

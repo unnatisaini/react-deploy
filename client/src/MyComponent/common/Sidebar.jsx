@@ -1,21 +1,31 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import{FcConferenceCall, FcLeave, FcOvertime, FcSurvey, FcHome, FcRating, FcDepartment} from "react-icons/fc";
+import company_logo from "../../../src/img/Pvtltd.png";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  let navigate = useNavigate();
+  const signOut = () =>{
+    localStorage.setItem("authenticated",null);
+    navigate("/EmployeeManagement/");
+  }
     return (
         <>
 
 
              <nav className="col-md-2 d-none d-md-block bg-light sidebar">
 
-            <div class="profile-card">
+            {/* <div class="profile-card">
                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo"/>
             	<h5><a href="#" class="text-white">Sarah Cruiz</a></h5>
             	<a href="#" class="text-white"><i class="fa fa-user"></i> 1,299 followers</a>
-            </div>
+            </div> */}
+         <img src={company_logo} class="profile-photo"/>
+
             <ul class="nav-news-feed">
               <li className='icon_text'>
-                <i class="fa-solid fa-house m-0"></i>
+                <FcHome/>
                 <div className='m-0'>
   
               <Link to="/dashboard" className="nav-link">
@@ -23,17 +33,18 @@ const Sidebar = () => {
                     Dashboard
                   </Link>
                   </div></li>
-                  <li><i class="fa fa-user m-0"></i><div className='m-2'>
+                  <li><FcConferenceCall className='h1'/><div className='m-0'>
                     <Link to="/Emplist" className="nav-link">
                     <span data-feather="shopping-cart"></span>
+                    
                     Employee
                   </Link></div></li>
-              <li><i class="fa-solid fa-building-user m-0"></i><div className='m-0'>
+              <li><FcDepartment className='m-0'/><div className='m-0'>
                  <Link to="/Department" className="nav-link">
                     <span data-feather="users"></span>
                     Department
                   </Link></div></li>
-                  <li><i className='fa fa-file-powerpoint-o  m-0'></i><div className='m-3'>
+                  <li><FcSurvey className='m-0'/><div className='m-1'>
                      <Link to="/Attendance" className="nav-link">
                     <span data-feather="users"></span>
                     Attendance
@@ -43,22 +54,26 @@ const Sidebar = () => {
                     <span data-feather="users"></span>
                     Salary
                   </Link></div></li>
-                  <li><i class="fa fa-bed  m-0"></i><div className='m-0'>
+                  <li><FcLeave className='m-0'/><div className='m-0'>
                     <Link to="/leaves" className="nav-link">
                     <span data-feather="users"></span>
                     Leaves
                   </Link></div></li>
-                  <li><i class="fa fa-area-chart  m-0"></i><div className='m-0'>
+                  <li><FcOvertime className='m-0'/><div className='m-0'>
                     <Link to="/all_leaves" className="nav-link">
                     <span data-feather="users"></span>
                    History Leaves
                   </Link></div></li>
-                  <li><i class="fa fa-area-chart  m-0"></i><div className='m-0'>
+                  <li><FcRating className='m-0'/><div className='m-0'>
                     <Link to="/holiday" className="nav-link">
                     <span data-feather="users"></span>
                    Holiday
                   </Link></div></li>
               
+                  <button className="btn sign_out_btn" onClick={signOut} >
+          <p className="sign_out_text">Sign out</p>
+           </button>
+       
             </ul>
         
   </nav>

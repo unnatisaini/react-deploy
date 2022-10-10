@@ -4,7 +4,7 @@ var db = require("../database");
 async function salary(req, res) {
   const firstdate = req.params.firstdate;
   const lastdate = req.params.lastdate;
-  db.query("SELECT staff_tbl.id,staff_tbl.staff_name,staff_tbl.salary,salary_tbl.total,salary_tbl.added_on,salary_tbl.updated_on FROM staff_tbl LEFT JOIN salary_tbl ON salary_tbl.staff_id=staff_tbl.id AND salary_tbl.added_on BETWEEN '"+firstdate+"' AND '"+lastdate+"' ORDER BY staff_tbl.id  DESC ", (err, result) => {
+  db.query("SELECT staff_tbl.id,staff_tbl.staff_name,staff_tbl.salary,salary_tbl.total,salary_tbl.added_on,salary_tbl.updated_on FROM staff_tbl LEFT JOIN salary_tbl ON salary_tbl.staff_id=staff_tbl.id AND salary_tbl.added_on BETWEEN '" + firstdate + "' AND '" + lastdate + "' ORDER BY staff_tbl.id  DESC ", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -29,6 +29,7 @@ async function salarydetail(req, res) {
 }
 
 async function salarycreate(req, res) {
+
   const staff_id = req.body.staff_id;
   const staff_name = req.body.staff_name;
   const basic_salary = req.body.basic_salary;
@@ -39,26 +40,26 @@ async function salarycreate(req, res) {
   const tax = req.body.tax;
 
   db.query(
-    "INSERT INTO salary_tbl(staff_id,staff_name,	basic_salary,allowance, total,added_by,	updated_on,tax) VALUES ( '" +
-      staff_id +
-      "','"+staff_name+"','" +
-      basic_salary +
-      "', '" +
-      allowance +
-      "','" +
-      total +
-      "','" +
-      added_by +
-      "', '" +
-      updated_on +
-      "','" +
-      tax +
-      "') ON DUPLICATE KEY UPDATE total = '"+total+"'",total,
+    "INSERT INTO salary_tbl(staff_id,staff_name,basic_salary,allowance,total,added_by,updated_on,tax) VALUES ( '" +
+    staff_id +
+    "','" + staff_name + "','" +
+    basic_salary +
+    "', '" +
+    allowance +
+    "','" +
+    total +
+    "','" +
+    added_by +
+    "', '" +
+    updated_on +
+    "','" +
+    tax +
+    "') ON DUPLICATE KEY UPDATE total = '" + total + "'", total,
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Values Inserted");
+        res.send("Values Inserted" + JSON.stringify(result));
       }
     }
   );

@@ -94,6 +94,7 @@ app.get('/holidayDelete/:group_id',holidayDelete);
 app.get('/document',setting);
 app.post('/upload/:id', upload.single('image'),  (req, res) => {
 
+  console.log("hello darling ")
   if (!req.file) {
     console.log("file--------> "+JSON.stringify(req.file))
       console.log("No file upload");

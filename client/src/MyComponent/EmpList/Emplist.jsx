@@ -140,7 +140,7 @@ const Emplist = () => {
         {
           name: "Actions",
           cell: (row) =>( <div className='action_btn'> <button  onClick={HandleClick} value={row.id} className="firsticonn fas fa-pen"></button>
-          <button  onClick={onClickdelete} value={row.id}   className="firsticonn fas fa-trash-alt"></button>
+          <button  onClick={onClickdelete} value={row.id} className="firsticonn fas fa-trash-alt"></button>
           </div> ),
           ignoreRowClick: true,
           allowOverflow: true,
@@ -161,12 +161,12 @@ const Emplist = () => {
               <h1 className="h1"><b>Employee List</b></h1>
               <div className="btn-group mr-2 px-5">
 
-              <button className="btn btn-sm btn-outline-secondary px-5 py-2" onClick={()=> {navigate("/AddEmployee");}}>
+              <button className="btn sign_out_btn text-white text-center" onClick={()=> {navigate("/AddEmployee");}}>
                   <h3>Add employee</h3>
                     </button>
               </div>
             </div>
-           <div className="dailyattendance_table">
+           <div className="employee_table">
               <div className="dailyattendance_table_box"> 
                 
                

@@ -56,17 +56,21 @@ float: right;
     text-align: center;
     display: flex;
     flex-direction: column;  
+    font-size: 15px;
+}
+.table{
+    padding: 0px !important;
 }
 
 .dailyattendance_table .dailyattendance_table_box  .monthname_sort {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
     font-size: 32px;
     flex-direction: row;
     width: auto;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .dailyattendance_table .dailyattendance_table_box .monthname_sort .monthname_text{
     font-size: 32px;
@@ -176,23 +180,20 @@ float: right;
 /* end */
 
 /* newtable */
-.dailyattendace_table tr:hover
+/* .dailyattendace_table tr:hover
 {
     color: rgba(0,0,0,0.87);
     background-color: #EEEEEE;
     
-}
+} */
 .dailyattendace_table th:last-child {
     width: unset !important;
 }
 .dailyattendace_table .dailyattendace_tbody .leavestatusdropdown select {
-    width: 25px;
-    appearance: none;
-    padding: 0 6px;
+   width: 28px;
+appearance: none;
 }
 .dailyattendace_table .dailyattendace_tbody .employeenametrow{
-text-overflow: ellipsis;
-white-space: nowrap;
 overflow: hidden;
 }
 
@@ -204,6 +205,7 @@ overflow: hidden;
 display: flex;
 flex-direction: column;
 gap: 5px;
+margin-top: 10px;
 }
 .table.table-striped.dailyattendace_table .dailyattendace_thead .daydin {
     margin: 0;

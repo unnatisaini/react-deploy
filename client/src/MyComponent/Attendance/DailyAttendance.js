@@ -110,7 +110,7 @@ function DailyAttendance(props) {
                 <h2 className="h1"><b>Daily Attendance</b></h2>
                 <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary px-5 py-2">
+                    <button className="btn sign_out_btn text-white text-center px-0 py-3">
                      <h3>Attendance History</h3> 
                     </button>
                   </Link>
@@ -171,7 +171,7 @@ function DailyAttendance(props) {
                   />
                   <div class="table-responsive">
                     <table
-                      class="table dailyattendace_table"
+                      class="table dailyattendace_table mt-2"
                       id="myTable"
                       pagination
                     >

@@ -1,7 +1,7 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import '../../styles/Attendance/dashboard.css';
+// import company_logo from "../../../src/img/Pvtltd.png";
 const Header = () => {
   let navigate = useNavigate();
   const signOut = () =>{
@@ -10,17 +10,19 @@ const Header = () => {
   }
   return (
     <div>
-      <div className="header_box">
+      {/* <div className="header_box">
 
-        <p className="company_name">
-          We2Code Technology
-        </p>
+       
+         
+      
+         <img src={company_logo} class="profile-photo"/>
+        
          <button className="btn sign_out_btn" onClick={signOut} >
           <p className="sign_out_text">Sign out</p>
            </button>
        
      
-      </div>
+      </div> */}
     </div>
   );
 };

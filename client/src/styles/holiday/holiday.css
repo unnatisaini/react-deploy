@@ -2,7 +2,7 @@
 font-size: 25px;
 }
 .popup_main_box .popupfieldss {
-    font-size: 15px;
+    font-size: 15px !important;
 }
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
@@ -19,4 +19,11 @@ input[type=date]:focus::-webkit-datetime-edit {
     flex-direction: column;
     gap: 20px;
     margin: 20px 0;
+}
+.jxflYm{
+    font-size: 15px !important;
+    color: #000000 !important;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    font-size: 15px !important;
 }

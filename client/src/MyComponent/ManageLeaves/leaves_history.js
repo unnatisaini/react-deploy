@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import moment from "moment";
 import DataTable from "react-data-table-component";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
 import { useNavigate } from "react-router-dom";
-import SearchSection from "../common/SearchSection";
-import FilterComponent from "../EmpList/FilterComponent";
+
 
 const ManageLeaves = () => {
   let navigate = useNavigate();

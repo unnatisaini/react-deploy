@@ -187,12 +187,14 @@ let wdays = momentmonth -  holidaycount.count;
               role="main"
               className="col-md-9 ml-sm-auto col-lg-12 pt-3 px-4"
             >
-              <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-2 mt-3 ">
+              <div className="dailyattendance_table">
+
+              <div className="d-flex justify-content-between align-items-center  ">
                 <h2 className="h1"><b>Attendance History</b></h2>
                 <div className="btn-group mr-2 px-5">
                   <Link to="/AttendanceHistory" className="nav-link">
-                    <button className="btn btn-sm btn-outline-secondary px-5 py-2">
-                     Confirm
+                    <button className="btn sign_out_btn text-white text-center">
+                     <h3>Confirm</h3>
                     </button>
                   </Link>
                 </div>
@@ -240,7 +242,7 @@ let wdays = momentmonth -  holidaycount.count;
  {/* bottom secrtion */}
  <div className="attendancehistory_list mt-2">
             {/* month sorting */}
-            <div className="monthname_sort">
+            <div className="monthname_sort mb-5">
                   <BsFillCaretLeftFill onClick={PreviousmonthChange} />
                   <h4 className="monthname_text">{moment(attendmonth).format('MMMM-YYYY')}</h4>
                   <BsFillCaretRightFill onClick={NextmonthChange} />
@@ -249,7 +251,7 @@ let wdays = momentmonth -  holidaycount.count;
  
             {/*  */}
 {/* history */}
-<div className="dailyattendance_table_box">
+<div className="dailyattendance_table_box mt-3">
 {/* <Searchsection
                   onNameChange={(e) => setFilterText(e.target.value)}
                   onClear={handleClear}
@@ -269,6 +271,7 @@ let wdays = momentmonth -  holidaycount.count;
                 </div>
 
 {/* historyend */}
+            </div>
             </div>
             </main>
         </div>

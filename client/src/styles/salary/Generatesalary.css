@@ -33,6 +33,17 @@ label {
     font-weight: 500 !important;
     padding: 2px;
 }
+.sal_input_text{
+    display: flex;
+    flex-direction: column;
+}
+.detail_text{
+    width: auto;
+    border: 1px solid #ced4da;
+    background: #ffffff;
+    border-radius: 4px;
+    height: 34px;
+}
 
 /* salary slip */
 

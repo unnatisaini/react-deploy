@@ -1,5 +1,3 @@
-import '../../styles/salary/Salary_list.css';
-import { Link, useNavigate } from "react-router-dom";
 import DataTable from 'react-data-table-component';
 import Sidebar from '../common/Sidebar';
 import Header from '../common/Header';
@@ -9,19 +7,21 @@ import moment from "moment";
 import React,{useEffect} from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 
 
-const ExpandedComponent = ({ data }) => <div className="dropdown_detail">
-<div className="dropdown_personaldet">
+const ExpandedComponent = ({ data }) =>
+//  <div className="dropdown_detail">
+{/* <div className="dropdown_personaldet">
 <h6 className="datastaffname">{data.staff_name}</h6>
 <h6 className="mx-3">{data.gender}</h6>
 <h6>{data.city}</h6>
-</div>
-<div className="dropdown_personaldetail">
+</div> */}
+{/* <div className="dropdown_personaldetail">
 <h6 className="datastaffname">{data.address}</h6>
 <h6>{moment(data.dob).format('DD-MMMM-YYYY')}</h6>
-</div>
-</div>;
+</div> */}
+// </div>;
 function Salary_list(props) {
   const [employeeList, setEmployeeList] = useState([]);
   const [salaryList, setsalaryList] = useState([]);
@@ -73,14 +73,7 @@ function Salary_list(props) {
   localStorage.setItem('staffid',staffidd);
   navigator('/GenerateSalary')
   }
- 
-  // let ageSum = 0
-  // for (let i = 0; i <= salaryList.length; i++) {
-  //   ageSum += salaryList[i].salary
-  // }
-  // console.log("ageSum------4444444------"+ageSum);
-
-  const columns = [
+const columns = [
     {
       name: 'Id',
       selector: row => row.id,
@@ -105,9 +98,9 @@ function Salary_list(props) {
   },
     {
       name: 'Action',
-      selector: row => <button className="btn btn-lg btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
+      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
       // && row.total != null || row.total != ''
-       ?  {undefined}
+       ?  0
       :salarygenereate}>{(row.total === null || row.total === '' || row.total === '0')  ? 'Generate salary' : 'Generated'}</button>,
       sortable: false,
 
@@ -127,18 +120,17 @@ const navigator=useNavigate();
           <Sidebar/>
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 salarylistbox_table">
-          <div className="salarydata_table">
-
+          <div className="emp_table">
             <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
               <h1 className="h1"><b>Salary Management</b></h1>
-              <div className="btn-group mr-2 px-5">
-                
+              <div className="btn-toolbar mb-2 mb-md-0">
+                <div className="btn-group mr-2">
                 <Link to='/Salary_history' className="nav-link">
 
-                  <button className="btn btn-sm btn-outline-secondary px-5 py-2"><h3>Salary Summary</h3></button>
+                  <button className="btn btn-sm btn-outline-secondary">Salary Summary</button>
                 </Link>
                  
-               
+                </div>
                 
               </div>
             </div>
@@ -153,7 +145,6 @@ const navigator=useNavigate();
                   <BsFillCaretRightFill onClick={NextmonthChange} />
                 </div>
             <DataTable
-            className='emp_data'
             columns={columns}
             data={salaryList}
             pagination
@@ -161,7 +152,7 @@ const navigator=useNavigate();
             expandableRowsComponent={ExpandedComponent}
           
         />
-        </div>
+          </div>
           </main>
 
         </div>

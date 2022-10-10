@@ -103,7 +103,7 @@ width: 10%;
 
 .attendancehistory_list .monthname_sort{
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
     font-size: 32px;
     flex-direction: row;

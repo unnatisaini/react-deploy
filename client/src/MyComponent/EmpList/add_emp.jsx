@@ -300,7 +300,7 @@ const AddEditEmp = (props) => {
           </div>
 
 
-          <div class="container_fluid">
+          <div class="container_fluid px-5 py-0">
 
 <Tabs>
     <TabList>
@@ -360,12 +360,13 @@ const AddEditEmp = (props) => {
         </div>
       </div>
     </div>
-    <div class="row">
+    
+    <div class="row mt-4">
       <div class="col-md-4">
         <div class="form-group">
           <label for="form_name" className='label_text'>Qualification*</label>
 
-          <div class="input-group mb-3">
+          <div class="input-group ">
             <input type="text" class="form-control label_text" placeholder=""
               aria-label="Username" aria-describedby="basic-addon1"
               onChange={qualificationOnchange} />
@@ -390,7 +391,7 @@ const AddEditEmp = (props) => {
         </div>
       </div>
     </div>
-  </div>
+
 
 
   <div class="row mt-4">
@@ -536,12 +537,12 @@ const AddEditEmp = (props) => {
 
           
 
-        
+        </div>
       </div>
     </div>
     </div>
   <div class="col-md-3 mt-3">
- <button type="button" class="btn btn-primary pt-2 " onClick={addEmployee}><h3>Add Employee</h3></button>
+ <button type="button" class="btn sign_out_btn text-white text-center " onClick={addEmployee}><h3>Add Employee</h3></button>
 </div>
 {/* </form> */}
 

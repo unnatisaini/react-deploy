@@ -208,10 +208,12 @@ const Department = () => {
           <Sidebar />
           {/*  */}
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+   
             
-          <div className="dailyattendance_table">
+          <div className="department_table">
+          <div className="dailyattendance_table_box"> 
             
-            <div class=" d-flex justify-content-between align-items-center border-bottom pb-5">
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
              
                 <h1 className="h1">
                   <b>Department Details</b>
@@ -222,15 +224,17 @@ const Department = () => {
                 <div class="addinput_popup">
                   <button
                     type="button"
-                    class="btn btn-sm btn-outline-secondary px-5 py-2 add-new"
+                    class="btn sign_out_btn text-white text-center add-new"
                     onClick={addDEpartment}
                   >
-                    <i class="fa fa-plus"></i> Add New
+                 {/* <i class="fa fa-plus"></i> */}
+                 <h3> Add New</h3>
                   </button>
                   {isnameadd === true ? (
                    <Inputadd value={departname} onChange={onNameAdd} onCrossclick={CancelClick}/>
                    
                   ) : null}
+                </div>
                 </div>
               </div>
             </div>
@@ -246,6 +250,7 @@ const Department = () => {
               subHeaderComponent={subHeaderComponent}
             />
             </div>
+           
           </main>
         </div>
       </div>

@@ -25,17 +25,28 @@ function Dashboard(props) {
   let navigate = useNavigate();
   let Auth =  localStorage.getItem("authenticated");
   console.log("local chala -- > "+Auth)
+  const active = ({isActive}) => {
+     return{
+      fontWeight: isActive ? 'bold' : 'normal',
+     }
+
+     
+  }
   return (
     <div>
       <Routes>
       <Route path="/" element={<Login/>} />
 {Auth != 'success' ? navigate("/") :
+
+
+
 <>
 
-<Route path="/dashboard" element={<Dashboardd/>} />
-      <Route path="/Emplist" element={<Emplist/>} />
+
+<Route style={active} path="/dashboard" element={<Dashboardd/>} />
+      <Route style={active} path="/Emplist" element={<Emplist/>} />
       <Route path="/login" element={<Login/>} />
-      <Route path="/AddEmployee" element={<AddEmployee/>} />
+      <Route style={active} path="/AddEmployee" element={<AddEmployee/>} />
       <Route path="/UpdateEmployee" element={<UpdateEmp/>} />
       <Route path="/EmployeeDetail" element={<EmployeeDetail/>} />
       <Route path="/department" element={<Department/>} />

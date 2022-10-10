@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import moment from "moment";
 import DataTable from "react-data-table-component";
@@ -22,6 +22,7 @@ const CurrentLeaves = () => {
   const getEmployees = () => {
     Axios.get(`https://apnaorganicstore.in/index/pendingleave`).then((response) => {
       setleavesList(response.data);
+      console.log("----------"+leavesList)
     });
   };
   useEffect(() => {

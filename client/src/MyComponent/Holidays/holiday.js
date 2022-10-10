@@ -12,6 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import { confirm } from "react-confirm-box";
 import moment from 'moment';
+import { Input } from "@mui/material";
 const Holidays = () => {
    const [open, setOpen] = React.useState(false);
    const [editopen, seteditOpen] = React.useState(false);
@@ -255,26 +256,25 @@ const Holidays = () => {
       <Dialog open={open} onClose={handleClose} className={'popup_main_box'}>
         <DialogTitle className="popupheading"><b>ADD EVENT</b></DialogTitle>
         <DialogContent className="popup_content_box">
-      
-          <TextField
+        <label className={'label_text'} >Event</label>
+          <Input
            className={''}
             autoFocus
             margin="dense"
             id="name"
-            label="Event"
             type="text"
             fullWidth
             variant="standard"
             onChange={onChangeEvent}
             value={event}
           />
+        <label className={'label_text'} >From</label>
          
-          <TextField
-           className={''}
+          <Input
+           className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="From"
             type="date"
             fullWidth
             variant="standard"
@@ -282,12 +282,13 @@ const Holidays = () => {
             value={fromDays}
 
           />
-          <TextField
-           className={''}
+        <label className={'label_text'} >To</label>
+
+          <Input
+           className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="To"
             type="date"
             fullWidth
             variant="standard"
@@ -295,13 +296,13 @@ const Holidays = () => {
             value={toDays}
             placeholder={''}
           />
+        <label className={'label_text'} >Description</label>
           
-          <TextField
-           className={''}
+          <Input
+           className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="Description"
             type="text"
             fullWidth
             variant="standard"
@@ -310,30 +311,30 @@ const Holidays = () => {
 
           />
 
-           <p className="p-0 mb-0 mt-4 text-dark h4">Status</p>
+           <p className="p-0 mb-0 mt-4 text-dark label_text">Status</p>
            <div className="p-0 mb-0 text-dark d-flex align-items-center">
            <div className={'mr-4 d-flex align-items-center'}>
-           <p className="mb-0 mr-2 h5">Active</p>
+           <p className="mb-0 mr-2 h4">Active</p>
          <input type={'radio'}  onChange={onChangeStatuss}
             value={1} name={Status+event} />
             </div>
            <div className={'d-flex align-items-center px-5'}>
-           <p className="mb-0 mr-2 h5">InActive</p>
+           <p className="mb-0 mr-2 h4">InActive</p>
              <input type={'radio'}  onChange={onChangeStatuss}
             value={0} name={Status+event}/>
             </div>
             </div>
 
            <div className="p-0 mb-0 mt-4 text-dark ">
-          <p className="text-dark mb-0 p-0 h4">IsHoliday</p>
+          <p className="text-dark mb-0 p-0 label_text">IsHoliday</p>
          <input type={'checkbox'}  onChange={OnholidayChange}
             value={hoday}/>
         </div>  
          
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Cancel</b></Button>
-       <Button onClick={handleadd}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Add Event</b></Button> 
+          <Button onClick={handleClose}  class='btn sign_out_btn text-white text-center'><b><h3>Cancel</h3></b></Button>
+       <Button onClick={handleadd}  class='btn sign_out_btn text-white text-center '><b><h3>Add Event</h3></b></Button> 
       
         </DialogActions>
       </Dialog>
@@ -347,25 +348,26 @@ const Holidays = () => {
         <DialogTitle className={'popupheading'}>UPDATE EVENT</DialogTitle>
         <DialogContent>
         
-          <TextField
-           className={'popupfieldss'}
+          <div className="event_table">
+          <label className="label_text">Event</label>
+          <Input
+            className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="Event"
             type="text"
             fullWidth
             variant="standard"
             onChange={onChangeEvent}
             value={event}
           />
-       
-          <TextField
-           className={'popupfieldss'}
+          <label className="label_text">From</label>
+
+          <Input
+           className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="From"
             type="date"
             fullWidth
             variant="standard"
@@ -373,12 +375,13 @@ const Holidays = () => {
             value={fromDays}
 
           />
-          <TextField
-           className={'popupfieldss'}
+          <label className="label_text">To</label>
+
+          <Input
+           className={'label_text'}
             autoFocus
             margin="dense"
             id="name"
-            label="To"
             type="date"
             fullWidth
             variant="standard"
@@ -386,13 +389,13 @@ const Holidays = () => {
             value={toDays}
 
           />
+          <label className="label_text">Description</label>
           
-          <TextField
-           className={'popupfieldss'}
+          <Input
+           className="label_text"
             autoFocus
             margin="dense"
             id="name"
-            label="Description"
             type="text"
             fullWidth
             variant="standard"
@@ -400,11 +403,11 @@ const Holidays = () => {
             value={description}
 
           />
-
-           <p className="p-0 mb-0 mt-4 text-dark h4">Status</p>
+</div>
+           <label className="p-0 mb-0 mt-4 text-dark label_text">Status</label>
            <div className="p-0 mb-0 text-dark d-flex align-items-center">
            <div className={'mr-4 d-flex align-items-center'}>
-           <p className="mb-0 mr-2 h5" >Active</p>
+           <p className="mb-0 mr-2 h4" >Active</p>
            {Status === 1 ?
          <input type={'radio'}  onChange={onChangeStatuss}
             value={1} name={Status+event} checked/>:
@@ -413,7 +416,7 @@ const Holidays = () => {
             }
             </div>
            <div className={'d-flex align-items-center px-5'}>
-           <p className="mb-0 mr-2 h5">InActive</p>
+           <p className="mb-0 mr-2 h4">InActive</p>
            {Status === 0 ?
          <input type={'radio'}  onChange={onChangeStatuss}
             value={0} name={Status+event} checked/>:
@@ -423,7 +426,7 @@ const Holidays = () => {
             </div>
 
 <div className="p-0 mb-0 mt-4 text-dark">
-          <p className="text-dark mb-0 p-0 h4">IsHoliday</p>
+          <label className="text-dark mb-0 p-0 label_text">IsHoliday</label>
           {hoday === 1 ?
          <input type={'checkbox'}  onChange={OnholidayChange}
             value={hoday} checked/>  : <input type={'checkbox'}  onChange={OnholidayChange}
@@ -432,8 +435,8 @@ const Holidays = () => {
          
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleeditClose}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Cancel</b></Button>
-       <Button onClick={updateClick}  class='btn btn-sm btn-outline-secondary px-5 py-2  add-new'><b>Update Event</b></Button>  
+          <Button onClick={handleeditClose}  class='btn sign_out_btn text-white text-center px-5 py-2   add-new'><b>Cancel</b></Button>
+       <Button onClick={updateClick}  class='btn sign_out_btn text-white text-center px-5 py-2  add-new'><b>Update Event</b></Button>  
        
         </DialogActions>
       </Dialog>
@@ -452,8 +455,8 @@ const Holidays = () => {
           
             
             <div className="btn-group mr-2 px-5">
-              <Button variant="outlined" class='btn btn-sm btn-outline-secondary px-5 py-2  add-new ' onClick={handleClickOpen} >
-          <b> Add Events</b> 
+              <Button variant="outlined" class='btn sign_out_btn text-white text-center px-5 py-2  add-new ' onClick={handleClickOpen} >
+          <b> <h3> Add Events</h3></b> 
             </Button>
             </div>
           </div>
@@ -470,7 +473,7 @@ const Holidays = () => {
           </main>
         </div>
       </div>
-      <script></script>
+      
     </>
   );
 };

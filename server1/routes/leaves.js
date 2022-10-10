@@ -12,7 +12,7 @@ async function getLeavesData(req, res) {
   });
  }
  async function getPendingLeaves(req, res) {
-  db.query("SELECT * FROM leave_tbl Where status = 3", (err, result) => {
+  db.query("SELECT * FROM leave_tbl Where status =3", (err, result) => {
     if (err) {
       console.log(err);
     } else {

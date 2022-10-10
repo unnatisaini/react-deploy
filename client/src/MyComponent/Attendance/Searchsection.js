@@ -10,17 +10,10 @@ const Searchsection = (props) => {
                                     value={props.nameval}
                                     onMonthChange={props.onNameChange}
                                       onClear={props.onClear}
+                                     
                                     
                                   />
-                                  {/* <SearchSection
-                                    labeltext={"Date"}
-                                    inputtype={"date"}
-                                    value={props.monthval}
-                                    onMonthChange={props.onMonthChange}
-                                      onClear={props.onClear}
-                                 
-
-                                  /> */}
+                                  
                                 </div>
         
     );

@@ -29,6 +29,8 @@ const ClearButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 9px;
+  padding: 11px;
 `;
 
 const Inputadd = (props) => {
@@ -41,6 +43,7 @@ const Inputadd = (props) => {
       value={props.value}
       onChange={props.onChange}
       name={"department"}
+      className={'label_text mt-3'}
       
     />
     <ClearButton onClick={props.onCrossclick}>X</ClearButton>

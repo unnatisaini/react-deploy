@@ -37,6 +37,7 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
       placeholder="Filter table data..."
       value={filterText}
       onChange={onFilter}
+      className={'label_text'}
     />
     <ClearButton onClick={onClear}>X</ClearButton>
   </>

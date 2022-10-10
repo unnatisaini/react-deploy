@@ -97,15 +97,17 @@ const Dashboardd = () => {
               <Summarycard employeenumb={employeelength} presentemployee={employeelength - (presentcount?.length)} presentpercent={(employeelength / (employeelength - (presentcount?.length)) * 100).toFixed(2)} absentemployee={presentcount?.length} absentpercent={(((presentcount?.length) / employeelength) * 100).toFixed(2)} />
             </div>
             {/* notificatn */}
-            <div className="row dashboard eventsection_box ">
-              <div class="col-md-4 dashboard eventsection_body">
-                <div class="card radius-10 border-start border-0 border-5 border-info">
+            {/* <div className="row dashboard eventsection_box "> */}
+              {/* <div class="col-md-12 dashboard eventsection_body"> */}
+                {/* <div class="card radius-10 border-start border-0 border-5 border-info"> */}
                   <div class="card-body eventsection_cardbody">
-                    <div class="d-flex align-items-center flex-column eventbox_dashboard">
+                  <h1><b>Upcoming Events</b></h1>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
                       {/*  */}
                       {/* sunday */}
-                      <div class="col-md-12">
-                        <div class="card radius-10 border-start border-0 border-5 border-success">
+                      <div class="col-md-4">
+                        <div class="card radius-10 border-start border-0 border-3 border-success">
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
@@ -113,6 +115,8 @@ const Dashboardd = () => {
                                   <b>This Week Sunday</b>
                                 </h3>
                                 <h3 class="my-1 text-success"> in {difff} days</h3>
+                               
+                                <p></p>
                               </div>
                               <div class="widgets-icons-2 rounded-circle bg-success text-white ms-auto bg-success">
                                 <i class="fa fa-dollar"></i>
@@ -127,8 +131,8 @@ const Dashboardd = () => {
                         return (
                           hcnt.from_holiday_date > currentdate ?
 
-                            <div class="col-md-12">
-                              <div class="card radius-10 border-start border-0 border-5 border-danger">
+                            <div class="col-md-4">
+                              <div class="card radius-10 border-start border-0 border-3 border-danger">
                                 <div class="card-body">
                                   <div class="d-flex align-items-center">
                                     <div>
@@ -138,8 +142,8 @@ const Dashboardd = () => {
                                       <h3 class="my-1 text-danger">{'From '}{moment(hcnt.from_holiday_date).format('DD-MMMM')}  {' To '}  {moment(hcnt.to_holiday_date).format('DD-MMMM')}</h3>
                                       <h5 class="text-dark">
                                         <b>
-                                          {'in  '} {parseInt(moment(hcnt.from_holiday_date).format('DD')) - parseInt(moment(currentdate).format('DD'))}
-                                          {'  days'}
+                                          {'in'} {parseInt(moment(hcnt.from_holiday_date).format('DD')) - parseInt(moment(currentdate).format('DD'))}
+                                          {'days'}
                                         </b>
                                       </h5>
                                     </div>
@@ -157,10 +161,10 @@ const Dashboardd = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              {/* </div> */}
+            {/* </div> */}
            
-            </div>
+            {/* </div> */}
           </main>
         </div>
       </div>

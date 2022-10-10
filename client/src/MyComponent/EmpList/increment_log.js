@@ -125,7 +125,7 @@ return (
 
                             <div class="col-md-4 mt-3">
 
-                              <button type="button" class="btn btn-primary pt-2 " onClick={addincrementDetails}><h3>Submit</h3></button>
+                              <button type="button" class="btn sign_out_btn text-white text-center" onClick={addincrementDetails}><h3>Submit</h3></button>
 
                             </div>
 
