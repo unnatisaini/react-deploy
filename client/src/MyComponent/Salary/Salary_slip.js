@@ -8,7 +8,7 @@ import pdfMake from 'pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import htmlToPdfmake from 'html-to-pdfmake';
 import { table } from "@syncfusion/ej2-react-grids";
-
+import { ToWords } from 'to-words';
 var converter = require('number-to-words');
 
 
@@ -32,7 +32,7 @@ function Salary_slip(props) {
     };
 
    
-    // const toWords = new ToWords();
+   
     //  const handleGeneratePdf = (req, res) => {
     //      const doc = new jsPDF();
     //     //  get table html
@@ -79,7 +79,7 @@ function Salary_slip(props) {
         moment().format(`YYYY-MM-DDT00:00:00+00:00`)
     );
 
-
+    const [apicall, setapicall] = useState(false);
     // date
 
     let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
@@ -118,7 +118,7 @@ function Salary_slip(props) {
 
         const department = () => {
             Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
-                setdepart(response.data[0]);
+                setdepart(response.data);
                 // console.log("dfdf" + JSON.stringify(response.data))
             });
 
@@ -133,7 +133,7 @@ function Salary_slip(props) {
         Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
             setEmployeeList(response.data[0]);
             setdepartmentdata(response.data[0].department_id)
-
+           
         });
         department();
     };
@@ -184,10 +184,27 @@ function Salary_slip(props) {
     deductionn = absent + leave + medicalleave + emergencyleave + halfday + latecom;
     GrossEarnings = (employeeList.salary)
     netsalary = (GrossEarnings) - (deductionn);
-    var words;
-    words = converter.toWords[(netsalary)];
+    // var words;
+    // words = converter.toWords[(netsalary)];
     
+
+    const toWords = new ToWords();
+
+let words = toWords.convert[(netsalary)];
+
+
     // converter.toWords(netsalary);
+console.log("............"+words)
+    let departm;
+
+    (depart || []).map((depdata) =>{
+        if(departmentdata===depdata.id){
+           
+            departm=depdata.department_name
+        }
+    })
+
+
 
     const styles = {
         coverBg: {
@@ -238,8 +255,8 @@ function Salary_slip(props) {
                                 </div>
                                 <div class="row1" style={styles.dflex}>
                                     <div class="col-md-6">
-                                        <div> <span class="fw-bolder label_text" style={styles.fontsize}>Designation and Department:</span> 
-                                        <small class="ms-3 label_text" style={styles.fontsize1}>{depart.department_name}</small> </div>
+                                        <div> <span class="fw-bolder label_text" style={styles.fontsize}>Department:</span> 
+                                        <small class="ms-3 label_text" style={styles.fontsize1}>{departm}</small> </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div> <span class="fw-bolder label_text" style={styles.fontsize}>Payment Month:</span> 
@@ -405,14 +422,14 @@ function Salary_slip(props) {
                             </table>
                         </div>
                         <div class="row1" style={styles.dflex}>
-                            <div class="col-md-6"> <br /> <span class="fw-bold label_text" style={styles.fontsize}>Net Pay : {netsalary}</span> </div>
+                            <div class="col-md-6"> <br/> <span class="fw-bold label_text" style={styles.fontsize}>Net Pay : {netsalary}</span> </div>
                             <div class="border col-md-6 mt-2">
                                 <div class="d-flex flex-column label_text" style={styles.fontsize} > <span>In Words</span> <span><b style={styles.fontsize1}>{words} only</b></span> </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <div class="d-flex flex-column mt-2" style={styles.fontsize}><span class="mt-4 label_text">Regards</span> <span class="fw-bolder label_text">We2code Technology</span>  </div>
+                            <div class="d-flex flex-column" style={styles.fontsize}><span class="label_text" style={styles.fontsize1}>Regards</span> <span class="label_text" style={styles.fontsize1}>We2code Technology</span>  </div>
                         </div>
                     </div>
                 </div>
@@ -436,70 +453,6 @@ function Salary_slip(props) {
 
 export default Salary_slip;
 
-
-
-// const Salary_slip= () => {
-//   const certificateTemplateRef = useRef(null);
-
-//   const handleGeneratePdf = () => {
-//     const doc = new jsPDF({
-//       format: "a4",
-//       unit: "px"
-//     });
-
-//     // Adding the fonts
-//     doc.setFont("Anton-Regular", "normal");
-
-//     doc.html(certificateTemplateRef.current, {
-//       async callback(doc) {
-//         // save the document as a PDF with name of Memes
-//         doc.save("Memes");
-//       }
-//     });
-//   };
-//   const styles = {
-//     coverBg: {
-//         color:"pink",
-     
-//       zIndex: 0,
-//       width: "596px",
-//       height: "100%",
-//       textAlign: "center",
-//       backgroundColor:"yellow"
-//     } 
-//   };
-//   return (
-//     <div
-//       style={{
-//         display: "flex",
-//         alignItems: "center",
-//         flexDirection: "column",
-       
-      
-//       }}
-//     >
-//       <button
-//         style={{
-//           margin: "50px",
-//           padding: "10px",
-//           backgroundColor: "black",
-//           color: "white",
-//           fontFamily: "Anton",
-//           fontSize: "1.2rem",
-//           textTransform: "uppercase",
-//           letterSpacing: "0.1rem",
-//           cursor: "pointer",
-//           width: "200px"
-//         }}
-//         onClick={handleGeneratePdf}
-//       >
-//         Generate Pdf
-//       </button>
-//       <div ref={certificateTemplateRef}>
-//       </div>
-//     </div>
-//   );
-// };
 
 
 
