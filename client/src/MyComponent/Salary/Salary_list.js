@@ -7,6 +7,8 @@ import moment from "moment";
 import React,{useEffect} from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
+import { FaRupeeSign } from "react-icons/fa";
+
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -67,7 +69,7 @@ function Salary_list(props) {
   useEffect(() => {
     getEmployees();
   }, [attendmonth]);
-  const salarygenereate =(e)=>{
+  const salarygenerate =(e)=>{
     // let arr = e.target.value.split(',')
   let staffidd = e.target.value;
   localStorage.setItem('staffid',staffidd);
@@ -84,6 +86,7 @@ const columns = [
         name: 'Staff Name',
         selector: row => row.staff_name,
         sortable: true,
+      
     },
     {
       
@@ -98,10 +101,10 @@ const columns = [
   },
     {
       name: 'Action',
-      selector: row => <button className="btn btn-sm btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
+      selector: row => <button className="btn btn-lg btn-outline-secondary" value={row.id} onClick={(row.salary === null || row.salary === 0 || row.salary === '0') 
       // && row.total != null || row.total != ''
        ?  0
-      :salarygenereate}>{(row.total === null || row.total === '' || row.total === '0')  ? 'Generate salary' : 'Generated'}</button>,
+      :salarygenerate}>{(row.total === null || row.total === '' || row.total === '0')  ? 'Generate salary' :'Generated'}</button>,
       sortable: false,
 
   },

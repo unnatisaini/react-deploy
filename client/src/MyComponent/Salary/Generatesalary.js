@@ -99,18 +99,7 @@ console.log("_______netsal_________"+netsal)
 
   }
 
-  const nameOnchange = (e) => {
-    setName(e.target.value);
-  };
-  const stidOnchange = (e) => {
-    setstid(e.target.value);
-  };
-  const accountOnchange = (e) => {
-    setaccno(e.target.value);
-  };
-  const banknameOnchange = (e) => {
-    setbanknam(e.target.value);
-  };
+ 
   const workdayOnchange = (e) => {
     setworkday(e.target.value);
   };
