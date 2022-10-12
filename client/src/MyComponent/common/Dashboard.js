@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AttendanceDetail from "../Attendance/AttendanceDetail";
 import AttendanceHistory from "../Attendance/AttendanceHistory";
 import Emplist from "../EmpList/Emplist"
@@ -8,7 +8,6 @@ import EmployeeDetail from "../EmpList/EmployeeDetail"
 import Salary_list from "../Salary/Salary_list";
 import Salary_slip from "../Salary/Salary_slip";
 import Generatesalary from "../Salary/Generatesalary";
-import Salary_history from "../Salary/Salary_history";
 import Department from "../Department/Department";
 import Login from "../login/login";
 import Bankdetails from "../EmpList/bankdetails";
@@ -20,6 +19,8 @@ import DailyAttendance from "../Attendance/DailyAttendance";
 import Holidays from "../Holidays/holiday";
 import IncrementLog from "../EmpList/increment_log";
 import UpdateEmp from "../EmpList/updateEmployee";
+import SalaryHistory from "../Salary/Salary_history";
+
 
 function Dashboard(props) {
   let navigate = useNavigate();
@@ -55,14 +56,15 @@ function Dashboard(props) {
       <Route path="/Attendance" element={<DailyAttendance />} />
       <Route path="/AttendanceDetail" element={<AttendanceDetail />} />
       <Route path="/AttendanceHistory" element={<AttendanceHistory />} />
-       <Route path="/Salary_list" element={<Salary_list />} />
-
+      <Route path="/Salary_list" element={<Salary_list />} />
 <Route path="/Salary_slip" element={<Salary_slip />} />
 <Route path="/Generatesalary" element={<Generatesalary/>} />
-<Route path="/Salary_history" element={<Salary_history/>} />
+<Route path="/Salary_history" element={<SalaryHistory/>} />
 <Route path="/leaves" element={<CurrentLeaves/>} />
 <Route path="/all_leaves" element={<ManageLeaves/>} />
 <Route path="/holiday" element={<Holidays/>} />
+
+
 
 </>
 }

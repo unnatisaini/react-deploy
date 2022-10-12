@@ -131,8 +131,8 @@ const navigator=useNavigate();
                 <Link to='/Salary_history' className="nav-link">
 
                   <button className="btn btn-sm btn-outline-secondary">Salary Summary</button>
+
                 </Link>
-                 
                 </div>
                 
               </div>

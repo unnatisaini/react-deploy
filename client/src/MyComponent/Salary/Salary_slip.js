@@ -9,12 +9,16 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import htmlToPdfmake from 'html-to-pdfmake';
 import { table } from "@syncfusion/ej2-react-grids";
 import { ToWords } from 'to-words';
+import Pdf from "react-to-pdf";
+
 var converter = require('number-to-words');
 
 
 // import { ToWords } from 'to-words';
 
 function Salary_slip(props) {
+const ref = React.createRef();
+
     const certificateTemplateRef = useRef(null);
 
     const handleGeneratePdf = () => {
@@ -184,16 +188,20 @@ function Salary_slip(props) {
     deductionn = absent + leave + medicalleave + emergencyleave + halfday + latecom;
     GrossEarnings = (employeeList.salary)
     netsalary = (GrossEarnings) - (deductionn);
+    console.log("++++++++++++++++"+netsalary+"====="+GrossEarnings+"=========="+deductionn)
     // var words;
     // words = converter.toWords[(netsalary)];
     
 
     const toWords = new ToWords();
+    let words='';
+if(!isNaN(netsalary)){
 
-let words = toWords.convert[(netsalary)];
 
+ words = toWords.convert(parseInt(netsalary));
+}
 
-    // converter.toWords(netsalary);
+    // converter.toWords(netsalary);    
 console.log("............"+words)
     let departm;
 
@@ -209,17 +217,17 @@ console.log("............"+words)
     const styles = {
         coverBg: {
                    zIndex: 0,
-                   width: "460px",
+                   width: "800px",
                    padding:"0 20px",
                    maxHeight: 'fit-content',
                  } ,
 
         fontsize1: {
-            fontSize: "9px",
+            fontSize: "15px",
             padding:'1px'
         },
         fontsize: {
-            fontSize: "9px",
+            fontSize: "15px",
             padding:'1px'
         },
         dflex:{
@@ -230,8 +238,8 @@ console.log("............"+words)
    
     return (
         <>
-      <pre ref={certificateTemplateRef} style={styles.coverBg}>
-      {/* <div style={styles.coverBg}> */}
+      <pre ref={ref} style={styles.coverBg}>
+     
           
             <div id="divToPrint" class="container " >
                 <div class="dflex" style={styles.dflex}>
@@ -422,9 +430,9 @@ console.log("............"+words)
                             </table>
                         </div>
                         <div class="row1" style={styles.dflex}>
-                            <div class="col-md-6"> <br/> <span class="fw-bold label_text" style={styles.fontsize}>Net Pay : {netsalary}</span> </div>
-                            <div class="border col-md-6 mt-2">
-                                <div class="d-flex flex-column label_text" style={styles.fontsize} > <span>In Words</span> <span><b style={styles.fontsize1}>{words} only</b></span> </div>
+                            <div class="col-md-6"><span class="fw-bold label_text" style={styles.fontsize}>Net Pay : {netsalary}</span> </div>
+                            <div class="border col-md-6">
+                                <div class="d-flex flex-column label_text" style={styles.fontsize} > <span>In Words</span> <span className="hhlkjlj"><b style={styles.fontsize1}>{words} only</b></span> </div>
                             </div>
                         </div>
 
@@ -440,13 +448,16 @@ console.log("............"+words)
 
                     <Button><h4>Home</h4></Button>
                 </Link>
-                <a href={'/Salary_slip'} download={'/Salary_slip.pdf'}>
-
-                    <Button onClick={handleGeneratePdf}> <h4>Download</h4></Button>
-                </a>
+               
+                <Pdf targetRef={ref} filename="salaryslip.pdf">
+                     {({ toPdf }) => (
+                    <Button onClick={toPdf}> <h4>Download</h4></Button>
+                    )}
+                    </Pdf>
+               
             </div>
             
-         {/* </div> */}
+       
         </>
     );
 };
