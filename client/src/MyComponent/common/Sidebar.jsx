@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import{FcConferenceCall, FcLeave, FcOvertime, FcSurvey, FcHome, FcRating, FcDepartment} from "react-icons/fc";
 import company_logo from "../../../src/img/Pvtltd.png";
 import { useNavigate } from "react-router-dom";
+import '../../styles/Attendance/dashboard.css';
 
 const Sidebar = () => {
   let navigate = useNavigate();
@@ -28,7 +29,7 @@ const Sidebar = () => {
                 <FcHome/>
                 <div className='m-0'>
   
-              <Link to="/dashboard" className="nav-link">
+              <Link to="/dashboard" className="nav-link active">
                     <span data-feather="shopping-cart"></span>
                     Dashboard
                   </Link>

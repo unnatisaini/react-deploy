@@ -3,13 +3,15 @@ import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Axios from "axios";
 import moment from "moment";
-import { jsPDF } from "jspdf";
+// import { jsPDF } from "jspdf";
+import { PDFExport } from "@progress/kendo-react-pdf";
+
 // import pdfMake from 'pdfmake';
 // import pdfFonts from 'pdfmake/build/vfs_fonts';
 // import htmlToPdfmake from 'html-to-pdfmake';
 // import { table } from "@syncfusion/ej2-react-grids";
 import { ToWords } from 'to-words';
-import Pdf from "react-to-pdf";
+// import Pdf from "react-to-pdf";
 
 // var converter = require('number-to-words');
 
@@ -17,23 +19,31 @@ import Pdf from "react-to-pdf";
 // import { ToWords } from 'to-words';
 
 function Salary_slip(props) {
+    const pdfExportComponent = useRef(null);
+
+    const toPdf = event => {
+      pdfExportComponent.current.save();
+    };
+
+
+
 const ref = React.createRef();
 
     const certificateTemplateRef = useRef(null);
 
-    const handleGeneratePdf = () => {
-      const doc = new jsPDF({
-        orientation: 'p', // landscape
-        unit: 'px',
-        format: 'a4',
-      });
-      doc.html(certificateTemplateRef.current, {
-        async callback(doc) {
-          // save the document as a PDF with name of Memes
-          doc.save("SalarySlip");
-        }
-      });
-    };
+    // const handleGeneratePdf = () => {
+    //   const doc = new jsPDF({
+    //     orientation: 'p', // landscape
+    //     unit: 'px',
+    //     format: 'a4',
+    //   });
+    //   doc.html(certificateTemplateRef.current, {
+    //     async callback(doc) {
+    //       // save the document as a PDF with name of Memes
+    //       doc.save("SalarySlip");
+    //     }
+    //   });
+    // };
 
    
    
@@ -238,8 +248,8 @@ console.log("............"+words)
    
     return (
         <>
-      <pre ref={ref} style={styles.coverBg}>
-     
+      {/* <pre ref={ref} style={styles.coverBg}> */}
+        <PDFExport ref={pdfExportComponent}>
           
             <div id="divToPrint" class="container " >
                 <div class="dflex" style={styles.dflex}>
@@ -442,18 +452,23 @@ console.log("............"+words)
                     </div>
                 </div>
             </div>
-            </pre>
+      </PDFExport>
+
+            {/* </pre> */}
             <div class="d-flex gap-2">
                 <Link to='/Salary_list' className="nav-link">
 
                     <Button><h4>Home</h4></Button>
                 </Link>
-               
+{/*                
                 <Pdf targetRef={ref} filename="salaryslip.pdf">
                      {({ toPdf }) => (
                     <Button onClick={toPdf}> <h4>Download</h4></Button>
                     )}
-                    </Pdf>
+                    </Pdf> */}
+
+                    <Button onClick={toPdf}> <h4>Download</h4></Button>
+
                
             </div>
             
