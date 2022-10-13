@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import Axios from "axios";
 import moment from "moment";
 import { jsPDF } from "jspdf";
-import pdfMake from 'pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-import htmlToPdfmake from 'html-to-pdfmake';
-import { table } from "@syncfusion/ej2-react-grids";
+// import pdfMake from 'pdfmake';
+// import pdfFonts from 'pdfmake/build/vfs_fonts';
+// import htmlToPdfmake from 'html-to-pdfmake';
+// import { table } from "@syncfusion/ej2-react-grids";
 import { ToWords } from 'to-words';
 import Pdf from "react-to-pdf";
 
-var converter = require('number-to-words');
+// var converter = require('number-to-words');
 
 
 // import { ToWords } from 'to-words';
