@@ -383,7 +383,6 @@ const salaryyOnchange = (e) => {
   return (
     <>
     
-    {/* <img src={pic} ></img> */}
     <div className="addemployee_box">
       <ToastContainer />
       <Header />
@@ -408,6 +407,8 @@ const salaryyOnchange = (e) => {
                 <Tab><h3>Document Upload</h3></Tab>
              </TabList>
              <TabPanel >
+    {/* <img src={pic} className={'image'} ></img> */}
+
                 <div class="row ">
 
                   <div class="container">
@@ -507,7 +508,7 @@ const salaryyOnchange = (e) => {
                      <select onChange={stateOnchange}  className={"dept label_text"} value={statedata}>Select
                     <option>State</option>
                     {(state || []).map((statedata) => (
-                      <option value={[statedata.state,statedata.id]}
+                      <option value={[statedata.state]}
                        >{statedata.state}</option>
                     ))}
                   </select>
@@ -515,12 +516,12 @@ const salaryyOnchange = (e) => {
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="form_name" className='label_text'>City *</label>
-                              <select onChange={cityOnchange} className={"dept label_text'"} value={citydata}>Select
+                              <label for="form_name" className='label_text'>City*</label>
+                              <select onChange={cityOnchange} className={"dept label_text"} value={citydata}>Select
                                 <option>City</option>
                                 {(city || []).map((citydata) => (
 
-                                  <option value={citydata.city_name}>{citydata.city_name}</option>
+                                  <option value={[citydata.city_name]}>{citydata.city_name}</option>
 
                                 ))}
                               </select>
@@ -604,7 +605,8 @@ const salaryyOnchange = (e) => {
                             <div class="form-group">
                               <label for="form_name" className='label_text'>Choose File *</label>
 
-                              <input type="file" name="image" accept='image/*' class="form-control label_text " onChange={picOnchange} />
+    
+                              <input type="file" name="image" accept='image/*' class="form-control label_text " onChange={picOnchange} src={pic} />
                             </div>
                           </div>
 
@@ -632,7 +634,7 @@ const salaryyOnchange = (e) => {
                           </div>
                         </div>
                         <div class="col-md-3 mt-3">
-                          <button type="button" class="btn sign_out_btn text-white text-center" onClick={updEmployee}><h3>Update Employee</h3></button>
+                          <button type="button" class="btn sign_out_btn text-white text-center p-2" onClick={updEmployee}><h3>Update Employee</h3></button>
                         </div>
                       </div>
                     </form>
