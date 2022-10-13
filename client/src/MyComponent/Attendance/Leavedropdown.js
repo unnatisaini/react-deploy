@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
 import moment from "moment";
 import Axios from "axios";
 
@@ -128,7 +127,7 @@ useEffect(() => {
          :   (moment(hoday[y]).isSame(mdate) ) ?
      
         <td key={index} scope="row" className="leavestatusdropdown">
-            <select  className={'sundaymonth'}>
+            <select  className={'holimonth'}>
           <option value={""}>{'E'}</option>
           </select>
       </td>

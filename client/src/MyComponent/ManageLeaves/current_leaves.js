@@ -96,7 +96,7 @@ const CurrentLeaves = () => {
             <div className={"approve_btn"}>
               <button
                 type="button"
-                class="btn btn-success approve_btn"
+                class="btn approve_btn "
                 onClick={HandleClickApprove.bind(this,row.id)}
                 value={1}>
                 APPR

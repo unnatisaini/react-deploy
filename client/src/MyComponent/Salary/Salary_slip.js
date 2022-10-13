@@ -3,20 +3,9 @@ import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Axios from "axios";
 import moment from "moment";
-// import { jsPDF } from "jspdf";
 import { PDFExport } from "@progress/kendo-react-pdf";
-
-// import pdfMake from 'pdfmake';
-// import pdfFonts from 'pdfmake/build/vfs_fonts';
-// import htmlToPdfmake from 'html-to-pdfmake';
-// import { table } from "@syncfusion/ej2-react-grids";
 import { ToWords } from 'to-words';
-// import Pdf from "react-to-pdf";
 
-// var converter = require('number-to-words');
-
-
-// import { ToWords } from 'to-words';
 
 function Salary_slip(props) {
     const pdfExportComponent = useRef(null);
@@ -25,51 +14,8 @@ function Salary_slip(props) {
       pdfExportComponent.current.save();
     };
 
-
-
-const ref = React.createRef();
-
-    const certificateTemplateRef = useRef(null);
-
-    // const handleGeneratePdf = () => {
-    //   const doc = new jsPDF({
-    //     orientation: 'p', // landscape
-    //     unit: 'px',
-    //     format: 'a4',
-    //   });
-    //   doc.html(certificateTemplateRef.current, {
-    //     async callback(doc) {
-    //       // save the document as a PDF with name of Memes
-    //       doc.save("SalarySlip");
-    //     }
-    //   });
-    // };
-
-   
-   
-    //  const handleGeneratePdf = (req, res) => {
-    //      const doc = new jsPDF();
-    //     //  get table html
-    //      const pdfTable = document.getElementById('divToPrint');
-    //     //  html to pdf format
-    //      var html = htmlToPdfmake(pdfTable.innerHTML);
-
-    //      const documentDefinition = { content: html };
-    //      console.log("documentDefinition------" + documentDefinition)
-
-    //      pdfMake.vfs = pdfFonts.pdfMake.vfs;
-    //      console.log("documentDefinition------" + pdfMake.vfs)
-    //      pdfMake.createPdf(documentDefinition).open();
-    //  doc.save("SalarySlip");
-
-    //  }
-
-
-
-
-
     const idd = localStorage.getItem("staffid");
-    console.log('___idd___' + idd)
+    // console.log('___idd___' + idd)
 
     const deductionamt = localStorage.getItem("deduction");
     const [employeeList, setEmployeeList] = useState([]);
@@ -87,13 +33,11 @@ const ref = React.createRef();
     const [wday, setwday] = useState();
     const [depart, setdepart] = useState([]);
     const [departmentdata, setdepartmentdata] = useState([]);
-
-
     const [attendmonth, setattendmonth] = useState(
         moment().format(`YYYY-MM-DDT00:00:00+00:00`)
     );
 
-    const [apicall, setapicall] = useState(false);
+
     // date
 
     let momentmonth = moment(attendmonth, "YYYY-MM").daysInMonth();
@@ -156,7 +100,7 @@ const ref = React.createRef();
 
     }, []);
 
-    console.log('______' + employeeList.salary)
+    // console.log('______' + employeeList.salary)
     //   salary deduction
     let netsalary;
     let deductionn;
@@ -186,6 +130,7 @@ const ref = React.createRef();
         if ((diff % 3 == 0 && diff % 2 == 0) || diff % 3 == 0) {
             latecom = (diff / 3) * onedaysal
         }
+        // eslint-disable-next-line no-lone-blocks
         {
             if (diff % 2 == 0 && diff % 3 !== 0) {
                 latecom = (diff / 4) * onedaysal
@@ -198,21 +143,16 @@ const ref = React.createRef();
     deductionn = absent + leave + medicalleave + emergencyleave + halfday + latecom;
     GrossEarnings = (employeeList.salary)
     netsalary = (GrossEarnings) - (deductionn);
-    console.log("++++++++++++++++"+netsalary+"====="+GrossEarnings+"=========="+deductionn)
-    // var words;
-    // words = converter.toWords[(netsalary)];
+    // console.log("++++++++++++++++"+netsalary+"====="+GrossEarnings+"=========="+deductionn)
+    
     
 
     const toWords = new ToWords();
     let words='';
-if(!isNaN(netsalary)){
-
-
- words = toWords.convert(parseInt(netsalary));
+   if(!isNaN(netsalary)){
+   words = toWords.convert(parseInt(netsalary));
 }
 
-    // converter.toWords(netsalary);    
-console.log("............"+words)
     let departm;
 
     (depart || []).map((depdata) =>{
@@ -228,16 +168,16 @@ console.log("............"+words)
         coverBg: {
                    zIndex: 0,
                    width: "800px",
-                   padding:"0 20px",
+                   padding:"10px 20px",
                    maxHeight: 'fit-content',
                  } ,
 
         fontsize1: {
-            fontSize: "15px",
+            fontSize: "12px",
             padding:'1px'
         },
         fontsize: {
-            fontSize: "15px",
+            fontSize: "12px",
             padding:'1px'
         },
         dflex:{
@@ -248,7 +188,7 @@ console.log("............"+words)
    
     return (
         <>
-      <pre style={styles.coverBg}>
+      <pre style={styles.coverBg} >
         <PDFExport ref={pdfExportComponent}>
           
             <div id="divToPrint" class="container " >
@@ -258,7 +198,7 @@ console.log("............"+words)
                             <h3 class="fw-bold" style={styles.fontsize}>Payslip</h3> 
                             <span class="fw-normal" className='label_text' style={styles.fontsize1}>Payment slip for the month of {moment(bankdetail.added_on).format('MMMM-YYYY')}</span>
                         </div>
-                        <div class="d-flex justify-content-end label_text" style={styles.fontsize}><span><b style={styles.fontsize1}>Working Branch:</b >We2code Technology</span> </div>
+                        <div class="d-flex justify-content-end label_text px-5" style={styles.fontsize}><span><b style={styles.fontsize1}>Working Branch:</b ><span></span>We2code Technology</span> </div>
                         <div class="row1" style={styles.dflex}>
                             <div class="col-md-12">
                                 <div class="row1" style={styles.dflex}>
@@ -447,7 +387,7 @@ console.log("............"+words)
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <div class="d-flex flex-column" style={styles.fontsize}><span class="label_text" style={styles.fontsize1}>Regards</span> <span class="label_text" style={styles.fontsize1}>We2code Technology</span>  </div>
+                            <div class="d-flex flex-column px-5 pb-5" style={styles.fontsize}><span class="label_text" style={styles.fontsize1}>Regards</span> <span class="label_text" style={styles.fontsize1}>We2code Technology</span>  </div>
                         </div>
                     </div>
                 </div>
@@ -460,12 +400,6 @@ console.log("............"+words)
 
                     <Button><h4>Home</h4></Button>
                 </Link>
-{/*                
-                <Pdf targetRef={ref} filename="salaryslip.pdf">
-                     {({ toPdf }) => (
-                    <Button onClick={toPdf}> <h4>Download</h4></Button>
-                    )}
-                    </Pdf> */}
 
                     <Button onClick={toPdf}> <h4>Download</h4></Button>
 

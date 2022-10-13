@@ -91,7 +91,7 @@ const Dashboardd = () => {
           <div className="dashboard_table">
 
             <div className=" d-flex justify-content-between align-items-center  border-bottom pb-5">
-              <h1 className="h1"><b>Dashboarddd</b></h1>
+              <h1 className="h1"><b>Dashboard</b></h1>
             </div>
             <div className="summary_card">
               <Summarycard employeenumb={employeelength} presentemployee={employeelength - (presentcount?.length)} presentpercent={(employeelength / (employeelength - (presentcount?.length)) * 100).toFixed(2)} absentemployee={presentcount?.length} absentpercent={(((presentcount?.length) / employeelength) * 100).toFixed(2)} />

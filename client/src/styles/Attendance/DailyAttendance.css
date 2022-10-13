@@ -234,11 +234,17 @@ display: -webkit-inline-box;
     font-size: 12px;
 }
 .dailyattendace_table .dailyattendace_tbody .sundaymonth{
-color: red;
-border: 1px solid red;
+color: #ffffff;
+border: 1px solid #6CC417;
+background: #6CC417;
 pointer-events: none;
 }
-
+.dailyattendace_table .dailyattendace_tbody .holimonth{
+    color: #ffffff;
+    border: 1px solid #FFA500;
+    background: #FFA500;
+    pointer-events: none; 
+}
 
 
 

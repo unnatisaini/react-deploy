@@ -9,7 +9,6 @@ import Axios from "axios";
 import Leavedropdown from "./Leavedropdown";
 import Searchsection from "./Searchsection";
 import LeaveName from "./LeaveName";
-import Tooltip from 'react-bootstrap/Tooltip';
 
 function DailyAttendance(props) {
   let navigate = useNavigate();

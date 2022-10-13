@@ -201,3 +201,6 @@ ul.online-users {
   border: none;
   border-radius: 5px;
 }
+.cardbody{
+background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+}

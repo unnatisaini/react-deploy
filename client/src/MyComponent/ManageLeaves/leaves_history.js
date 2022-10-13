@@ -81,21 +81,21 @@ const ManageLeaves = () => {
           <div className="status_response">
           {row.status === 1 ? 
             <div className={"approve_btn"}>
-              {" "}
+              
               <button
                 type="button"
-                class="btn btn-success approve_btn"
+                class="btn approve_btn"
                 onClick={HandleClickApprove}
                 value={row.id}s
               >
                 APPROVED
               </button>
             </div> :
-            <div className={"approve_btn"}>
-              {" "}
+            <div className={"approved_btn"}>
+             
               <button
                 type="button"
-                class="btn btn-danger approve_btn"
+                class="btn approved_btn"
                 onClick={HandleClickNotApprove}
                 value={row.id}
               >
