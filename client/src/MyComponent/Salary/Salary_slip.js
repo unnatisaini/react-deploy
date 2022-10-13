@@ -248,7 +248,7 @@ console.log("............"+words)
    
     return (
         <>
-      {/* <pre ref={ref} style={styles.coverBg}> */}
+      <pre style={styles.coverBg}>
         <PDFExport ref={pdfExportComponent}>
           
             <div id="divToPrint" class="container " >
@@ -454,7 +454,7 @@ console.log("............"+words)
             </div>
       </PDFExport>
 
-            {/* </pre> */}
+            </pre>
             <div class="d-flex gap-2">
                 <Link to='/Salary_list' className="nav-link">
 
