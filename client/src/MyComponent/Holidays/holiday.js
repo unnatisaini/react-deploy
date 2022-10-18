@@ -9,7 +9,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import TextField from '@mui/material/TextField';
 import { confirm } from "react-confirm-box";
 import moment from 'moment';
 import { Input } from "@mui/material";
@@ -45,7 +44,7 @@ const Holidays = () => {
  }
   const handleadd = () => {
   const diffmnth= Math.abs(moment(fromDays).diff(moment(toDays), 'days'));
-      Axios.post("https://apnaorganicstore.in/index/holidayCreate",{
+      Axios.post("http://localhost:3001/holidayCreate",{
       event: event,
       discription: description,
       is_holiday: hoday,
@@ -66,7 +65,7 @@ const Holidays = () => {
   };
 
   const getHoliday = () => {
-    Axios.get("https://apnaorganicstore.in/index/holiday").then((response) => {
+    Axios.get("http://localhost:3001/holiday").then((response) => {
       setHolidaydata(response.data);
       setapicall(false)
     });
@@ -114,7 +113,7 @@ const Holidays = () => {
   const DelClick = async (group_id) => {
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
-      Axios.get(`https://apnaorganicstore.in/index/holidayDelete/${group_id}`, {
+      Axios.get(`http://localhost:3001/holidayDelete/${group_id}`, {
     }).then((response) => {
       setapicall(true)
     });
@@ -166,7 +165,7 @@ const Holidays = () => {
   };
  
   const updateClick = () => {
-    Axios.get(`https://apnaorganicstore.in/index/holidayDelete/${SelectedData}`, {
+    Axios.get(`http://localhost:3001/holidayDelete/${SelectedData}`, {
     }).then((response) => {
     });
     handleadd();
@@ -448,7 +447,7 @@ const Holidays = () => {
             <div class=" d-flex justify-content-between align-items-center border-bottom pb-5">
 
              
-                <h1 className="h1">
+                <h1 className="h1 heading_">
                   <b> Events & Holidays </b>
                 </h1>
             

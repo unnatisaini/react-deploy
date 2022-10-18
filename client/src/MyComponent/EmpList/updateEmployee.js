@@ -52,7 +52,7 @@ const UpdateEmp = (props) => {
 
 
   const Empdetail = () => {
-    Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
       // console.log(response.data[0].dob)
       setstaffidd(response.data[0].id)
       setEmployeeList(response.data[0]);
@@ -87,7 +87,7 @@ const UpdateEmp = (props) => {
 
 const onbankdetailclick=()=>{
   // alert("----------bank")
-  Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
+  Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
       setstaffidd(idd);
       setaccname(response.data[0].acc_holder);
       setaccno(response.data[0].account_no);
@@ -99,7 +99,7 @@ const onbankdetailclick=()=>{
  
 }
 const onincdetailclick=()=>{
-  Axios.get(`https://apnaorganicstore.in/index/incrementdetail/${idd}`).then((response) => {
+  Axios.get(`http://localhost:3001/incrementdetail/${idd}`).then((response) => {
     setstaffidd(response.data[0].staff_id);
     setoldsalary(salaryval);
     // setnewsalary(response.data[0].new_salary);
@@ -108,20 +108,20 @@ const onincdetailclick=()=>{
   })
 }
   const department = () => {
-    Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
+    Axios.get("http://localhost:3001/department").then((response) => {
       setdepart(response.data);
     });
   };
 
   const getStates = () => {
-    Axios.get("https://apnaorganicstore.in/index/state").then((response) => {
+    Axios.get("http://localhost:3001/state").then((response) => {
       setState(response.data);
 
     });
   };
 
   const getCity = () => {
-    Axios.get(`https://apnaorganicstore.in/index/city/${stateId}`).then((response) => {
+    Axios.get(`http://localhost:3001/city/${stateId}`).then((response) => {
       setCity(response.data);
     });
   };
@@ -205,7 +205,7 @@ const onincdetailclick=()=>{
     }
 
 
-    Axios.post(`https://apnaorganicstore.in/index/update`, {
+    Axios.post(`http://localhost:3001/update`, {
       id: staffidd,
       staff_name:name,
       dob: moment(dob).format('YYYY-MM-DDTHH:mm:ss.000Z'),
@@ -236,7 +236,7 @@ const onincdetailclick=()=>{
   }
 
   const add_inc_detail= ()=>{
-  Axios.post(`https://apnaorganicstore.in/index/incrementlogcreate`, {
+  Axios.post(`http://localhost:3001/incrementlogcreate`, {
       staff_id: staffidd,
       staff_name: name,
       applied_on: appliedon,
@@ -244,7 +244,7 @@ const onincdetailclick=()=>{
       new_salary: newsalary,
     }).then((response) => {
       setsalaryval(newsalary)
-      Axios.post(`https://apnaorganicstore.in/index/update`, {
+      Axios.post(`http://localhost:3001/index/update`, {
         id: staffidd,
         staff_name:name,
         dob: moment(dob).format('YYYY-MM-DDTHH:mm:ss.000Z'),
@@ -276,7 +276,7 @@ const onincdetailclick=()=>{
     });
   }
   const add_bank_detail= ()=>{
-      Axios.post(`https://apnaorganicstore.in/index/bankkcreate`,{
+      Axios.post(`http://localhost:3001/bankkcreate`,{
         staff_id:idd,
         staff_name:name,
         acc_holder:accname,
@@ -392,7 +392,7 @@ const salaryyOnchange = (e) => {
         <div className="emp_table">
 
           <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
-            <h1 className="h1">Update Employee Details</h1>
+            <h1 className="h1 heading_"><b>Update Employee Details</b></h1>
             <div className="btn-toolbar mb-2 mb-md-0">
              
             </div>
@@ -505,10 +505,10 @@ const salaryyOnchange = (e) => {
                             <div class="form-group">
                               <label for="form_lastname" className='label_text'>State*</label>
       
-                     <select onChange={stateOnchange}  className={"dept label_text"} value={statedata}>Select
+                     <select onChange={stateOnchange}  className={"dept label_text"} value={statedata.state}>Select
                     <option>State</option>
                     {(state || []).map((statedata) => (
-                      <option value={[statedata.state]}
+                      <option value={[statedata.state,statedata.id]}
                        >{statedata.state}</option>
                     ))}
                   </select>
@@ -517,11 +517,12 @@ const salaryyOnchange = (e) => {
                           <div class="col-md-4">
                             <div class="form-group">
                               <label for="form_name" className='label_text'>City*</label>
-                              <select onChange={cityOnchange} className={"dept label_text"} value={citydata}>Select
+                              <select onChange={cityOnchange} className={"dept label_text"} value={citydata.city}>Select
                                 <option>City</option>
                                 {(city || []).map((citydata) => (
 
-                                  <option value={[citydata.city_name]}>{citydata.city_name}</option>
+                                  <option value={citydata.city_name}>{citydata.city_name}</option>
+
 
                                 ))}
                               </select>

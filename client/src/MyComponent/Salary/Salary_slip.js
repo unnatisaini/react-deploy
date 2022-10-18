@@ -5,6 +5,7 @@ import Axios from "axios";
 import moment from "moment";
 import { PDFExport } from "@progress/kendo-react-pdf";
 import { ToWords } from 'to-words';
+import {FaRupeeSign} from 'react-icons/fa';
 
 
 function Salary_slip(props) {
@@ -50,7 +51,7 @@ function Salary_slip(props) {
         .format(`YYYY-MM-DDT00:00:00+00:00`);
     const getEmployees = () => {
 
-        Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
+        Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
             if (response.data[0] !== null || response.data[0] !== 'undefined' || response.data[0] !== '' || response.data[0] !== 'null' || response.data[0] !== undefined) {
                 setbankdetail(response.data[0]);
                 // console.log("ghghhuhuhiuiuiuiuy---------------"+JSON.stringify(response.data[0]))
@@ -60,7 +61,7 @@ function Salary_slip(props) {
                 setbankdetail('');
             }
         });
-        Axios.get(`https://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
+        Axios.get(`http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
         ).then((response) => {
             sethd(response.data[0].HD);
             setlc(response.data[0].LC);
@@ -75,20 +76,20 @@ function Salary_slip(props) {
         });
 
         const department = () => {
-            Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
+            Axios.get("http://localhost:3001/department").then((response) => {
                 setdepart(response.data);
                 // console.log("dfdf" + JSON.stringify(response.data))
             });
 
         };
 
-        Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
+        Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`
         ).then((response) => {
             setholidaycount(response.data[0]);
             let wdays = momentmonth - response.data[0].count;
             setwday(wdays)
         });
-        Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
+        Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
             setEmployeeList(response.data[0]);
             setdepartmentdata(response.data[0].department_id)
            
@@ -124,15 +125,15 @@ function Salary_slip(props) {
 
     if (lc > 2) {
         let diff = lc - 2
-        if (diff == 1) {
+        if (diff === 1) {
             latecom = 0
         }
-        if ((diff % 3 == 0 && diff % 2 == 0) || diff % 3 == 0) {
+        if ((diff % 3 === 0 && diff % 2 === 0) || diff % 3 === 0) {
             latecom = (diff / 3) * onedaysal
         }
         // eslint-disable-next-line no-lone-blocks
         {
-            if (diff % 2 == 0 && diff % 3 !== 0) {
+            if (diff % 2 === 0 && diff % 3 !== 0) {
                 latecom = (diff / 4) * onedaysal
             }
         }
@@ -143,10 +144,7 @@ function Salary_slip(props) {
     deductionn = absent + leave + medicalleave + emergencyleave + halfday + latecom;
     GrossEarnings = (employeeList.salary)
     netsalary = (GrossEarnings) - (deductionn);
-    // console.log("++++++++++++++++"+netsalary+"====="+GrossEarnings+"=========="+deductionn)
-    
-    
-
+ 
     const toWords = new ToWords();
     let words='';
    if(!isNaN(netsalary)){
@@ -155,6 +153,7 @@ function Salary_slip(props) {
 
     let departm;
 
+    // eslint-disable-next-line array-callback-return
     (depart || []).map((depdata) =>{
         if(departmentdata===depdata.id){
            
@@ -198,7 +197,7 @@ function Salary_slip(props) {
                             <h3 class="fw-bold" style={styles.fontsize}>Payslip</h3> 
                             <span class="fw-normal" className='label_text' style={styles.fontsize1}>Payment slip for the month of {moment(bankdetail.added_on).format('MMMM-YYYY')}</span>
                         </div>
-                        <div class="d-flex justify-content-end label_text px-5" style={styles.fontsize}><span><b style={styles.fontsize1}>Working Branch:</b ><span></span>We2code Technology</span> </div>
+                        <div class="d-flex justify-content-end label_text px-5" style={styles.fontsize}><span className="branch"><b style={styles.fontsize1}>Working Branch:</b >We2code Technology</span> </div>
                         <div class="row1" style={styles.dflex}>
                             <div class="col-md-12">
                                 <div class="row1" style={styles.dflex}>
@@ -246,8 +245,8 @@ function Salary_slip(props) {
                                 <thead class="bg-dark text-white">
                                     <tr>
                                         <th scope="row" className='label_text' style={styles.fontsize}>Description</th>
-                                        <th scope="row"  className='label_text' style={styles.fontsize}>Earnings</th>
-                                        <th scope="row"  className='label_text' style={styles.fontsize}>Deductions</th>
+                                        <th scope="row" className='label_text' style={styles.fontsize}>Earnings</th>
+                                        <th scope="row" className='label_text' style={styles.fontsize}>Deductions</th>
 
                                     </tr>
                                 </thead>
@@ -380,9 +379,9 @@ function Salary_slip(props) {
                             </table>
                         </div>
                         <div class="row1" style={styles.dflex}>
-                            <div class="col-md-6"><span class="fw-bold label_text" style={styles.fontsize}>Net Pay : {netsalary}</span> </div>
+                            <div class="col-md-6"><span class="fw-bold label_text" style={styles.fontsize}>Net Pay :<FaRupeeSign/>{netsalary}</span> </div>
                             <div class="border col-md-6">
-                                <div class="d-flex flex-column label_text" style={styles.fontsize} > <span>In Words</span> <span className="hhlkjlj"><b style={styles.fontsize1}>{words} only</b></span> </div>
+                                <div class="d-flex flex-column label_text" style={styles.fontsize} > <span>In Words</span> <span className="hhlkjlj"><b style={styles.fontsize1}>{words}  only</b></span> </div>
                             </div>
                         </div>
 

@@ -69,3 +69,30 @@ display: flex;
   .add_emp_inputs {
     padding: 0 25px;
   }
+  .jfrgbA{
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+  }
+  .jzGaAN{
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+  }
+  /* --------documentupload--------- */
+  .image_upload_box {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 13px;
+  }
+  .image_input{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .kOxjhz{
+    height: 41px !important;
+  }
+  .cwaVRT{
+    height: 41px !important;
+
+  }

@@ -120,7 +120,7 @@ const ManageLeaves = () => {
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="dailyattendance_table">
             <div className=" d-flex justify-content-between align-items-center border-bottom pb-5 ">
-              <h1  className="h1"><b>Manage Leaves</b></h1>
+              <h1  className="h1 heading_"><b>Manage Leaves</b></h1>
               </div>
            <div>
             

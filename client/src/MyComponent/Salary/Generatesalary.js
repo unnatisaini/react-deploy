@@ -5,6 +5,8 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import Sidebar from '../common/Sidebar';
 import Header from '../common/Header';
+import {FaRupeeSign} from 'react-icons/fa';
+
 function Generatesalary(props) {
   let navigate = useNavigate();
 
@@ -46,13 +48,13 @@ function Generatesalary(props) {
     .format(`YYYY-MM-DDT00:00:00+00:00`);
   //
   const getEmployees = () => {
-    Axios.get(`https://apnaorganicstore.in/index/bankdetails/${idd}`).then((response) => {
+    Axios.get(`http://localhost:3001/bankdetails/${idd}`).then((response) => {
       setbankdetail(response.data[0]);
       setaccno(response.data[0].account_no);
       setbanknam(response.data[0].bank_name);
     });
 
-    Axios.get(`https://apnaorganicstore.in/index/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
+    Axios.get(`http://localhost:3001/attendancehistoryy/${firstdate}/${lastdate}/${idd}`
     ).then((response) => {
       setattendancedata(response.data[0]);
       sethd(response.data[0].HD);
@@ -64,13 +66,13 @@ function Generatesalary(props) {
       setua(response.data[0].UA)
 
     });
-    Axios.get(`https://apnaorganicstore.in/index/getholiday/${firstdate}/${lastdate}`
+    Axios.get(`http://localhost:3001/getholiday/${firstdate}/${lastdate}`
     ).then((response) => {
       setholidaycount(response.data[0]);
       let wdays = momentmonth - response.data[0].count;
       setworkday(wdays);
     });
-    Axios.get(`https://apnaorganicstore.in/index/employeeDetail/${idd}`).then((response) => {
+    Axios.get(`http://localhost:3001/employeeDetail/${idd}`).then((response) => {
       setEmployeeList(response.data);
       setsalary(response.data[0].salary)
       setName(response.data[0].staff_name);
@@ -83,10 +85,10 @@ function Generatesalary(props) {
     getEmployees();
   }, [firstdate, idd, lastdate]);
  
-console.log("_______iddd_________"+idd)
-console.log("_______netsal_________"+netsal)
+// console.log("_______iddd_________"+idd)
+// console.log("_______netsal_________"+netsal)
   const ongeneratesalary = () => {
-    Axios.post("https://apnaorganicstore.in/index/salarycreate", {
+    Axios.post("http://localhost:3001/salarycreate", {
       staff_id: idd,
       staff_name: name,
       basic_salary: salary,
@@ -150,23 +152,24 @@ console.log("_______netsal_________"+netsal)
     let medicalleave = (onedaysal * 1 * (ml))
     let emergencyleave = (onedaysal * 1 * (el))
     let halfday = ((onedaysal / 2) * 1 * (hd))
-    console.log("lc" + lc)
+    // console.log("lc" + lc)
 
     let latecom;
     if (lc > 2) {
       let diff = (lc) - 2
-      if (diff == 1) {
+      if (diff === 1) {
         latecom = 0
       }
-      if ((diff % 3 == 0 && diff % 2 == 0) || diff % 3 == 0) {
+      if ((diff % 3 === 0 && diff % 2 === 0) || diff % 3 === 0) {
         latecom = (diff / 3) * (onedaysal)
-        console.log("latecom3333   " + latecom)
+        // console.log("latecom3333   " + latecom)
 
       }
+      // eslint-disable-next-line no-lone-blocks
       {
-        if (diff % 2 == 0 && diff % 3 !== 0) {
+        if (diff % 2 === 0 && diff % 3 !== 0) {
           latecom = (diff / 4) * (onedaysal)
-          console.log("latecom222      " + latecom)
+          // console.log("latecom222      " + latecom)
 
         }
       }
@@ -174,18 +177,18 @@ console.log("_______netsal_________"+netsal)
       latecom = 0;
     }
 
-    console.log("latecomdfina;      " + latecom)
+    // console.log("latecomdfina;      " + latecom)
 
     let deductionn = (absent) + (leave) + (medicalleave) + (emergencyleave) + (halfday) + (latecom);
     setdeduction(deductionn)
-    console.log("(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom)" + (absent) + (leave) + (medicalleave) + (emergencyleave) + (halfday) + (latecom))
-    console.log("latecom" + latecom)
+    // console.log("(absent) + (leave)+ (medicalleave)+ (emergencyleave)+(halfday)+(latecom)" + (absent) + (leave) + (medicalleave) + (emergencyleave) + (halfday) + (latecom))
+    // console.log("latecom" + latecom)
 
-    console.log("deductionn" + deductionn)
+    // console.log("deductionn" + deductionn)
 
     let deduct = localStorage.setItem('deduction', deductionn)
     let netsalary = salary-deductionn ;
-    console.log("netsal++++++++"+netsalary)
+    // console.log("netsal++++++++"+netsalary)
     setnetsal(netsalary)
     
   }
@@ -201,8 +204,8 @@ console.log("_______netsal_________"+netsal)
           <Sidebar />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className="salarydata_table">
-              <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
-                <h1 className="h1"><b>Generate Salary</b></h1>
+              <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
+                <h1 className="h1 heading_"><b>Generate Salary</b></h1>
 
               </div>
               <div class="container">
@@ -430,6 +433,7 @@ console.log("_______netsal_________"+netsal)
                                 <div class="col-md-6">
                                   <div class="form-group">
                                     <label for="form_name" className='labletextnew'>Basic *</label>
+                                   <FaRupeeSign/>
                                     <input
                                       id="form_name"
                                       type="text"

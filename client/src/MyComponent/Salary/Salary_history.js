@@ -7,25 +7,9 @@ import moment from "moment";
 import React,{useEffect} from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
-import { FaRupeeSign } from "react-icons/fa";
 
-import { Link, useNavigate } from "react-router-dom";
-
-
-const ExpandedComponent = ({ data }) =>
-//  <div className="dropdown_detail">
-{/* <div className="dropdown_personaldet">
-<h6 className="datastaffname">{data.staff_name}</h6>
-<h6 className="mx-3">{data.gender}</h6>
-<h6>{data.city}</h6>
-</div> */}
-{/* <div className="dropdown_personaldetail">
-<h6 className="datastaffname">{data.address}</h6>
-<h6>{moment(data.dob).format('DD-MMMM-YYYY')}</h6>
-</div> */}
-// </div>;
 function SalaryHistory(props) {
-  const [employeeList, setEmployeeList] = useState([]);
+  
   const [salaryList, setsalaryList] = useState([]);
   const [attendmonth, setattendmonth] = useState(
     moment().format(`YYYY-MM-DDT00:00:00+00:00`)
@@ -69,12 +53,7 @@ function SalaryHistory(props) {
   useEffect(() => {
     getEmployees();
   }, [attendmonth]);
-  const salarygenerate =(e)=>{
-    // let arr = e.target.value.split(',')
-  let staffidd = e.target.value;
-  localStorage.setItem('staffid',staffidd);
-  navigator('/GenerateSalary')
-  }
+  
 const columns = [
     {
       name: 'Id',
@@ -101,11 +80,8 @@ const columns = [
   },
    
 ];
-const navigator=useNavigate();
 
-
-
-  return (
+ return (
 
     <>
         <Header/>
@@ -116,13 +92,10 @@ const navigator=useNavigate();
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 salarylistbox_table">
           <div className="emp_table">
-            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
-              <h1 className="h1"><b>Salary History</b></h1>
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
+              <h1 className="h1 heading_"><b>Salary History</b></h1>
              
             </div>
-           
-            
-
             <div className="monthname_sort ">
                   <BsFillCaretLeftFill onClick={PreviousmonthChange} />
                   <h4 className="monthname_text">
@@ -135,9 +108,7 @@ const navigator=useNavigate();
             data={salaryList}
             pagination
             expandableRows
-            expandableRowsComponent={ExpandedComponent}
-          
-        />
+            />
           </div>
           </main>
 

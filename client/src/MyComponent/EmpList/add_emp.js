@@ -133,7 +133,7 @@ const AddEditEmp = (props) => {
 
   
       
-    Axios.post("https://apnaorganicstore.in/index/create",{
+    Axios.post("http://localhost:3001/create",{
       
       staff_name: name,
       dob: Dob,
@@ -166,7 +166,7 @@ const AddEditEmp = (props) => {
       console.log("formdata - ----> "+JSON.stringify(formData))
       try {
        Axios.post(
-          `https://apnaorganicstore.in/index/upload/${id}`,
+          `http://localhost:3001/upload/${id}`,
          formData,
         );
       } catch (ex) {
@@ -179,19 +179,19 @@ const AddEditEmp = (props) => {
 }
 
   const department = () => {
-    Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
+    Axios.get("http://localhost:3001/department").then((response) => {
       setdepart(response.data);
     });
   };
 
   const getStates = () => {
-    Axios.get("https://apnaorganicstore.in/index/state").then((response) => {
+    Axios.get("http://localhost:3001/state").then((response) => {
       setState(response.data);
      
     });
   };
   const getCity = () => {
-    Axios.get(`https://apnaorganicstore.in/index/city/${stateId}`).then((response) => {
+    Axios.get(`http://localhost:3001/city/${stateId}`).then((response) => {
       setCity(response.data);
     
     });
@@ -294,8 +294,8 @@ const AddEditEmp = (props) => {
         <Sidebar className='sidebar_add_emp' />
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div className="emp_table">
-          <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
-            <h1 className="h1"><b>Add Employee</b></h1>
+          <div className="d-flex justify-content-between align-items-center border-bottom pb-5  ">
+            <h1 className="h1 heading_"><b>Add Employee</b></h1>
            
           </div>
 

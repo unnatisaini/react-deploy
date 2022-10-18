@@ -1,8 +1,13 @@
+
 .login_container{
     min-height: 100vh;
     display: flex;
     font-weight: 400;
     font-family: 'Fira Sans', sans-serif;
+    /* background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=1600'); */
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .login_container .login_section{
     display: flex;
@@ -24,8 +29,8 @@
     align-items: center;
 }
 .login_container button.btn.btn-success.submit_btn {
-    background-color: #31eba8;
-    outline: auto;
+    /* background-color: #31eba8; */
+    /* outline: auto; */
     height: 45px;
 }
 .submit_text{

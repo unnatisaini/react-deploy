@@ -6,7 +6,6 @@ function Documentupload(props) {
   const idd = localStorage.getItem('newstaffid');
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
-
   const [file3, setFile3] = useState();
   const [file4, setFile4] = useState();
   const [file5, setFile5] = useState();
@@ -36,7 +35,7 @@ function Documentupload(props) {
   };
 
 const getdocuments = () => {
-    Axios.get("https://apnaorganicstore.in/index/document").then((response) => {
+    Axios.get("http://localhost:3001/document").then((response) => {
        setdoc(response.data);
        console.log("response.data"+(response.data.documents))
     });
@@ -78,11 +77,11 @@ const getdocuments = () => {
     
     formData.append("file2", file2);
     formData.append("fileName2", fileNametwo);
-console.log("file1---1----> "+file1)
-console.log("file2---2----> "+file2)
+// console.log("file1---1----> "+file1)
+// console.log("file2---2----> "+file2)
     // console.log("fileName///////"+fileName)
     console.log("formdata - ----> "+JSON.stringify(formData))
-  Axios.post("https://apnaorganicstore.in/index/documentupload",formData, {
+  Axios.post("http://localhost:3001/documentupload",formData, {
     staff_id:idd,
     
      }).then((response) => {
@@ -108,15 +107,15 @@ console.log("file2---2----> "+file2)
     // console.log("d----------"+docu)
     return (
         <>
-       <h4>Documents Detail</h4>
+    
       <div class="col-md-12">
         <div class="form-group d-flex gap-4 ">
-          <div>
+          <div className='image_input'>
          { (docu || []).map((dodata,i) => {
             console.log("dodata"+dodata)
           return(
             
-           <input type='text' class="form-control" onChange={imageInputChange} value={dodata} />
+           <input type='text' class="form-control label_text" onChange={imageInputChange} value={dodata} />
           
              )
           
@@ -124,31 +123,40 @@ console.log("file2---2----> "+file2)
               </div>
             <div class="">
             <form action="" method="POST" enctype="multipart/form-data">
-            {/* <input type='file' class="form-control" onChange={imageInputChange}  name={"file"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button> */}
-            
-             <input type='file' class="form-control" onChange={imageInputChange2}  name={"file2"} />
+            <div className='image_upload_box'>
+
+            <input type='file' class="form-control label_text" onChange={imageInputChange}  name={"file"} />
             <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
-            
-            {/* <input type='file' class="form-control" onChange={imageInputChange3}  name={"file3"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>
-            
-            <input type='file' class="form-control" onChange={imageInputChange}  name={"file4"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>
-            
-            <input type='file' class="form-control" onChange={imageInputChange}  name={"file5"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>
-            
-            <input type='file' class="form-control" onChange={imageInputChange}  name={"file6"} />
-            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddocs}>Upload</button>  */}
+            </div>
+            <div className='image_upload_box'>
+             <input type='file' class="form-control label_text" onChange={imageInputChange2}  name={"file2"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
+            </div>
+            <div className='image_upload_box'>
+           <input type='file' class="form-control label_text" onChange={imageInputChange2}  name={"file3"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
+            </div>
+            <div className='image_upload_box'>
+
+            <input type='file' class="form-control label_text" onChange={imageInputChange}  name={"file4"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
+            </div>
+            <div className='image_upload_box'>
+
+            <input type='file' class="form-control label_text" onChange={imageInputChange}  name={"file5"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button>
+            </div>
+            <div className='image_upload_box'>
+
+            <input type='file' class="form-control label_text" onChange={imageInputChange}  name={"file6"} />
+            <button type="button" class="btn btn btn-send  pt-2 btn-block" onClick={uploaddoc}>Upload</button> 
+            </div>
            </form>
             </div>
         </div>
       </div>
     
-    <div>
-      <button>Verified</button>
-    </div>
+    
 
 
       

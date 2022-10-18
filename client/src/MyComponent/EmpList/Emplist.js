@@ -48,7 +48,7 @@ const Emplist = () => {
    
 
     const getEmployees = () => {
-        Axios.get("https://apnaorganicstore.in/index/employees").then((response) => {
+        Axios.get("http://localhost:3001/employees").then((response) => {
           setEmployeeList(response.data);
           setapicall(false)
         });
@@ -72,7 +72,7 @@ const Emplist = () => {
     let id = e.target.value;
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
-    Axios.post(`https://apnaorganicstore.in/index/delete/${id}`).then((response) =>{
+    Axios.post(`http://localhost:3001/delete/${id}`).then((response) =>{
         setapicall(true)
   })
 };
@@ -157,8 +157,8 @@ const Emplist = () => {
     <Sidebar/>
     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div className="emp_table">
-            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
-              <h1 className="h1"><b>Employee List</b></h1>
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
+              <h1 className="h1 heading_"><b>Employee List</b></h1>
               <div className="btn-group mr-2 px-5">
 
               <button className="btn sign_out_btn text-white text-center" onClick={()=> {navigate("/AddEmployee");}}>

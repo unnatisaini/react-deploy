@@ -8,24 +8,10 @@ import React,{useEffect} from "react";
 import { BsFillCaretLeftFill } from "react-icons/bs";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaRupeeSign } from "react-icons/fa";
-
 import { Link, useNavigate } from "react-router-dom";
 
-
-const ExpandedComponent = ({ data }) =>
-//  <div className="dropdown_detail">
-{/* <div className="dropdown_personaldet">
-<h6 className="datastaffname">{data.staff_name}</h6>
-<h6 className="mx-3">{data.gender}</h6>
-<h6>{data.city}</h6>
-</div> */}
-{/* <div className="dropdown_personaldetail">
-<h6 className="datastaffname">{data.address}</h6>
-<h6>{moment(data.dob).format('DD-MMMM-YYYY')}</h6>
-</div> */}
-// </div>;
 function Salary_list(props) {
-  const [employeeList, setEmployeeList] = useState([]);
+ 
   const [salaryList, setsalaryList] = useState([]);
   const [attendmonth, setattendmonth] = useState(
     moment().format(`YYYY-MM-DDT00:00:00+00:00`)
@@ -61,7 +47,7 @@ function Salary_list(props) {
     .format(`YYYY-MM-DDT00:00:00+00:00`);
   const getEmployees = () => {
    
-    Axios.get(`https://apnaorganicstore.in/index/salary/${firstdate}/${lastdate}`).then((response) => {
+    Axios.get(`http://localhost:3001/salary/${firstdate}/${lastdate}`).then((response) => {
       setsalaryList(response.data);
     });
   
@@ -124,13 +110,13 @@ const navigator=useNavigate();
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 salarylistbox_table">
           <div className="emp_table">
-            <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
-              <h1 className="h1"><b>Salary Management</b></h1>
+            <div className="d-flex justify-content-between align-items-center border-bottom pb-5 ">
+              <h1 className="h1 heading_"><b>Salary Management</b></h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group mr-2">
                 <Link to='/Salary_history' className="nav-link">
 
-                  <button className="btn btn-sm btn-outline-secondary">Salary Summary</button>
+                  <button className="btn sign_out_btn text-white text-center"><h3>Salary Summary</h3></button>
 
                 </Link>
                 </div>
@@ -152,7 +138,7 @@ const navigator=useNavigate();
             data={salaryList}
             pagination
             expandableRows
-            expandableRowsComponent={ExpandedComponent}
+           
           
         />
           </div>

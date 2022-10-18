@@ -55,7 +55,7 @@ const Login = () => {
         <div className='login_container'>
       <div className='login_section' >
       
- <div className='signin_logo mb-3'><RingLoader color="#31eba8" /> <h3>Sign In</h3></div>
+        <div className='signin_logo mb-3'><RingLoader color='#00BFFF' className='ring_loader' /> <h3>Sign In</h3></div>
         <div className="mt-3">
           <label className="labletextnew">Email address</label>
           <input
@@ -89,14 +89,16 @@ const Login = () => {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-success submit_btn" onClick={onSubmit} >
+          <button type="submit" className="btn btn-success sign_out_btn" onClick={onSubmit} >
            <p className='submit_text'>Submit</p></button>
         
         </div>
        
       </div>
       </div>
+     
       </>
+      
     )
   }
 

@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.use(cors({
-  origin: ['https://we2codetechnology.github.io'],
+  origin: ['http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true,
 }

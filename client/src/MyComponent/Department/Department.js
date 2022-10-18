@@ -19,7 +19,7 @@ const Department = () => {
   const [apicall, setapicall] = useState(false);
 
   const getDepartment = () => {
-    Axios.get("https://apnaorganicstore.in/index/department").then((response) => {
+    Axios.get("http://localhost:3001/department").then((response) => {
       setDepartmentdata(response.data);
       setapicall(false)
     });
@@ -67,7 +67,7 @@ const Department = () => {
     const result = await confirm("ARE YOU SURE YOU WANT TO PERFORM THIS OPERATION");
     if (result) {
 
-    Axios.get(`https://apnaorganicstore.in/index/departmentdelete/${id}`, {
+    Axios.get(`http://localhost:3001/departmentdelete/${id}`, {
     }).then((response) => {
       setapicall(true)
 
@@ -109,7 +109,7 @@ const Department = () => {
   // }
     if (isnameadd == true && departname ) {
      
-      Axios.post("https://apnaorganicstore.in/index/departmentcreate", {
+      Axios.post("http://localhost:3001/departmentcreate", {
         department_name: departname,
       }).then((response) => {
         setisnameadd(false);
@@ -130,7 +130,7 @@ const Department = () => {
     setnameedit("")
   };
   const updateClick = (id) => {
-    Axios.post(`https://apnaorganicstore.in/index/departmentupdate`, {
+    Axios.post(`http://localhost:3001/departmentupdate`, {
       id: `${id}`,
       department_name: nameedit,
     }).then((response) => {});
@@ -215,7 +215,7 @@ const Department = () => {
             
             <div className="d-flex justify-content-between align-items-center border-bottom pb-5">
              
-                <h1 className="h1">
+                <h1 className="h1 heading_">
                   <b>Department Details</b>
                 </h1>
                 <div className="btn-group mr-2 px-5 addinput_popup">

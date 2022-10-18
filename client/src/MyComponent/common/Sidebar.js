@@ -24,7 +24,7 @@ const Sidebar = () => {
             </div> */}
          <img src={company_logo} class="profile-photo"/>
 
-            <ul class="nav-news-feed">
+            <ul class="nav-news-feed sidebar_">
               <li className='icon_text'>
                 <FcHome/>
                 <div className='m-0'>

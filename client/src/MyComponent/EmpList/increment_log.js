@@ -43,7 +43,7 @@ const IncrementLog = () => {
     }
   
   //  const getincrement = () => {
-  Axios.post("https://apnaorganicstore.in/index/incrementlogcreate", {
+  Axios.post("http://localhost:3001/incrementlogcreate", {
       staff_id:idd,
       staff_name: sname,
       old_salary:salary,
@@ -51,7 +51,7 @@ const IncrementLog = () => {
       applied_on:appliedon,
        }).then((response) => {
     });
-    Axios.post(`https://apnaorganicstore.in/index/updatee`, {
+    Axios.post(`http://localhost:3001/updatee`, {
       id: idd,
       salary:newsalary
     }).then((response) => {
